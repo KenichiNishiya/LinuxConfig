@@ -1,8 +1,8 @@
 #!/bin/bash
 
-REPO=~/re/git/LinuxConfig/
+REPO=~/re/git/dotfiles/
 IN=~/.config/
-OUT=~/re/git/LinuxConfig/config/
+OUT=~/re/git/dotfiles/config/
 
 cp $IN'alacritty/alacritty.yml' $OUT'alacritty/alacritty.yml'
 cp $IN'bspwm/bspwmrc' $OUT'bspwm/bspwmrc'

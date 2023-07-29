@@ -370,8 +370,10 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 
 # GTK theme
 sudo flatpak override --filesystem=$HOME/.themes
+sudo flatpak override --filesystem=$HOME/.icons
 # May not work with themes outside the home directory
-sudo flatpak override --env=GTK_THEME=dracula
+sudo flatpak override --env=GTK_THEME=Catppuccin-Mocha-Standard-Mauve-dark
+sudo flatpak override --env=GTK_THEME=dracula-icons
 # Might need to reboot
 reboot
 
