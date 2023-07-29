@@ -25,7 +25,7 @@ cp $IN'picom/picom.conf' $OUT'picom/picom.conf'
 cp $IN'tmux/tmux.conf' $OUT'tmux/tmux.conf'
 
 # cp ~/Documents/suse.sh $REPO 
-cp ~/.vimrc $REPO'vimrc'
+# cp ~/.vimrc $REPO'vimrc'
 cp ~/.zsh_aliases $REPO'zsh_aliases'
 cp ~/.zprofile $REPO'zprofile'
 cp ~/.zshrc $REPO'zshrc'
@@ -33,7 +33,7 @@ cp ~/.zshrc $REPO'zshrc'
 
 cp -r $IN'lutris/games/' $REPO'/bakap/lutris/'
 cp -r ~/'.config/bakap/' $REPO
-cp -r /home/yori/Documents/scripts/* $REPO'scripts/'
+# cp -r /home/yori/Documents/scripts/* $REPO'scripts/'
 # cp $IN'nvim/init.vim' $OUT'nvim/init.vim' sudo cp /etc/sddm.conf.d/sddm.conf $OUT'sddm/sddm.conf' 
 cp -r /usr/share/sddm/themes/sddm-sugar-candy $OUT'sddm/'
 
