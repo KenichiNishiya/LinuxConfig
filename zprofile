@@ -33,6 +33,6 @@ fi
 # export _JAVA_AWT_WM_NONREPARENTING=1
 
 # Blue light filter
-redshift -P -O 3000
+# redshift -P -O 3000
 
 

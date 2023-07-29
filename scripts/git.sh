@@ -1,16 +1,16 @@
 #!/bin/bash
 
-REPO=~/re/git/openSUSE/
+REPO=~/re/git/LinuxConfig/
 IN=~/.config/
-OUT=~/re/git/openSUSE/config/
+OUT=~/re/git/LinuxConfig/config/
 
-cp $IN'alacritty/alacritty.yml' $OUT'alacritty/alacritty.yml'
+# cp $IN'alacritty/alacritty.yml' $OUT'alacritty/alacritty.yml'
 cp $IN'bspwm/bspwmrc' $OUT'bspwm/bspwmrc'
-cp $IN'dunst/dunstrc' $OUT'dunst/dunstrc'
+# cp $IN'dunst/dunstrc' $OUT'dunst/dunstrc'
 #cp $IN'picom/picom.conf' $OUT'picom/picom.conf'
 cp $IN'polybar/config.ini' $OUT'polybar/config.ini'
 cp $IN'polybar/launch.sh' $OUT'polybar/launch.sh'
-cp $IN'rofi/config.rasi' $OUT'rofi/config.rasi'
+# cp $IN'rofi/config.rasi' $OUT'rofi/config.rasi'
 cp $IN'sxhkd/sxhkdrc' $OUT'sxhkd/sxhkdrc'
 cp $IN'waybar/config.jsonc' $OUT'waybar/config.jsonc'
 cp $IN'waybar/style.css' $OUT'waybar/sytle.css'
@@ -23,7 +23,7 @@ cp $IN'kitty/kitty.conf' $OUT'kitty/kitty.conf'
 # cp $IN'nvim/lua/custom/plugins.lua' $OUT'nvim/plugins/plugins.lua'
 cp $IN'tmux/tmux.conf' $OUT'tmux/tmux.conf'
 
-cp ~/Documents/suse.sh $REPO 
+# cp ~/Documents/suse.sh $REPO 
 cp ~/.vimrc $REPO'vimrc'
 cp ~/.zsh_aliases $REPO'zsh_aliases'
 cp ~/.zprofile $REPO'zprofile'

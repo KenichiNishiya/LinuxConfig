@@ -1,24 +1,25 @@
 set -e
 openSUSE Tumbleweed
 
-sudo zypper in opi sddm florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpclient mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git bspwm rofi nitrogen sxhkd polybar dunst libnotify lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings alacritty zsh lxappearance qt5ct kvantum-manager kvantum-qt5 kvantum-qt6 fcitx5 fcitx5-mozc fcitx5-configtool snapd thermald powertop cpu-x flatpak polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 nomacs exa antimicrox leafpad tmux bat fzf
-pip3 install glances jedi trash-cli
-#sudo zypper in meson vulkan-devel libXxf86vm-devel libXres-devel libdrm-devel wayland-protocols-devel SDL2-devel libudev-devel libinput-devel libseat1 seatd-devel wlroots-devel gslang-devel libcap-devel
-opi megasync scrcpy vscodium 
+sudo dnf in sddm florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git bspwm rofi nitrogen sxhkd polybar dunst libnotify lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings alacritty zsh lxappearance qt5ct fcitx5 fcitx5-mozc fcitx5-configtool snapd thermald powertop cpu-x flatpak polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 nomacs exa antimicrox leafpad tmux bat fzf gamemode xhost neovim python3-pip nodejs tmux gammastep picom kernel-tools blueman
+pip3 install glances jedi trash-cli 
+#sudo dnf in meson vulkan-devel libXxf86vm-devel libXres-devel libdrm-devel wayland-protocols-devel SDL2-devel libudev-devel libinput-devel libseat1 seatd-devel wlroots-devel gslang-devel libcap-devel
+opi megasync scrcpy 
+sudo flatpak install vscodium librewolf brave 
 
-sudo zypper rm gucharmap git-gui remmina tigervnc opensuse-welcome mugshot shotwell evince simple-scan transmission-common transmission-gtk gnome-disk-utility
+sudo dnf rm gucharmap git-gui remmina tigervnc opensuse-welcome mugshot shotwell evince simple-scan transmission-common transmission-gtk gnome-disk-utility
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! FIX SUDO
 sudo usermod -aG wheel yori
 sudo visudo
 
-# At line around 43, starting with env_keep = "LANG... add at the end withing the quotes:
+# At around line 43, starting with env_keep = "LANG... add at the end within the quotes:
 'DISPLAY XAUTHORITY'
 # Comment lines 68 and 69:
 'Defaults targetpw
 ALL ALL = (ALL) ALL'
-# Uncomment line 81, don't delete it entirely
+# Uncomment line 81
 '%wheel ALL=(ALL) ALL'
 # Save and 
 reboot
@@ -33,9 +34,9 @@ git config --global credential.helper store
 sudo systemctl disable snapper-cleanup.timer
 sudo systemctl disable snapper-cleanup.service
 
-#- STOP AUTO CREATING SNAPSHOTS WHEN RUNNING ZYPPER
-sudo zypper rm snapper-zypp-plugin
-sudo zypper al snapper-zypp-plugin
+#- STOP AUTO CREATING SNAPSHOTS WHEN RUNNING dnf
+sudo dnf rm snapper-zypp-plugin
+sudo dnf al snapper-zypp-plugin
 
 #- DISABLE QUOTAS
 # Having quotas enabled let you verify the disk usage for the snapshots, however it can impact performance, mostly if you have too many snapshots (like, more than 50 I guess)
@@ -52,19 +53,19 @@ sudo btrfs filesystem usage /
 #! USE MIRRORCACHE
 # https://en.opensuse.org/MirrorCache
 
-sudo zypper in MirrorCache
+sudo dnf in MirrorCache
 sudo sed -i "s,http://download.opensuse.org,https://mirrorcache.opensuse.org,g" /etc/zypp/repos.d/*.repo
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! MEDIA CODECS
 # https://en.opensuse.org/SDB:Installing_codecs_from_Packman_repositories
 
-sudo zypper in opi
+sudo dnf in opi
 opi codecs
-sudo zypper addrepo -cfp 90 'https://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/' packman
-sudo zypper refresh
-sudo zypper dist-upgrade --from packman --allow-vendor-change
-sudo zypper in --from packman ffmpeg gstreamer-plugins-{good,bad,ugly,libav} libavcodec-full 
+sudo dnf addrepo -cfp 90 'https://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/' packman
+sudo dnf refresh
+sudo dnf dist-upgrade --from packman --allow-vendor-change
+sudo dnf in --from packman ffmpeg gstreamer-plugins-{good,bad,ugly,libav} libavcodec-full 
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! SET GITHUB FILES BACKUP  
@@ -97,7 +98,7 @@ vim ~/.local/share/nvim/plugged/dracula.nvim/lua/dracula/palette.lua
 # Change the bg to #0f0f17
 
 # Coc auto completion
-sudo zypper in python3-pip nodejs
+sudo dnf in python3-pip nodejs
 sudo npm install -g yarn
 cd ~/.local/share/nvim/plugged/coc.nvim
 yarn install
@@ -107,7 +108,10 @@ pip3 install jedi
 :CocInstall coc-python coc-html coc-css coc-tsserver coc-clangd 
 # Open a C/C++ file and use this command
 :CocCommand clangd.install
-
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! CONFIGURE TMUX
+sudo dnf in tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! ENABLE TRIM FOR SSD (BETTER PERFORMANCE AND SSD LIFETIME)
 
@@ -146,7 +150,7 @@ sudo wget https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Noto
 
 # sudo cp ~/Downloads/Noto\ Sans\ Medium\ Nerd\ Font\ Complete.ttf /usr/share/fonts/noto-nerd-font
 
-sudo zypper in google-noto-sans-jp-fonts
+sudo dnf in google-noto-sans-jp-fonts
 # Reload the fonts
 fc-cache -f -v
 
@@ -159,7 +163,7 @@ fc-match FontName
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! ALACRITTY TERMINAL
 
-sudo zypper in alacritty
+sudo dnf in alacritty
 mkdir ~/.config/alacritty
 cp /opt/Fedora/config/alacritty/alacritty.yml ~/.config/alacritty/
 
@@ -171,7 +175,7 @@ export WINIT_X11_SCALE_FACTOR=1
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! INSTALLING BSPWM AND OTHER THINGS
 
-sudo zypper in git bspwm rofi nitrogen sxhkd polybar dunst lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings sddm lxqt-policykit
+sudo dnf in git bspwm rofi nitrogen sxhkd polybar dunst sddm lxqt-policykit picom
 # I'll be using sddm, but having lightdm as a fallback is nice
 
 sudo systemctl enable sddm
@@ -212,8 +216,8 @@ cp ~/re/git/Fedora/config/dunst/dunstrc ~/.config/dunst/
 notify-send Title Message
 
 # SDDM config files need sudo 
-sudo cp ~/re/git/Fedora/config/sddm/sddm.conf /etc/sddm.conf.d/
-sudo cp -r ~/re/git/Fedora/config/sddm/sddm-sugar-candy /usr/share/sddm/themes/
+sudo cp ~/re/git/openSUSE/config/sddm/sddm.conf /etc/sddm.conf.d/
+sudo cp -r ~/re/git/openSUSE/config/sddm/sddm-sugar-candy /usr/share/sddm/themes/
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! CONFIGURE SDDM
@@ -229,10 +233,10 @@ sudo systemctl disable lightdm # Or any other pre existing display manager
 #! SET ZSH
 # https://www.sitepoint.com/zsh-tips-tricks/
 
-sudo zypper in zsh
+sudo dnf in zsh
 # Make zsh the default shell
 chsh -s $(which zsh)
-reboot
+# reboot
 
 # Install Oh My Zsh
 sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
@@ -249,20 +253,20 @@ plugins=(zsh-autosuggestions colored-man-pages zsh-syntax-highlighting)
 
 # Set PS1 to show full path:
 vim ~/.oh-my-zsh/themes/robbyrussell.zsh-theme
-# Change the %c% from the second line to %~%
+# Change the %c% near the end of the first line to %~%
 # Source or reopen the terminal
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! CONFIGURE THEME GTK AND QT
 
-# Download Catppuccin theme here: https://github.com/catppuccin/gtk/releases/
-sudo zypper in lxappearance qt5ct kvantum-manager kvantum-qt5 kvantum-qt6 nitrogen
+# Download Catppuccin GTK theme here: https://github.com/catppuccin/gtk/releases/
+sudo dnf in lxappearance qt5ct kvantum-manager kvantum-qt5 kvantum-qt6 nitrogen
 
 mkdir ~/.themes
 cd ~/.themes
-git clone https://github.com/dracula/gtk.git
-# There is also a Kvantum theme inside gtk/kde/kvantum/
-mv gtk dracula
+wget https://github.com/catppuccin/gtk/releases/download/v0.6.1/Catppuccin-Mocha-Standard-Mauve-dark.zip
+unzip Catppuccin-Mocha-Standard-Mauve-dark.zip
+rm -rf Catppuccin-Mocha-Standard-Mauve-dark.zip
 
 mkdir ~/.icons
 cd ~/.icons
@@ -277,8 +281,9 @@ tar -cvzf Dracula-cursors.tar.gz Dracula-cursors
 
 lxappearance
 
-sudo cp -r ~/.themes/dracula /usr/share/themes/
+sudo cp -r ~/.themes/Catppuccin-Mocha-Standard-Mauve-dark /usr/share/themes/
 sudo cp -r ~/.icons/dracula-icons /usr/share/icons/
+sudo mkdir /usr/share/themes/dracula
 sudo cp -r ~/.themes/Dracula-cursors.tar.gz /usr/share/themes/dracula/
 
 sudo lxappearance
@@ -287,11 +292,20 @@ sudo lxappearance
 sudo vim /usr/share/icons/default/index.theme
 sudo vim /usr/share/gtk-2.0/gtkrc
 
-# Now for the qt stuff
+# Now for the QT stuff
+
+wget https://github.com/catppuccin/qbittorrent/blob/main/mocha.qbtheme
+mv mocha.qbtheme /home/yori/.themes
+
+cd /opt
+git clone https://github.com/catppuccin/Kvantum.git
+mv /opt/Kvantum/src/Catppuccin-mocha-Mauve /home/yori/.themes
+rm -rf Kvantum
+
 kvantummanager
 sudo kvantummanger
-# Install/Update Theme > Select a Kvantum theme folder > ~/.themes/dracula/kde/kvantum/Dracula-purple-solid > Choose > Install this theme
-# Change/Delete Theme > Select a theme: > Dracula-purple-solid > Use this theme
+# Install/Update Theme > Select a Kvantum theme folder > ~/.themes/Catppuccin-Mocha-Mauve > Choose > Install this theme
+# Change/Delete Theme > Select a theme: > Catppuccin-Mocha-Mauve > Use this theme
 qt5ct
 sudo qt5ct # Altough this won't work unless you set the env var on /etc/profile
 # Appearance > Style: > kvantum > Apply
@@ -300,6 +314,9 @@ sudo qt5ct # Altough this won't work unless you set the env var on /etc/profile
 vim .profile
 # Paste the following line:
 export QT_QPA_PLATFORMTHEME=qt5ct
+
+# qBittorrent 
+wget https://github.com/catppuccin/qbittorrent/releases/download/v1.0.0/mocha.qbtheme
 
 # Change the desktop background
 nitrogen
@@ -324,7 +341,7 @@ cp ~/re/git/Fedora/userChrome.css .mozilla/firefox/paufwehashu.default-release/c
 #! JAPANESE KEYBOARD INPUT
 # https://www.youtube.com/watch?v=lJoXhS4EUJs
 
-sudo zypper in fcitx5 fcitx5-mozc fcitx5-configtool
+sudo dnf in fcitx5 fcitx5-mozc fcitx5-configtool
 
 sudo vim ~/.profile
 # Paste the following somewhere in the file
@@ -348,7 +365,7 @@ sudo mv pulsemixer /opt
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! FLATPAK AND SNAP
 
-sudo zypper in flatpak
+sudo dnf in flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 # GTK theme
@@ -358,10 +375,11 @@ sudo flatpak override --env=GTK_THEME=dracula
 # Might need to reboot
 reboot
 
-sudo zypper addrepo --refresh https://download.opensuse.org/repositories/system:/snappy/openSUSE_Tumbleweed snappy
-sudo zypper --gpg-auto-import-keys refresh
-sudo zypper dup --from snappy
-sudo zypper in snapd
+# SNAPD
+sudo dnf addrepo --refresh https://download.opensuse.org/repositories/system:/snappy/openSUSE_Tumbleweed snappy
+sudo dnf --gpg-auto-import-keys refresh
+sudo dnf dup --from snappy
+sudo dnf in snapd
 
 reboot
 
@@ -373,8 +391,8 @@ reboot
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! POWER SAVING
 
-sudo zypper in xfce4-power-manager
-sudo zypper in lxqt-powermanagement
+sudo dnf in xfce4-power-manager
+sudo dnf in lxqt-powermanagement
 # These are GUI apps for power management, xfce's has brightness control, while lxqt don't
 
 #- auto-cpufreq
@@ -382,11 +400,11 @@ sudo snap install auto-cpufreq
 sudo snap run auto-cpufreq --install
 
 #- thermald
-sudo zypper in thermald
+sudo dnf in thermald
 sudo systemctl enable --now thermald
 
 #- powertop
-sudo zypper in powertop
+sudo dnf in powertop
 # You can make it auto run on startup:
 sudo vim /etc/systemd/system/powertop.service
 # Paste the following content
@@ -431,17 +449,17 @@ lscpu |egrep "Model name|MHz"
 watch -n1 "grep \"^[c]pu MHz\" /proc/cpuinfo"
 
 # GUI for CPU frequency
-sudo zypper in cpu-x
+sudo dnf in cpu-x
 
 # Test with
-sudo zypper in stress-ng
+sudo dnf in stress-ng
 stress-ng --cpu 4
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! GPU TESTING
 # https://www.cyberciti.biz/open-source/command-line-hacks/linux-gpu-monitoring-and-diagnostic-commands/
 
-sudo zypper in intel-gpu-tools glmark2
+sudo dnf in intel-gpu-tools glmark2
 
 sudo intel_gpu_top
 
@@ -453,7 +471,7 @@ vblank_mode=0 glxgears
 # https://wiki.archlinux.org/title/Intel_graphics#Hardware_accelerated_H.264_decoding_on_GMA_4500
 
 # Honestly, first time I installed obs studio on openSUSE it didn't work. After some time it did work. Have no idea what happened
-sudo zypper in libva-utils
+sudo dnf in libva-utils
 # May need a reboot
 
 # Edit: still don't know what is happening, but installing via flatpak may be the solution
@@ -467,14 +485,14 @@ flatpak install org.freedesktop.Platform.GStreamer.gstreamer-vaapi com.obsprojec
 #! H.264 on OpenSUSE (?)
 # https://www.edivaldobrito.com.br/opensuse-simplificou-a-instalacao-do-h-264-no-sistema/
 
-sudo zypper ar http://codecs.opensuse.org/openh264/openSUSE_Leap repo-openh264
-sudo zypper in gstreamer-1.20-plugin-openh264
+sudo dnf ar http://codecs.opensuse.org/openh264/openSUSE_Leap repo-openh264
+sudo dnf in gstreamer-1.20-plugin-openh264
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! RUN GUI PROGRAMS WHICH REQUIRES SUDO/ROOT
 # https://wiki.Fedora.org/title/Polkit#Configuration
 
-sudo zypper in polkit lxqt-policykit
+sudo dnf in polkit lxqt-policykit
 
 # You need to set it to auto start on .profile
 lxqt-policykit-agent &
@@ -485,9 +503,9 @@ lxqt-policykit-agent &
 
 wget https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Tumbleweed/repodata/repomd.xml.key
 sudo rpm --import repomd.xml.key
-sudo zypper addrepo https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Tumbleweed/Emulators:Wine.repo
-sudo zypper refresh
-sudo zypper in wine
+sudo dnf addrepo https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Tumbleweed/Emulators:Wine.repo
+sudo dnf refresh
+sudo dnf in wine
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! RUN A GAME ON LUTRIS / WINE WITH JAPANESE LOCALE
@@ -540,7 +558,7 @@ MANGOHUD_DLSYM=1
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! FERAL GAMEMODE
 
-sudo zypper in gamemoded libgamemode0 libgamemode0-32bit libgamemodeauto0 libgamemodeauto0-32bit
+sudo dnf in gamemoded libgamemode0 libgamemode0-32bit libgamemodeauto0 libgamemodeauto0-32bit gamemode
 
 # On steam
 'gamemoderun %command%'
@@ -557,7 +575,7 @@ gamemoded -s
 #! GAMESCOPE
 # It helps if the mouse cursor goes to other monitors when playing games
 
-sudo zypper in meson ninja vulkan-devel libXxf86vm-devel libXres-devel libdrm-devel wayland-protocols-devel SDL2-devel libudev-devel libinput-devel libseat1 seatd-devel wlroots-devel gslang-devel libcap-devel
+sudo dnf in meson ninja vulkan-devel libXxf86vm-devel libXres-devel libdrm-devel wayland-protocols-devel SDL2-devel libudev-devel libinput-devel libseat1 seatd-devel wlroots-devel gslang-devel libcap-devel
 
 cd ~/re/git/
 git clone https://github.com/Plagman/gamescope.git
@@ -602,7 +620,7 @@ xdg-open,firefox,konqueror,mozilla,netscape,galeon,opera,dillo
 #! MAKE A .desktop FILE FOR A LUTRIS GAME ENTRY FOR ROFI
 
 # Package needed to call the game via CLI
-sudo zypper in python310-magic
+sudo dnf in python310-magic
 
 vim ~/.local/share/applications/NAMEOFTHEAPP.desktop
 
@@ -623,7 +641,7 @@ Keywords=Touhou, th
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! YOUTUBE-DLP (YT-DLP)
 
-sudo zypper in yt-dlp AtomicParsley ffmpeg
+sudo dnf in yt-dlp AtomicParsley ffmpeg
 
 # Wat
 yt-dlp -o '~/Music/%(playlist_title)s/%(title)s.%(ext)s' -ciw -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4 --add-metadata --cookies '~/Documents/ytdl/cookies-youtube-com.txt' --download-archive '~/Documents/ytdl/yt-dl_wat.txt' 'https://www.youtube.com/playlist?list=PLBYlt8Uh0EcxaT51BU5cyYxiGtN6JmoGL'
@@ -657,7 +675,7 @@ sudo ln -s /usr/bin/python3 /usr/bin/python
 #! CHANGE DEFAULT APPLICATION TO OPEN A FILE TYPE
 # https://wiki.Fedora.org/title/default_applications
 
-sudo zypper in perl-File-MimeInfo
+sudo dnf in perl-File-MimeInfo
 
 # Determine the extension of an specific file
 mimetype file.extension
@@ -671,7 +689,7 @@ mimeopen -d file.extension
 #! DOLPHIN NOT SHOWING VIDEO THUMBNAILS
 # https://www.q4os.org/forum/viewtopic.php?id=3462
 
-sudo zypper in ffmpegthumbs
+sudo dnf in ffmpegthumbs
 # Go to 'Configure > Configure Dolphin > Previews
 # Check the video option
 
@@ -680,7 +698,7 @@ sudo zypper in ffmpegthumbs
 
 #- HEADPHONE MIC NOT BEING RECOGNIZED
 
-sudo zypper in pavucontrol
+sudo dnf in pavucontrol
 # This is a GUI application to control sound
 
 #- MIC IS BOOSTED / BAD
@@ -706,10 +724,10 @@ export PATH=/usr/libexec:/sbin:$PATH
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! RANGER CONFIGURATION
-sudo zypper in ranger
+sudo dnf in ranger
 
 #- RANGER SHOW IMAGE AND VIDEO THUMBNAIL
-sudo zypper in ffmpegthumbnailer
+sudo dnf in ffmpegthumbnailer
 
 # Ueberzug doesn't seem to work on wayland
 opi ueberzug
@@ -754,7 +772,7 @@ scrcpy -m800 -b2M
 #! CREATE A HOTSPOT INTERNET CONNECTION (BEST WAY)
 
 # I forgot to document it on openSUSE, but it worked after installing some packages, try the below and if it doesn't work, then go to their github and install more packages
-sudo zypper in gtk3-devel gcc gcc-c++ kernel-devel pkg-config make hostapd qrencode-devel libpng-devel
+sudo dnf in gtk3-devel gcc gcc-c++ kernel-devel pkg-config make hostapd qrencode-devel libpng-devel
 cd /opt
 
 git clone https://github.com/lakinduakash/linux-wifi-hotspot
@@ -818,7 +836,7 @@ alias tk="echo 'token' | xclip -selection c"
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! FREEDOWNLOADMANAGER
-sudo zypper in openssl xdg-utils ffmpeg
+sudo dnf in openssl xdg-utils ffmpeg
 cd /opt
 mkdir freedownloadmanager
 cd freedownloadmanager
@@ -837,7 +855,7 @@ sudo tar -xvJf data.tar.xz -C /
 
 # You will need epson's generic drivers, which can be found here:
 # https://download.ebz.epson.net/dsc/du/02/DriverDownloadInfo.do?LG2=EN&CN2=&DSCMI=134381&DSCCHK=9edfca27f0a940d9e3f3156a3d46047ffbfe6d79
-sudo zypper in epson-inkjet-printer-escpr
+sudo dnf in epson-inkjet-printer-escpr
 yay -S epson-inkjet-printer-escpr epson-printer-utility cups-pdf print-manager cups ghostscript cups system-config-printer
 
 # You need to start CUPS service, maybe enable it
@@ -862,7 +880,7 @@ nmcli connection delete id pvpn-ipv6leak-protection
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! SET EXTRA MOUSE BUTTONS
-sudo zypper in xvkbd xbindkeys
+sudo dnf in xvkbd xbindkeys
 
 # To know the name of the button, run this
 xev -event button | grep button
@@ -1128,7 +1146,7 @@ nndownload.py -u user@mail.com -p password --add-metadata -o '~/Music/NND/{title
 # Check if virtualization is enabled, must return a value higher than 0
 egrep -c '(vmx|svm)' /proc/cpuinfo
 
-sudo zypper in qemu libvirt virt-manager virt-viewer dnsmasq vde2 bridge-utils ebtables iptables dmidecode ethtool
+sudo dnf in qemu libvirt virt-manager virt-viewer dnsmasq vde2 bridge-utils ebtables iptables dmidecode ethtool
 sudo systemctl enable libvirtd.service
 sudo systemctl start libvirtd.service
 sudo virsh net-start default
@@ -1229,7 +1247,7 @@ reboot
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! REMOVE XFCE BLOAT
 
-sudo zypper rm parole atril asunder claws-mail xfce4-dict geany gnumeric mousepad seahorse pidgin pragha ristretto transmission xarchiver xfburn 
+sudo dnf rm parole atril asunder claws-mail xfce4-dict geany gnumeric mousepad seahorse pidgin pragha ristretto transmission xarchiver xfburn 
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! KVANTUM MANAGER SUPPORT QT6
@@ -1247,13 +1265,13 @@ sudo make install
 
 hostnamectl set-hostname newname
 # To confirm it worked:
-reboot
 hostname
+# It may or may not require a reboot
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! SSD HEALTH CHECK
 
-sudo zypper in smartmontools
+sudo dnf in smartmontools
 # Check the name of the disk you want to check with
 lsblk 
 
@@ -1274,11 +1292,11 @@ sudo smartctl -l devstat /dev/sda | grep "Logical Sectors Written" |awk ' { prin
 #! HYPRLAND
 
 opi hyprland
-sudo zypper in waybar gammastep wofi clipman libappindicator wl-clipboard libpulse-devel
+sudo dnf in waybar gammastep wofi clipman libappindicator wl-clipboard libpulse-devel
 opi copyq
 
 # Install eww
-sudo zypper in cargo rustup gtk-layer-shell-devel 
+sudo dnf in cargo rustup gtk-layer-shell-devel 
 rustup default nightly
 cd ~/re/git
 git clone https://github.com/elkowar/eww
@@ -1291,7 +1309,8 @@ chmod +x ./eww
 ./eww open <window_name>
 
 # Build waybar from source to enable experimental features
-sudo zypper in gtkmm3-devel libxkbregistry-devel
+sudo dnf in gtkmm3-devel libxkbregistry-devel jsoncpp-devel libsicg++3-devel fmt-devel spdlog-devel libappindicator3-devel libmdpclient-devel scdoc libc++-devel Catch2-2-devel libgtk-3-0-devel libgtk-3-0-32bit libappindicator-devel libappindicator3-devel libdbusmenu-gtk3-devel gobject-introspection-devel gtk-layer-shell-devel
+# I don't know if all of the dependencies above are necessary, but it was giving me some errors and installing all these + some more did the trick.
 cd /opt
 git clone https://github.com/Alexays/Waybar.git
 cd Waybar
@@ -1309,14 +1328,14 @@ ninja -C build install
 #! GKT APPS ON WAYLAND SLOW STARTUP
 
 # Probably related to xdg-desktop-portal*, which makes us wait 25+ seconds for naught
-sudo zypper rm xdg-desktop-portal-gtk
-sudo zypper al xdg-desktop-portal-gtk
+sudo dnf rm xdg-desktop-portal-gtk
+sudo dnf al xdg-desktop-portal-gtk
 # May be xdg-desktop-portal-gnome or something else
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! WAYBAR TRAY NOT WORKING
 
-sudo zypper in libappindicator
+sudo dnf in libappindicator libdbusmenu-gtk3-devel
 
 # On your .zprofile, .zshrc copy the following:
 export XDG_CURRENT_DESKTOP=Unity
@@ -1336,12 +1355,12 @@ xhost si:localuser:root
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! NEOVIM'S CLIPBOARD DOESN'T WORK WITH WAYLAND'S CLIPBOARD
 
-sudo zypper in wl-clipboard
+sudo dnf in wl-clipboard
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! XPROP ALTERNATIVE FOR HYPRLAND - HYPRPROP
 
-sudo zypper in slurp socat
+sudo dnf in slurp socat
 cd /opt
 git clone https://github.com/vilari-mickopf/hyprevents.git
 cd hyprevents
@@ -1354,7 +1373,7 @@ sudo make install
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! SC-IM SPREADSHEET WITH NCURSES (CLI EXCEL)
 
-zypper in ncurses bison gcc make pkg-config which xclip libxml2-2 libzip 
+dnf in ncurses bison gcc make pkg-config which xclip libxml2-2 libzip 
 # libxlsxreader and xlsxwriter would be nice to have too
 
 cd /opt
@@ -1365,7 +1384,7 @@ sudo make -C src install
 #! SCREENSHOT ON WAYLAND
 
 # I couldn't get Flameshot nor Spectacle to work on wayland, and as such, I will be using grim
-sudo zypper in grim slurp
+sudo dnf in grim slurp
 
 # Use as such to screenshot a selected region and copy to clipboard (not sure it's working tho)
 grim -g "$(slurp)" $HOME/Pictures/sc/sc-$(date +"%Y-%m-%dT%H-%M-%S").png | wl-copy
@@ -1380,3 +1399,4 @@ xhost +si:localuser:root
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 :TSInstall c cpp awk bash html php json rust sxhkdrc yaml toml javascript css
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+sudo dnf in python312-tk python312-devel
