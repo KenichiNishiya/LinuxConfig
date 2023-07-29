@@ -1,2 +1,3 @@
-# LinuxConfig
-Repository that hosts my current config files for Linux
+# openSUSE
+Configuration files for openSUSE Tumbleweed
+Adapted from old files from Arch and Fedora
