@@ -1,89 +1,10 @@
 set -e
-openSUSE Tumbleweed
+Nobara
 
 sudo dnf in sddm florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git bspwm rofi nitrogen sxhkd polybar dunst libnotify lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings alacritty zsh lxappearance qt5ct fcitx5 fcitx5-mozc fcitx5-configtool snapd thermald powertop cpu-x flatpak polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 nomacs exa antimicrox leafpad tmux bat fzf gamemode xhost neovim python3-pip nodejs tmux gammastep picom kernel-tools blueman
-pip3 install glances jedi trash-cli 
+pip3 install jedi trash-cli 
 #sudo dnf in meson vulkan-devel libXxf86vm-devel libXres-devel libdrm-devel wayland-protocols-devel SDL2-devel libudev-devel libinput-devel libseat1 seatd-devel wlroots-devel gslang-devel libcap-devel
-opi megasync scrcpy 
 sudo flatpak install vscodium librewolf brave 
-
-sudo dnf rm gucharmap git-gui remmina tigervnc opensuse-welcome mugshot shotwell evince simple-scan transmission-common transmission-gtk gnome-disk-utility
-
-'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-#! FIX SUDO
-sudo usermod -aG wheel yori
-sudo visudo
-
-# At around line 43, starting with env_keep = "LANG... add at the end within the quotes:
-'DISPLAY XAUTHORITY'
-# Comment lines 68 and 69:
-'Defaults targetpw
-ALL ALL = (ALL) ALL'
-# Uncomment line 81
-'%wheel ALL=(ALL) ALL'
-# Save and 
-reboot
-
-# Commit on github without the need to type the credentials
-git config --global credential.helper store
-
-'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-#! BTRFS
-
-#- STOP AUTO REMOVING SNAPPER SNAPSHOTS
-sudo systemctl disable snapper-cleanup.timer
-sudo systemctl disable snapper-cleanup.service
-
-#- STOP AUTO CREATING SNAPSHOTS WHEN RUNNING dnf
-sudo dnf rm snapper-zypp-plugin
-sudo dnf al snapper-zypp-plugin
-
-#- DISABLE QUOTAS
-# Having quotas enabled let you verify the disk usage for the snapshots, however it can impact performance, mostly if you have too many snapshots (like, more than 50 I guess)
-sudo btrfs quota disable /
-# To verify if quota is disabled:
-sudo btrfs qgroup show /
-
-#- CHECK USED SPACE
-# Seems like btrfs is sometimes tricky when checking disk usage. One command that -maybe- is the most accurate is
-sudo btrfs filesystem usage /
-# Refer to 'used' and 'free'
-
-'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-#! USE MIRRORCACHE
-# https://en.opensuse.org/MirrorCache
-
-sudo dnf in MirrorCache
-sudo sed -i "s,http://download.opensuse.org,https://mirrorcache.opensuse.org,g" /etc/zypp/repos.d/*.repo
-
-'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-#! MEDIA CODECS
-# https://en.opensuse.org/SDB:Installing_codecs_from_Packman_repositories
-
-sudo dnf in opi
-opi codecs
-sudo dnf addrepo -cfp 90 'https://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/' packman
-sudo dnf refresh
-sudo dnf dist-upgrade --from packman --allow-vendor-change
-sudo dnf in --from packman ffmpeg gstreamer-plugins-{good,bad,ugly,libav} libavcodec-full 
-
-'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-#! SET GITHUB FILES BACKUP  
-
-mkdir -p ~/re/git
-cd ~/re/git
-git clone https://github.com/KenichiNishiya/Fedora.git
-
-mkdir ~/.config/bakap
-cd ~/.config/bakap
-mkdir alacritty;mkdir sddm;mkdir bspwm;mkdir dunst;mkdir polybar;mkdir rofi;mkdir sxhkd;mkdir nvim;mkdir zsh_aliases;mkdir profile;mkdir zshrc;mkdir fedora
-
-'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-#! JOURNALCTL ERRORS
-
-'chronyd[837]: Could not add source 200.20.186.76'
-sudo systemctl disable chronyd
-# Seems to be a program to sync the clock
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! CONFIGURE NEOVIM 
@@ -108,10 +29,91 @@ pip3 install jedi
 :CocInstall coc-python coc-html coc-css coc-tsserver coc-clangd 
 # Open a C/C++ file and use this command
 :CocCommand clangd.install
+
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! CONFIGURE TMUX
 sudo dnf in tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+tmux
+# Type Alt+f and then Shift+I
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! SET GITHUB FILES BACKUP  
+
+mkdir -p ~/re/git
+cd ~/re/git
+git clone https://github.com/KenichiNishiya/dotfiles.git
+cp -r config/* ~/.config/
+
+mkdir ~/.config/bakap
+cd ~/.config/bakap
+
+mkdir bspwm;mkdir polybar;mkdir sxhkd;mkdir zsh_aliases;mkdir zprofile;mkdir zshrc;mkdir wofi;mkdir waybar;mkdir hypr;mkdir tmux;mkdir kitty
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! SET ZSH
+# https://www.sitepoint.com/zsh-tips-tricks/
+
+sudo dnf in zsh
+# Make zsh the default shell
+chsh -s $(which zsh)
+# reboot
+
+# Install Oh My Zsh
+sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+
+# Plugin: autosuggestion
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+# Plugin: syntax highlighting
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+# Search for the line with plugins=(git) and replace it for:
+vim ~/.zshrc
+plugins=(zsh-autosuggestions colored-man-pages zsh-syntax-highlighting)
+
+# Set PS1 to show full path:
+vim ~/.oh-my-zsh/themes/robbyrussell.zsh-theme
+# Change the %c% near the end of the first line to %~%
+# Source or reopen the terminal
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! FIX SUDO
+sudo usermod -aG wheel yori
+sudo visudo
+
+# At around line 43, starting with env_keep = "LANG... add at the end within the quotes:
+'DISPLAY XAUTHORITY'
+# Comment lines 68 and 69:
+'Defaults targetpw
+ALL ALL = (ALL) ALL'
+# Uncomment line 81
+'%wheel ALL=(ALL) ALL'
+# Save and 
+reboot
+
+# Commit on github without the need to type the credentials
+git config --global credential.helper store
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#- DISABLE QUOTAS
+# Having quotas enabled let you verify the disk usage for the snapshots, however it can impact performance, mostly if you have too many snapshots (like, more than 50 I guess)
+sudo btrfs quota disable /
+# To verify if quota is disabled:
+sudo btrfs qgroup show /
+
+#- CHECK USED SPACE
+# Seems like btrfs is sometimes tricky when checking disk usage. One command that -maybe- is the most accurate is
+sudo btrfs filesystem usage /
+# Refer to 'used' and 'free'
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! JOURNALCTL ERRORS
+
+'chronyd[837]: Could not add source 200.20.186.76'
+sudo systemctl disable chronyd
+# Seems to be a program to sync the clock
+
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! ENABLE TRIM FOR SSD (BETTER PERFORMANCE AND SSD LIFETIME)
 
@@ -230,33 +232,6 @@ sudo systemctl enable sddm
 sudo systemctl disable lightdm # Or any other pre existing display manager
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-#! SET ZSH
-# https://www.sitepoint.com/zsh-tips-tricks/
-
-sudo dnf in zsh
-# Make zsh the default shell
-chsh -s $(which zsh)
-# reboot
-
-# Install Oh My Zsh
-sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-
-# Plugin: autosuggestion
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-
-# Plugin: syntax highlighting
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-
-# Search for the line with plugins=(git) and replace it for:
-vim ~/.zshrc
-plugins=(zsh-autosuggestions colored-man-pages zsh-syntax-highlighting)
-
-# Set PS1 to show full path:
-vim ~/.oh-my-zsh/themes/robbyrussell.zsh-theme
-# Change the %c% near the end of the first line to %~%
-# Source or reopen the terminal
-
-'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! CONFIGURE THEME GTK AND QT
 
 # Download Catppuccin GTK theme here: https://github.com/catppuccin/gtk/releases/
@@ -294,12 +269,13 @@ sudo vim /usr/share/gtk-2.0/gtkrc
 
 # Now for the QT stuff
 
+# git clone https://github.com/dracula/gtk.git
 wget https://github.com/catppuccin/qbittorrent/blob/main/mocha.qbtheme
 mv mocha.qbtheme /home/yori/.themes
 
 cd /opt
 git clone https://github.com/catppuccin/Kvantum.git
-mv /opt/Kvantum/src/Catppuccin-mocha-Mauve /home/yori/.themes
+mv /opt/Kvantum/src/Catppuccin-Mocha-Mauve /home/yori/.themes
 rm -rf Kvantum
 
 kvantummanager
@@ -378,17 +354,10 @@ sudo flatpak override --env=GTK_THEME=dracula-icons
 reboot
 
 # SNAPD
-sudo dnf addrepo --refresh https://download.opensuse.org/repositories/system:/snappy/openSUSE_Tumbleweed snappy
-sudo dnf --gpg-auto-import-keys refresh
-sudo dnf dup --from snappy
 sudo dnf in snapd
-
-reboot
-
 sudo systemctl enable --now snapd
 sudo systemctl enable --now snapd.apparmor
-
-reboot
+# reboot
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! POWER SAVING

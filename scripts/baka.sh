@@ -20,7 +20,7 @@ cp ~/.config/waybar/config.jsonc ~/.config/bakap/waybar/config.jsonc-$day
 cp ~/.config/waybar/style.css ~/.config/bakap/waybar/style.css-$day
 cp ~/.config/hypr/hyprland.conf ~/.config/bakap/hypr/hyprland.conf-$day
     # cp ~/.tmux.conf ~/.config/bakap/tmux/tmux.conf-$day
-cp ~/.config/tmux ~/.config/bakap/tmux/tmux.conf-$day
+cp ~/.config/tmux/tmux.conf ~/.config/bakap/tmux/tmux.conf-$day
 cp ~/.config/kitty/kitty.conf ~/.config/bakap/kitty/kitty.conf-$day
     # cp -r ~/.config/nvim/lua/custom/init.lua ~/.config/bakap/nvim/init/init.lua-$day
     # cp -r ~/.config/nvim/lua/custom/chadrc.lua ~/.config/bakap/nvim/chadrc/chadrc.lua-$day
