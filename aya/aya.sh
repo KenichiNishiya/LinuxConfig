@@ -6,6 +6,8 @@ pip3 install jedi trash-cli
 #sudo dnf in meson vulkan-devel libXxf86vm-devel libXres-devel libdrm-devel wayland-protocols-devel SDL2-devel libudev-devel libinput-devel libseat1 seatd-devel wlroots-devel gslang-devel libcap-devel
 sudo flatpak install vscodium librewolf brave 
 
+sudo dnf rm elisa vlc kmouth inkscape khelpcenter
+
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! CONFIGURE NEOVIM 
 
@@ -305,6 +307,12 @@ sudo cp ~/Pictures/.sysimg/suk.png /usr/share/backgrounds
 sudo lightdm-gtk-greeter-settings
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! VIM VIXEN STYLE
+.vimvixen-console-frame {
+  color-scheme: light !important;
+}
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! CUSTOMIZE FIREFOX CSS
 
 # Find the firefox profile you are using and cd to it
@@ -483,10 +491,9 @@ sudo dnf in wine
 
 # WINE:
 env LANG=ja_JP.UTF-8 wine Touhou.exe
-# OR
-env LC_ALL=ja_JP.UTF-8
-
 # LUTRIS: Paste the command above on the arguments part of the app launch
+
+# You may need to install the Meiryo font inside /usr/share/fonts/ as it's the default japanese font for Windows 7+
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! CREATE A 32-BIT WINE PREFIX
@@ -1369,5 +1376,13 @@ xhost +si:localuser:root
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 :TSInstall c cpp awk bash html php json rust sxhkdrc yaml toml javascript css
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! SETUP MPD
+# Do not enable mpd systemd service
+mkdir ~/.local/share/mpd
+mkdir ~/.local/share/mpd/playlists
+touch ~/.local/share/mpd/database
+touch ~/.local/share/mpd/state
+touch ~/.local/share/mpd/sticker.sql
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 sudo dnf in python312-tk python312-devel
