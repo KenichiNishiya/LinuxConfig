@@ -1,7 +1,7 @@
 set -e
 Nobara
 
-sudo dnf in sddm florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git bspwm rofi nitrogen sxhkd polybar dunst libnotify lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings alacritty zsh lxappearance qt5ct fcitx5 fcitx5-mozc fcitx5-configtool snapd thermald powertop cpu-x flatpak polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 nomacs exa antimicrox leafpad tmux bat fzf gamemode xhost neovim python3-pip nodejs tmux gammastep picom kernel-tools blueman
+sudo dnf in sddm florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git bspwm rofi nitrogen sxhkd polybar dunst libnotify lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings alacritty zsh lxappearance qt5ct fcitx5 fcitx5-mozc fcitx5-configtool snapd thermald powertop cpu-x flatpak polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 nomacs exa antimicrox leafpad tmux bat fzf gamemode xhost neovim python3-pip nodejs tmux gammastep picom kernel-tools blueman network-manager-applet
 pip3 install jedi trash-cli 
 #sudo dnf in meson vulkan-devel libXxf86vm-devel libXres-devel libdrm-devel wayland-protocols-devel SDL2-devel libudev-devel libinput-devel libseat1 seatd-devel wlroots-devel gslang-devel libcap-devel
 sudo flatpak install vscodium librewolf brave 
@@ -80,58 +80,6 @@ vim ~/.oh-my-zsh/themes/robbyrussell.zsh-theme
 # Source or reopen the terminal
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-#! FIX SUDO
-sudo usermod -aG wheel yori
-sudo visudo
-
-# At around line 43, starting with env_keep = "LANG... add at the end within the quotes:
-'DISPLAY XAUTHORITY'
-# Comment lines 68 and 69:
-'Defaults targetpw
-ALL ALL = (ALL) ALL'
-# Uncomment line 81
-'%wheel ALL=(ALL) ALL'
-# Save and 
-reboot
-
-# Commit on github without the need to type the credentials
-git config --global credential.helper store
-
-'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-#- DISABLE QUOTAS
-# Having quotas enabled let you verify the disk usage for the snapshots, however it can impact performance, mostly if you have too many snapshots (like, more than 50 I guess)
-sudo btrfs quota disable /
-# To verify if quota is disabled:
-sudo btrfs qgroup show /
-
-#- CHECK USED SPACE
-# Seems like btrfs is sometimes tricky when checking disk usage. One command that -maybe- is the most accurate is
-sudo btrfs filesystem usage /
-# Refer to 'used' and 'free'
-
-'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-#! JOURNALCTL ERRORS
-
-'chronyd[837]: Could not add source 200.20.186.76'
-sudo systemctl disable chronyd
-# Seems to be a program to sync the clock
-
-'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-#! ENABLE TRIM FOR SSD (BETTER PERFORMANCE AND SSD LIFETIME)
-
-# To verify if the SSD has trim support, run:
-lsblk --discard
-# If the values under the DISC-GRAN and DISC-MAX are different than 0, then it has support. In that case: 
-sudo systemctl enable fstrim.timer
-
-'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-#! ADJUST SWAPPINESS
-sysctl vm.swappiness
-sudo vim /etc/sysctl.d/99-swappiness.conf
-# Add the following line:
-vm.swappiness=10
-
-'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! FONTS
 
 # Download these:
@@ -165,18 +113,6 @@ fc-list
 fc-match FontName
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-#! ALACRITTY TERMINAL
-
-sudo dnf in alacritty
-mkdir ~/.config/alacritty
-cp /opt/Fedora/config/alacritty/alacritty.yml ~/.config/alacritty/
-
-# If you use multi monitor with different sizes, do the following to fix (if broken )the font:
-vim .profile
-# Paste the following command:
-export WINIT_X11_SCALE_FACTOR=1
-
-'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! INSTALLING BSPWM AND OTHER THINGS
 
 sudo dnf in git bspwm rofi nitrogen sxhkd polybar dunst sddm lxqt-policykit picom
@@ -186,35 +122,35 @@ sudo systemctl enable sddm
 # Remeber to disable any other Display Manager if applicable, such as
 # sudo systemctl disable display-manager
 
-mkdir ~/.config/bspwm
-cp ~/re/git/Fedora/config/bspwm/bspwmrc ~/.config/bspwm/
-sudo chmod +x ~/.config/bspwm/bspwmrc
+# mkdir ~/.config/bspwm
+# cp ~/re/git/Fedora/config/bspwm/bspwmrc ~/.config/bspwm/
+# sudo chmod +x ~/.config/bspwm/bspwmrc
 
-mkdir -p ~/.config/rofi
-cp -r ~/re/git/Fedora/config/rofi/* ~/.config/rofi/
+# mkdir -p ~/.config/rofi
+# cp -r ~/re/git/Fedora/config/rofi/* ~/.config/rofi/
 # The default color scheme here is Dracula
 # Other color schemes you can find here:
 # https://github.com/adi1090x/rofi/tree/master/files/colors
 
-mkdir ~/.config/sxhkd
-cp ~/re/git/Fedora/config/sxhkd/sxhkdrc ~/.config/sxhkd/
+# mkdir ~/.config/sxhkd
+# cp ~/re/git/Fedora/config/sxhkd/sxhkdrc ~/.config/sxhkd/
 
-mkdir ~/.config/polybar
-cp ~/re/git/Fedora/config/polybar/* ~/.config/polybar/
-sudo chmod +x ~/.config/polybar/launch.sh
+# mkdir ~/.config/polybar
+# cp ~/re/git/Fedora/config/polybar/* ~/.config/polybar/
+# sudo chmod +x ~/.config/polybar/launch.sh
 
-mkdir ~/.config/nvim
-cp -r ~/re/git/Fedora/config/nvim/* ~/.config/nvim/
+# mkdir ~/.config/nvim
+# cp -r ~/re/git/Fedora/config/nvim/* ~/.config/nvim/
 
-cp ~/re/git/Fedora/config/mpd ~/.config/
+# cp ~/re/git/Fedora/config/mpd ~/.config/
 
-cp ~/re/git/Fedora/config/ncmpcpp ~/.config/
+# cp ~/re/git/Fedora/config/ncmpcpp ~/.config/
 
-mkdir ~/.config/picom
-cp ~/re/git/Fedora/config/picom/picom.conf ~/.config/picom/
+# mkdir ~/.config/picom
+# cp ~/re/git/Fedora/config/picom/picom.conf ~/.config/picom/
 
-mkdir ~/.config/dunst
-cp ~/re/git/Fedora/config/dunst/dunstrc ~/.config/dunst/
+# mkdir ~/.config/dunst
+# cp ~/re/git/Fedora/config/dunst/dunstrc ~/.config/dunst/
 
 # Start dusnst and test if you want
 notify-send Title Message
@@ -222,16 +158,6 @@ notify-send Title Message
 # SDDM config files need sudo 
 sudo cp ~/re/git/openSUSE/config/sddm/sddm.conf /etc/sddm.conf.d/
 sudo cp -r ~/re/git/openSUSE/config/sddm/sddm-sugar-candy /usr/share/sddm/themes/
-
-'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-#! CONFIGURE SDDM
-
-sudo dnf install sddm
-git clone https://framagit.org/MarianArlt/sddm-sugar-candy.git
-sudo cp -r sddm-sugar-candy /usr/share/sddm/themes
-
-sudo systemctl enable sddm
-sudo systemctl disable lightdm # Or any other pre existing display manager
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! CONFIGURE THEME GTK AND QT
@@ -307,19 +233,35 @@ sudo cp ~/Pictures/.sysimg/suk.png /usr/share/backgrounds
 sudo lightdm-gtk-greeter-settings
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-#! VIM VIXEN STYLE
-.vimvixen-console-frame {
-  color-scheme: light !important;
-}
+#! CONFIGURE SDDM
+
+sudo dnf install sddm
+git clone https://framagit.org/MarianArlt/sddm-sugar-candy.git
+sudo cp -r sddm-sugar-candy /usr/share/sddm/themes
+
+sudo systemctl enable sddm
+sudo systemctl disable lightdm # Or any other pre existing display manager
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-#! CUSTOMIZE FIREFOX CSS
+#! ALACRITTY TERMINAL
 
-# Find the firefox profile you are using and cd to it
-mkdir .mozilla/firefox/paufwehashu.default-release/chrome
-cp ~/re/git/Fedora/userChrome.css .mozilla/firefox/paufwehashu.default-release/chrome/
-# Inside firefox, go to about:config and turn true the following:
-# toolkit.legacyUserProfileCustomizations.stylesheets
+sudo dnf in alacritty
+mkdir ~/.config/alacritty
+cp /opt/Fedora/config/alacritty/alacritty.yml ~/.config/alacritty/
+
+# If you use multi monitor with different sizes, do the following to fix (if broken )the font:
+vim .profile
+# Paste the following command:
+export WINIT_X11_SCALE_FACTOR=1
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! SETUP MPD
+# Do not enable mpd systemd service
+mkdir ~/.local/share/mpd
+mkdir ~/.local/share/mpd/playlists
+touch ~/.local/share/mpd/database
+touch ~/.local/share/mpd/state
+touch ~/.local/share/mpd/sticker.sql
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! JAPANESE KEYBOARD INPUT
@@ -461,11 +403,71 @@ sudo flatpak install obsproject
 flatpak install org.freedesktop.Platform.GStreamer.gstreamer-vaapi com.obsproject.Studio.Plugin.Gstreamer org.freedesktop.Platform.VulkanLayer.OBSVkCapture com.obsproject.Studio.Plugin.OBSVkCapture
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-#! H.264 on OpenSUSE (?)
-# https://www.edivaldobrito.com.br/opensuse-simplificou-a-instalacao-do-h-264-no-sistema/
+#! FIX SUDO
+sudo usermod -aG wheel yori
+sudo visudo
 
-sudo dnf ar http://codecs.opensuse.org/openh264/openSUSE_Leap repo-openh264
-sudo dnf in gstreamer-1.20-plugin-openh264
+# At around line 43, starting with env_keep = "LANG... add at the end within the quotes:
+'DISPLAY XAUTHORITY'
+# Comment lines 68 and 69:
+'Defaults targetpw
+ALL ALL = (ALL) ALL'
+# Uncomment line 81
+'%wheel ALL=(ALL) ALL'
+# Save and 
+reboot
+
+# Commit on github without the need to type the credentials
+git config --global credential.helper store
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#- DISABLE QUOTAS
+# Having quotas enabled let you verify the disk usage for the snapshots, however it can impact performance, mostly if you have too many snapshots (like, more than 50 I guess)
+sudo btrfs quota disable /
+# To verify if quota is disabled:
+sudo btrfs qgroup show /
+
+#- CHECK USED SPACE
+# Seems like btrfs is sometimes tricky when checking disk usage. One command that -maybe- is the most accurate is
+sudo btrfs filesystem usage /
+# Refer to 'used' and 'free'
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! JOURNALCTL ERRORS
+
+'chronyd[837]: Could not add source 200.20.186.76'
+sudo systemctl disable chronyd
+# Seems to be a program to sync the clock
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! ENABLE TRIM FOR SSD (BETTER PERFORMANCE AND SSD LIFETIME)
+
+# To verify if the SSD has trim support, run:
+lsblk --discard
+# If the values under the DISC-GRAN and DISC-MAX are different than 0, then it has support. In that case: 
+sudo systemctl enable fstrim.timer
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! ADJUST SWAPPINESS
+sysctl vm.swappiness
+sudo vim /etc/sysctl.d/99-swappiness.conf
+# Add the following line:
+vm.swappiness=10
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! VIM VIXEN STYLE
+.vimvixen-console-frame {
+  color-scheme: light !important;
+}
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! CUSTOMIZE FIREFOX CSS
+
+# Find the firefox profile you are using and cd to it
+mkdir .mozilla/firefox/paufwehashu.default-release/chrome
+cp ~/re/git/Fedora/userChrome.css .mozilla/firefox/paufwehashu.default-release/chrome/
+# Inside firefox, go to about:config and turn true the following:
+# toolkit.legacyUserProfileCustomizations.stylesheets
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! RUN GUI PROGRAMS WHICH REQUIRES SUDO/ROOT
@@ -1377,12 +1379,4 @@ xhost +si:localuser:root
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 :TSInstall c cpp awk bash html php json rust sxhkdrc yaml toml javascript css
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-#! SETUP MPD
-# Do not enable mpd systemd service
-mkdir ~/.local/share/mpd
-mkdir ~/.local/share/mpd/playlists
-touch ~/.local/share/mpd/database
-touch ~/.local/share/mpd/state
-touch ~/.local/share/mpd/sticker.sql
-'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-sudo dnf in python312-tk python312-devel
+
