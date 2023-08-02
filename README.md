@@ -1,3 +1,3 @@
-# openSUSE
-Configuration files for openSUSE Tumbleweed
-Adapted from old files from Arch and Fedora
+# dotfile
+Configuration files for my current Linux system
+
