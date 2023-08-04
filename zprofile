@@ -6,13 +6,20 @@ export XDG_CONFIG_DIRS=/etc/xdg
 # To run qt application on wayland, uncomment below
 # export QT_QPA_PLATFORMTHEME=qt5ct
 export XDG_DATA_DIRS=$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/
+
+# Set default editor as neovim
 export EDITOR=nvim
-# export MANGOHUD=1
+# Set fcitx
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
+
 export PATH=$GOPATH/bin:/home/yori/.local/bin:/usr/local/sbin:/usr/lib:/usr/share:/home/yori/.cargo/bin:/sbin:/usr/libexec:$PATH
 export XDG_CURRENT_DESKTOP=Unity
+# Set gzip compression to the best possible
+export GZIP=-9
+# Set tmux to use true color
+export TERM="xterm-256color"
 # export LC_ALL=ja-JP.UTF-8
 #export PATH=/home/yori/.cargo/bin:$PATH
 

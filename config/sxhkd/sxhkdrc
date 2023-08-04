@@ -67,7 +67,7 @@ super + shift + n
 
 # terminal emulator
 super + Return
-	alacritty
+	kitty
 
 # program launcher
 super + @space
