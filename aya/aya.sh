@@ -1,7 +1,8 @@
 set -e
 Nobara
 
-sudo dnf in sddm florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git bspwm rofi nitrogen sxhkd polybar dunst libnotify lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings alacritty zsh lxappearance qt5ct fcitx5 fcitx5-mozc fcitx5-configtool snapd thermald powertop cpu-x flatpak polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 nomacs exa antimicrox leafpad tmux bat fzf gamemode xhost neovim python3-pip nodejs tmux gammastep picom kernel-tools blueman network-manager-applet
+sudo dnf in sddm florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git bspwm rofi nitrogen sxhkd polybar dunst libnotify lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings alacritty zsh lxappearance qt5ct fcitx5 fcitx5-mozc fcitx5-configtool snapd thermald powertop cpu-x flatpak polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 nomacs exa antimicrox leafpad tmux bat fzf gamemode xhost neovim python3-pip nodejs tmux gammastep picom kernel-tools blueman network-manager-applet pulseaudio-utils
+
 pip3 install jedi trash-cli 
 #sudo dnf in meson vulkan-devel libXxf86vm-devel libXres-devel libdrm-devel wayland-protocols-devel SDL2-devel libudev-devel libinput-devel libseat1 seatd-devel wlroots-devel gslang-devel libcap-devel
 sudo flatpak install vscodium librewolf brave 
@@ -1289,6 +1290,10 @@ chmod +x ./eww
 ./eww open <window_name>
 
 # Build waybar from source to enable experimental features
+sudo dnf group install "C Development Tools and Libraries" "Development Tools"
+
+sudo dnf in gtkmm3.0-devel jsoncpp-devel libsigc++-devel fmt-devel wayland-devel spdlog-devel gtk-layer-shell-devel libappindicator-gtk3-devel libdbusmenu-gtk3-devel libmdpclient-devel cmake meson scdoc wayland-protocols-devel date-devel gobject-introspection-devel libinput-devel systemd-devel catch2-devel
+
 sudo dnf in gtkmm3-devel libxkbregistry-devel jsoncpp-devel libsicg++3-devel fmt-devel spdlog-devel libappindicator3-devel libmdpclient-devel scdoc libc++-devel Catch2-2-devel libgtk-3-0-devel libgtk-3-0-32bit libappindicator-devel libappindicator3-devel libdbusmenu-gtk3-devel gobject-introspection-devel gtk-layer-shell-devel
 # I don't know if all of the dependencies above are necessary, but it was giving me some errors and installing all these + some more did the trick.
 cd /opt
