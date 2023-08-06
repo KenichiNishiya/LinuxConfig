@@ -22,6 +22,7 @@ cp ~/.config/hypr/hyprland.conf ~/.config/bakap/hypr/hyprland.conf-$day
     # cp ~/.tmux.conf ~/.config/bakap/tmux/tmux.conf-$day
 cp ~/.config/tmux/tmux.conf ~/.config/bakap/tmux/tmux.conf-$day
 cp ~/.config/kitty/kitty.conf ~/.config/bakap/kitty/kitty.conf-$day
+cp ~/.config/sway/config ~/.config/bakap/sway/config-$day
     # cp -r ~/.config/nvim/lua/custom/init.lua ~/.config/bakap/nvim/init/init.lua-$day
     # cp -r ~/.config/nvim/lua/custom/chadrc.lua ~/.config/bakap/nvim/chadrc/chadrc.lua-$day
     # cp -r ~/.config/nvim/lua/custom/plugins.lua ~/.config/bakap/nvim/plugins/plugins.lua-$day
