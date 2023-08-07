@@ -100,6 +100,7 @@
   "backlight": {
     "device": "intel_backlight",
     "format": "<span foreground='#f9e2af'>{icon}</span> {percent}%",
+    "on-click": "gammastep -O 3000",
     "states": [0, 50],
     "format-icons": ["", ""]
   },

@@ -15,7 +15,8 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
 export PATH=$GOPATH/bin:/home/yori/.local/bin:/usr/local/sbin:/usr/lib:/usr/share:/home/yori/.cargo/bin:/sbin:/usr/libexec:$PATH
-export XDG_CURRENT_DESKTOP=Unity
+# export XDG_CURRENT_DESKTOP=Unity
+export XDG_CURRENT_DESKTOP=sway
 # Set gzip compression to the best possible
 export GZIP=-9
 # Set tmux to use true color
@@ -23,6 +24,8 @@ export TERM="xterm-256color"
 # export LC_ALL=ja-JP.UTF-8
 #export PATH=/home/yori/.cargo/bin:$PATH
 export QT_QPA_PLATFORMTHEME=qt5ct
+# export QT_QPA_PLATFORM=waylan
+# export MOZ_ENABLE_WAYLAND=1
 
 if [ "$XDG_SESSION_TYPE" == "wayland" ]; then
     export MOZ_ENABLE_WAYLAND=1
