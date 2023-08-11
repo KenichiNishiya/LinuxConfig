@@ -17,6 +17,7 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 # :PlugInstall
 # :PlugUpdate
 # :TSInstall all
+:TSInstall c cpp awk bash html php json rust sxhkdrc yaml toml javascript css java 
 
 vim ~/.local/share/nvim/plugged/dracula.nvim/lua/dracula/palette.lua
 # Change the bg to #0f0f17
@@ -710,9 +711,6 @@ sudo dnf in ranger
 #- RANGER SHOW IMAGE AND VIDEO THUMBNAIL
 sudo dnf in ffmpegthumbnailer
 
-# Ueberzug doesn't seem to work on wayland
-opi ueberzug
-
 # Copy all the base config files
 ranger --copy-config=all
 vim .config/ranger/rc.conf
@@ -720,7 +718,7 @@ vim .config/ranger/rc.conf
 '
 line 046 set preview_script ~/.config/ranger/scope.sh
 line 073 set preview images true
-line 116 set preview_images_method ueberzug
+line 116 set preview_images_method kitty
 '
 vim .config/ranger/scope.sh
 # Go to these lines and remove the comment
@@ -1382,6 +1380,15 @@ xhost +si:localuser:root
 # This is a workaround and maybe someday it will be fixed
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-:TSInstall c cpp awk bash html php json rust sxhkdrc yaml toml javascript css
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+# GAMEPAD INPUT DON'T STOP SWAYIDLE COUNTDOWN
+
+sudo dnf in libwayland-client
+cd /opt
+git clone https://github.com/nowrep/wljoywake.git
+meson setup --prefix /usr build
+ninja -C build && ninja -C build install
+
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 
