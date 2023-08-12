@@ -17,6 +17,8 @@ export XMODIFIERS=@im=fcitx
 export PATH=$GOPATH/bin:/home/yori/.local/bin:/usr/local/sbin:/usr/lib:/usr/share:/home/yori/.cargo/bin:/sbin:/usr/libexec:$PATH
 # export XDG_CURRENT_DESKTOP=Unity
 export XDG_CURRENT_DESKTOP=sway
+# This may help with gtk apps slow at startup
+export GTK_USE_PORTAL=0
 # Set gzip compression to the best possible
 export GZIP=-9
 # Set tmux to use true color

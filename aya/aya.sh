@@ -30,7 +30,7 @@ yarn install
 yarn build
 pip3 install jedi
 
-:CocInstall coc-python coc-html coc-css coc-tsserver coc-clangd 
+:CocInstall coc-python coc-html coc-css coc-tsserver coc-clangd coc-java
 # Open a C/C++ file and use this command
 :CocCommand clangd.install
 
@@ -1389,6 +1389,26 @@ cd /opt
 git clone https://github.com/nowrep/wljoywake.git
 meson setup --prefix /usr build
 ninja -C build && ninja -C build install
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+# Install MySQL Workbench on Fedora
+# https://docs.fedoraproject.org/en-US/quick-docs/installing-mysql-mariadb/
+
+# Download the yum package corresponding to your system version
+# https://dev.mysql.com/downloads/repo/yum/
+sudo dnf install <path to downloaded rpm>
+sudo dnf install mysql-community-server
+sudo systemctl start mysqld
+sudo systemctl enable mysqld
+
+# Now install the Workbench
+# https://dev.mysql.com/downloads/workbench/?os=src
+sudo rpm -Uvh <path to downloaded rpm>
+sudo dnf in mysql-workbench
+
+# When first connecting to the localhost, you need the temp password
+sudo grep 'temporary password' /var/log/mysqld.log
+
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 
