@@ -1411,4 +1411,13 @@ sudo grep 'temporary password' /var/log/mysqld.log
 
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+# Make a GTK app use a different theme
 
+cd /usr/share/applications
+sudo vim <name-of-app.desktop>
+# Follow the example
+'Exec=env GTK_THEME=Adwaita mysql-workbench'
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+# Dualsensectl
+sudo dnf in libhid-devel
