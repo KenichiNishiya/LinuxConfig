@@ -41,5 +41,5 @@ cp -r /usr/share/sddm/themes/sddm-sugar-candy $OUT'sddm/'
 cd $REPO
 echo "Changed directory to $(pwd)"
 git add .
-git commit -m "Updated"
+git commit -m "Update config files"
 git push origin main

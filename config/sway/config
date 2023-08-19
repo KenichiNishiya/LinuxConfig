@@ -28,7 +28,9 @@ set $menu wofi --show drun -W 500
 # output DP-1 mode 1920x1080@120Hz position 1920,0 adaptive_sync on
 # Always set your main monitor first
 output eDP-1 mode 1366x768@60Hz pos 0,0
-output DP-1 mode 1024x768@75Hz pos 1366,0
+output DP-1 mode 1680x1050 pos 1366,0
+# output DP-1 mode 1024x768@75Hz pos 1366,0
+
 
 # AMD GPUs
 # output * adaptive_sync on
@@ -72,6 +74,7 @@ input type:touchpad {
     middle_emulation enabled
     tap enabled
     dwt disabled
+    scroll_factor 0.4
     # dwt stands for disable while typing
 }
 
@@ -271,7 +274,7 @@ bindsym $mod+r mode "resize"
 
 # include @sysconfdir@/sway/config.d/*
 
-exec gammastep -O 3000
+exec gammastep -O 4000
 exec dunst
 exec blueman-applet
 exec nm-applet --indicator
