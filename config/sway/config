@@ -1,6 +1,6 @@
 # This line is necessary in order to be able to caputre the screen on obs
 exec --no-startup-id dbus-update-activation-environment --all
-# This one is for gtk apps waiting 20+ seconds on startup
+# This two is for gtk apps waiting 20+ seconds on startup
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 ### Variables
 
@@ -310,6 +310,7 @@ default_floating_border pixel 3
 # Window rules
 # swaymsg -t get_tree | grep app_id
     for_window [class="steam_app*"] inhibit_idle focus
+
     for_window [app_id="mpv"] {
     floating enable
     # resize set width 800 height 600
@@ -321,7 +322,25 @@ default_floating_border pixel 3
     floating enable
     resize set height 600
     # resize set width 1000
-}
+    }
+
+    for_window [app_id="org.qbittorrent.qBittorrent"] {
+    floating enable
+    resize set height 600
+    }
+
+    for_window [title="Firefox — Sharing Indicator"] {
+    floating enable
+    resize set height 10
+    move up 1000px
+    }
+
+    for_window [title="Extracting Files — Dolphin"] {
+    floating enable
+    resize set height 200
+    }
 
 focus_follows_mouse yes
 
+# exec "systemctl --user import-environment SWAYSOCK WAYLAND_DISPLAY;
+ exec systemctl --user import-environment

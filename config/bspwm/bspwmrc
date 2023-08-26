@@ -26,7 +26,7 @@ bspc rule -a "jetbrains-studio" state=floating rectangle=800x600+0+0 center=true
 
 # dual monitor settings
 if [[ $(xrandr -q | grep -w 'DP-1' | cut -d ' ' -f2) = 'connected' ]]; then
-    xrandr --output DP-1 --mode 1024x768 --rate 75 --right-of eDP-1
+    xrandr --output DP-1 --mode 1680x1050 --rate 60 --right-of eDP-1
 #    bspc monitor eDP-1 -d 1 2 3 4 5
 #    bspc monitor DP-1 -d 6 7 8 9 0
     bspc monitor eDP-1 -d 一 二 三 四 五

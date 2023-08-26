@@ -6,7 +6,6 @@ export XDG_CONFIG_DIRS=/etc/xdg
 # To run qt application on wayland, uncomment below
 # export QT_QPA_PLATFORMTHEME=qt5ct
 export XDG_DATA_DIRS=$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/
-
 # Set default editor as neovim
 export EDITOR=nvim
 # Set fcitx
@@ -18,7 +17,9 @@ export PATH=$GOPATH/bin:/home/yori/.local/bin:/usr/local/sbin:/usr/lib:/usr/shar
 # export XDG_CURRENT_DESKTOP=Unity
 export XDG_CURRENT_DESKTOP=sway
 # This may help with gtk apps slow at startup
-export GTK_USE_PORTAL=0
+export GTK_USE_PORTAL=1
+# export WAYLAND_DISPLAY=wayland-1
+# export GTK_DEBUG=portals
 # Set gzip compression to the best possible
 export GZIP=-9
 # Set tmux to use true color
@@ -26,14 +27,14 @@ export TERM="xterm-256color"
 # export LC_ALL=ja-JP.UTF-8
 #export PATH=/home/yori/.cargo/bin:$PATH
 export QT_QPA_PLATFORMTHEME=qt5ct
-# export QT_QPA_PLATFORM=waylan
-# export MOZ_ENABLE_WAYLAND=1
+# export QT_QPA_PLATFORM=wayland
+export MOZ_ENABLE_WAYLAND=1
 
-if [ "$XDG_SESSION_TYPE" == "wayland" ]; then
-    export MOZ_ENABLE_WAYLAND=1
-else
-    export MOZ_ENABLE_WAYLAND=0
-fi
+# if [ "$XDG_SESSION_TYPE" == "wayland" ]; then
+    # export MOZ_ENABLE_WAYLAND=1
+# else
+    # export MOZ_ENABLE_WAYLAND=0
+# fi
 
 # if [ "$DESKTOP_SESSION" == "/usr/share/wayland-sessions/plasmawayland" ]; then
 #     export QT_QPA_PLATFORMTHEME=
