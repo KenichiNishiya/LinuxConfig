@@ -54,10 +54,10 @@ gaps inner 5
 #
 # Example configuration:
 #
- exec swayidle -w \
-          timeout 300 'swaylock -f -c 000000' \
-          timeout 300 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-          before-sleep 'swaylock -f -c 000000'
+ # exec swayidle -w \
+ #          timeout 300 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+ #          timeout 300 'swaylock -f -c 000000' \
+ #          before-sleep 'swaylock -f -c 000000'
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -112,6 +112,9 @@ input type:touchpad {
 
     # Reload the configuration file
     bindsym $mod+Shift+c reload
+
+    # Idle
+    bindsym --release $mod+Shift+i exec '$HOME/.config/sway/idle.sh'
 
     # Exit sway (logs you out of your Wayland session)
      # bindsym $mod+Control+m exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'

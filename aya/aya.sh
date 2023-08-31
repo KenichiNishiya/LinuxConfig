@@ -1423,6 +1423,18 @@ sudo vim <name-of-app.desktop>
 sudo dnf in libhid-devel
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+# Set external jar libraries to run java code on terminal
+# https://stackoverflow.com/questions/8949413/how-to-run-java-program-in-terminal-with-external-library-jar
+
+# While you can use Eclipse IDE, you can run it from your terminal! First set the full path to the jar file like this:
+export CLASSPATH=/path/to/.jar
+# Then you can run as normal:
+java file.java
+
+# OR you can set the jar file to be used when executing:
+java -cp /path/to/.jar file.java
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 # GTK for C development
 
 sudo dnf in gtk4 gtk4-devel glib pango gdk-pixbuf2-devel atk gobject-introspection-devel libepoxy-devel gtk+-devel clang

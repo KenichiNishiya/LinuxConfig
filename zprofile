@@ -13,7 +13,7 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
-export PATH=$GOPATH/bin:/home/yori/.local/bin:/usr/local/sbin:/usr/lib:/usr/share:/home/yori/.cargo/bin:/sbin:/usr/libexec:$PATH
+export PATH=$GOPATH/bin:$HOME/.local/bin:/usr/local/sbin:/usr/lib:/usr/share:$HOME/.cargo/bin:/sbin:/usr/libexec:$PATH
 # export XDG_CURRENT_DESKTOP=Unity
 export XDG_CURRENT_DESKTOP=sway
 # This may help with gtk apps slow at startup
@@ -25,10 +25,12 @@ export GZIP=-9
 # Set tmux to use true color
 export TERM="xterm-256color"
 # export LC_ALL=ja-JP.UTF-8
-#export PATH=/home/yori/.cargo/bin:$PATH
+#export PATH=$HOME/.cargo/bin:$PATH
 export QT_QPA_PLATFORMTHEME=qt5ct
 # export QT_QPA_PLATFORM=wayland
 export MOZ_ENABLE_WAYLAND=1
+
+export CLASSPATH=$HOME/study/java/mysql-connector-j-8.1.0.jar
 
 # if [ "$XDG_SESSION_TYPE" == "wayland" ]; then
     # export MOZ_ENABLE_WAYLAND=1
@@ -43,7 +45,7 @@ export MOZ_ENABLE_WAYLAND=1
 # fi
 
 #export PULSE_LATENCY_MSEC=80
-#export XDG_DATA_DIRS=/home/yori/.local/share/flatpak/exports/share
+#export XDG_DATA_DIRS=$HOME/.local/share/flatpak/exports/share
 # export _JAVA_AWT_WM_NONREPARENTING=1
 
 # Blue light filter
