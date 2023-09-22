@@ -1,4 +1,5 @@
 game:
+  args: ''
   exe: /home/yori/re/games/wine/drive_c/osu/osu!.exe
   prefix: /home/yori/re/games/wine
 game_slug: osu
@@ -59,8 +60,11 @@ script:
 slug: osu-windows
 system:
   env:
-    MANGOHUD: '1'
-  mangohud: true
+    MANGOHUD_DLSYM: '1'
+    WINEPREFIX: /home/yori/re/games/wine
+  gamescope: false
+  mangohud: false
+  prefix_command: mangohud --dlsym
 variables: {}
 version: Windows
 wine:

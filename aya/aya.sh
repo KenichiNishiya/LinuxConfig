@@ -536,6 +536,9 @@ mangohud.x86 %command%
 # On OpenGL games, dynamic hooking may be needed
 mangohud --dlsym %command%
 MANGOHUD_DLSYM=1
+# On Lutris:
+'System options > Advanced > Game execution > command prefix'
+'mangohud --dlsym'
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! FERAL GAMEMODE
@@ -936,7 +939,7 @@ dev.i915.perf_stream_paranoid=0
 # May be caused by audio buffer underrun
 
 vim ~/.config/pipewire/pipewire.conf
-# If it doesn't exists, them:
+# If it doesn't exists, then:
 mkdir ~/.config/pipewire
 cp -r /usr/share/pipewire/* ~/.config/pipewire/
 
@@ -1030,24 +1033,27 @@ nmcli con up $CON_NAME
 nmcli con down $CON_NAME
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-#! JAVA APPLICATIONS GREY SCREEN
+#! JAVA APPLICATIONS GREY/BLANK SCREEN
 # https://wiki.Fedora.org/title/Bspwm#Problems_with_Java_applications
 
-sudo pacman -S wmname
+# If Java apps or IDEs like Android Studio and NetBeans don't show properly:
+sudo dnf in wmname
 vim ~/.config/bspwm/bspwmrc
 # Paste the following:
 wmname LG3D
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! XAMPP / LAMPP / LAMP
-# https://www.youtube.com/watch?v=Y_GS5OPnd7I
+# https://www.apachefriends.org/faq_linux.html
 
-yay -S xampp
-sudo chmod 777 /opt/lampp/htdocs -R
-# To start, type 'xampp start'
+# Download the newest version here:
+# https://www.apachefriends.org/download.html
 
-# ERROR ABOUT NEEDING A 32-BIT SOMETHING TO RUN
-sudo pacman -S libxcrypt-compat
+chmod 755 xampp-linux-*-installer.run
+sudo ./xampp-linux-*-installer.run
+
+# To start:
+sudo /opt/lampp/lampp start
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! BLUETOOTH
@@ -1426,7 +1432,7 @@ sudo dnf in libhid-devel
 # Set external jar libraries to run java code on terminal
 # https://stackoverflow.com/questions/8949413/how-to-run-java-program-in-terminal-with-external-library-jar
 
-# While you can use Eclipse IDE, you can run it from your terminal! First set the full path to the jar file like this:
+# While you can use Eclipse IDE, you can run it from your terminal. First set the full path to the jar file like this:
 export CLASSPATH=/path/to/.jar
 # Then you can run as normal:
 java file.java
