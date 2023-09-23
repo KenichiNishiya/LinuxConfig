@@ -93,6 +93,7 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 # :PlugInstall
 # :PlugUpdate
 # :TSInstall all
+:TSInstall c cpp awk bash html php json rust sxhkdrc yaml toml javascript css
 
 vim ~/.local/share/nvim/plugged/dracula.nvim/lua/dracula/palette.lua
 # Change the bg to #0f0f17
@@ -1396,6 +1397,67 @@ xhost +si:localuser:root
 # This is a workaround and maybe someday it will be fixed
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-:TSInstall c cpp awk bash html php json rust sxhkdrc yaml toml javascript css
+# GAMEPAD INPUT DON'T STOP SWAYIDLE COUNTDOWN
+
+sudo dnf in libwayland-client
+cd /opt
+git clone https://github.com/nowrep/wljoywake.git
+meson setup --prefix /usr build
+ninja -C build && ninja -C build install
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+# Make a GTK app use a different theme
+
+cd /usr/share/applications
+sudo vim <name-of-app.desktop>
+# Follow the example
+'Exec=env GTK_THEME=Adwaita mysql-workbench'
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+# Set external jar libraries to run java code on terminal
+# https://stackoverflow.com/questions/8949413/how-to-run-java-program-in-terminal-with-external-library-jar
+
+# While you can use Eclipse IDE, you can run it from your terminal. First set the full path to the jar file like this:
+export CLASSPATH=/path/to/.jar
+# Then you can run as normal:
+java file.java
+
+# OR you can set the jar file to be used when executing:
+java -cp /path/to/.jar file.java
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+# GTK for C development
+
+sudo dnf in gtk4 gtk4-devel glib pango gdk-pixbuf2-devel atk gobject-introspection-devel libepoxy-devel gtk+-devel clang
+
+# If using an LSP on vim, it won't know where the gtk file header is
+# To solve this, go to your project directory
+# Create a .c file with #include <gtk/gkt.h>
+
+# For gtk3
+clang -MJ file.o.json `pkg-config --cflags gtk+-3.0` -o file file.c `pkg-config --libs gtk+-3.0` 
+# For gtk4
+clang -MJ test.o.json `pkg-config --cflags gtk4` -o test test.c `pkg-config --libs gtk4`
+
+sed -e '1s/^/[\n/' -e '$s/,$/\n]/' *.o.json > compile_commands.json
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+# Install MySQL Workbench on Fedora
+# https://docs.fedoraproject.org/en-US/quick-docs/installing-mysql-mariadb/
+
+# Download the yum package corresponding to your system version
+# https://dev.mysql.com/downloads/repo/yum/
+sudo dnf install <path to downloaded rpm>
+sudo dnf install mysql-community-server
+sudo systemctl start mysqld
+sudo systemctl enable mysqld
+
+# Now install the Workbench
+# https://dev.mysql.com/downloads/workbench/?os=src
+sudo rpm -Uvh <path to downloaded rpm>
+sudo dnf in mysql-workbench
+
+# When first connecting to the localhost, you need the temp password
+sudo grep 'temporary password' /var/log/mysqld.log
+
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 sudo zypper in python312-tk python312-devel
