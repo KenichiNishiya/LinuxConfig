@@ -1049,6 +1049,8 @@ wmname LG3D
 # Download the newest version here:
 # https://www.apachefriends.org/download.html
 
+sudo dnf in php
+
 chmod 755 xampp-linux-*-installer.run
 sudo ./xampp-linux-*-installer.run
 
