@@ -88,6 +88,8 @@ vim ~/.oh-my-zsh/themes/robbyrussell.zsh-theme
 # https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Noto/Sans/complete/Noto%20Sans%20Medium%20Nerd%20Font%20Complete.ttf
 # https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip
 
+# https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Noto/Sans/NotoSansNerdFont-Medium.ttf
+
 sudo mkdir /usr/share/fonts/jetbrains-mono-fonts
 cd /usr/share/fonts/jetbrains-mono-fonts
 sudo wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip

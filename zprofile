@@ -26,7 +26,7 @@ export GZIP=-9
 export TERM="xterm-256color"
 # export LC_ALL=ja-JP.UTF-8
 #export PATH=$HOME/.cargo/bin:$PATH
-export QT_QPA_PLATFORMTHEME=qt5ct
+# export QT_QPA_PLATFORMTHEME=qt5ct
 # export QT_QPA_PLATFORM=wayland
 export MOZ_ENABLE_WAYLAND=1
 

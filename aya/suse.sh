@@ -1,7 +1,9 @@
 set -e
 openSUSE Tumbleweed
 
-sudo zypper in opi sddm florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpclient mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git bspwm rofi nitrogen sxhkd polybar dunst libnotify lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings alacritty zsh lxappearance qt5ct kvantum-manager kvantum-qt5 kvantum-qt6 fcitx5 fcitx5-mozc fcitx5-configtool snapd thermald powertop cpu-x flatpak polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 nomacs exa antimicrox leafpad tmux bat fzf gamemode python311-pulsemixer xhost
+sudo zypper in opi sddm florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpclient mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git bspwm rofi nitrogen sxhkd polybar dunst libnotify lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings alacritty zsh lxappearance qt5ct kvantum-manager kvantum-qt5 kvantum-qt6 fcitx5 fcitx5-mozc fcitx5-configtool snapd thermald powertop cpu-x flatpak polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 nomacs eza antimicrox leafpad tmux bat fzf gamemode python311-pulsemixer xhost neovim gcc meson cmake NetworkManager-applet
+sudo zypper in python311 python311-pipx
+# You may need to use pipx to install things instead of pip
 pip3 install glances jedi trash-cli 
 #sudo zypper in meson vulkan-devel libXxf86vm-devel libXres-devel libdrm-devel wayland-protocols-devel SDL2-devel libudev-devel libinput-devel libseat1 seatd-devel wlroots-devel gslang-devel libcap-devel
 opi megasync scrcpy 
@@ -72,7 +74,7 @@ sudo zypper in --from packman ffmpeg gstreamer-plugins-{good,bad,ugly,libav} lib
 
 mkdir -p ~/re/git
 cd ~/re/git
-git clone https://github.com/KenichiNishiya/Fedora.git
+git clone https://github.com/KenichiNishiya/dotfiles.git
 
 mkdir ~/.config/bakap
 cd ~/.config/bakap
@@ -99,12 +101,13 @@ vim ~/.local/share/nvim/plugged/dracula.nvim/lua/dracula/palette.lua
 # Change the bg to #0f0f17
 
 # Coc auto completion
-sudo zypper in python3-pip nodejs
+sudo zypper in python311-pip nodejs
 sudo npm install -g yarn
 cd ~/.local/share/nvim/plugged/coc.nvim
 yarn install
 yarn build
-pip3 install jedi
+# pip3 install jedi
+sudo zypper in python311-jedi 
 
 :CocInstall coc-python coc-html coc-css coc-tsserver coc-clangd 
 # Open a C/C++ file and use this command
@@ -132,8 +135,6 @@ vm.swappiness=10
 #! FONTS
 
 # Download these:
-# https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Noto/Sans/complete/Noto%20Sans%20Medium%20Nerd%20Font%20Complete.ttf
-# https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip
 
 sudo mkdir /usr/share/fonts/jetbrains-mono-fonts
 cd /usr/share/fonts/jetbrains-mono-fonts
@@ -217,8 +218,8 @@ cp ~/re/git/Fedora/config/dunst/dunstrc ~/.config/dunst/
 notify-send Title Message
 
 # SDDM config files need sudo 
-sudo cp ~/re/git/Fedora/config/sddm/sddm.conf /etc/sddm.conf.d/
-sudo cp -r ~/re/git/Fedora/config/sddm/sddm-sugar-candy /usr/share/sddm/themes/
+sudo cp ~/re/git/dotfiles/config/sddm/sddm.conf /etc/sddm.conf.d/
+sudo cp -r ~/re/git/dotfiles/config/sddm/sddm-sugar-candy /usr/share/sddm/themes/
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! CONFIGURE SDDM
@@ -297,10 +298,14 @@ sudo vim /usr/share/gtk-2.0/gtkrc
 wget https://github.com/catppuccin/qbittorrent/blob/main/mocha.qbtheme
 mv mocha.qbtheme /home/yori/.themes
 
+mkdir /home/yori/.themes/Dracula
 cd /opt
-git clone https://github.com/catppuccin/Kvantum.git
-mv /opt/Kvantum/src/Catppuccin-mocha-Mauve /home/yori/.themes
-rm -rf Kvantum
+git clone https://github.com/dracula/gtk.git
+mv /opt/gtk/kde/kvantum/* /home/yori/.themes/Dracula
+# git clone https://github.com/catppuccin/Kvantum.git
+# mv /opt/Kvantum/src/Catppuccin-Mocha-Mauve /home/yori/.themes
+# rm -rf Kvantum
+
 
 kvantummanager
 sudo kvantummanger
@@ -1310,6 +1315,7 @@ chmod +x ./eww
 
 # Build waybar from source to enable experimental features
 sudo zypper in gtkmm3-devel libxkbregistry-devel jsoncpp-devel libsicg++3-devel fmt-devel spdlog-devel libappindicator3-devel libmdpclient-devel scdoc libc++-devel Catch2-2-devel libgtk-3-0-devel libgtk-3-0-32bit libappindicator-devel libappindicator3-devel libdbusmenu-gtk3-devel gobject-introspection-devel gtk-layer-shell-devel
+#### not found libgtk-3-0-devel, libmdpclient-devel, libsicg++3-devel
 # I don't know if all of the dependencies above are necessary, but it was giving me some errors and installing all these + some more did the trick.
 cd /opt
 git clone https://github.com/Alexays/Waybar.git
