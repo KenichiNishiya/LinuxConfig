@@ -1,13 +1,26 @@
 set -e
 Nobara
 
-sudo dnf in sddm florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git bspwm rofi nitrogen sxhkd polybar dunst libnotify lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings alacritty zsh lxappearance qt5ct fcitx5 fcitx5-mozc fcitx5-configtool snapd thermald powertop cpu-x flatpak polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 nomacs exa antimicrox leafpad tmux bat fzf gamemode xhost neovim python3-pip nodejs tmux gammastep picom kernel-tools blueman network-manager-applet pulseaudio-utils wdisplays
+sudo dnf in sddm florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git bspwm rofi nitrogen sxhkd polybar dunst libnotify lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings alacritty zsh lxappearance qt5ct fcitx5 fcitx5-mozc fcitx5-configtool snapd thermald powertop cpu-x flatpak polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 nomacs exa antimicrox leafpad tmux bat fzf gamemode xhost neovim python3-pip nodejs tmux gammastep picom kernel-tools blueman network-manager-applet pulseaudio-utils wdisplays slurp grim
+
+sudo dnf install --setopt=install-weak-deps=False nomacs
 
 pip3 install jedi trash-cli 
 #sudo dnf in meson vulkan-devel libXxf86vm-devel libXres-devel libdrm-devel wayland-protocols-devel SDL2-devel libudev-devel libinput-devel libseat1 seatd-devel wlroots-devel gslang-devel libcap-devel
 sudo flatpak install vscodium librewolf brave 
 
 sudo dnf rm elisa vlc kmouth inkscape khelpcenter
+
+# Commit on github without the need to type the credentials
+git config --global credential.helper store
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! DNF CONFIGURATION
+
+sudo vim /etc/dnf/dnf.conf
+# Add these to the file:
+fastestmirror=True
+max_parallel_downloads=20
+defaultyes=Yes
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! CONFIGURE NEOVIM 
@@ -160,8 +173,8 @@ sudo systemctl enable sddm
 notify-send Title Message
 
 # SDDM config files need sudo 
-sudo cp ~/re/git/openSUSE/config/sddm/sddm.conf /etc/sddm.conf.d/
-sudo cp -r ~/re/git/openSUSE/config/sddm/sddm-sugar-candy /usr/share/sddm/themes/
+sudo cp ~/re/git/dotfiles/config/sddm/sddm.conf /etc/sddm.conf.d/
+sudo cp -r ~/re/git/dotfiles/config/sddm/sddm-sugar-candy /usr/share/sddm/themes/
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! CONFIGURE THEME GTK AND QT
@@ -201,14 +214,19 @@ sudo vim /usr/share/gtk-2.0/gtkrc
 
 # Now for the QT stuff
 
-# git clone https://github.com/dracula/gtk.git
+mkdir /home/yori/.themes/Dracula
+cd /opt
+git clone https://github.com/dracula/gtk.git
+mv /opt/gtk/kde/kvantum/* /home/yori/.themes/Dracula
+rm -rf gtk
+
 wget https://github.com/catppuccin/qbittorrent/blob/main/mocha.qbtheme
 mv mocha.qbtheme /home/yori/.themes
 
-cd /opt
-git clone https://github.com/catppuccin/Kvantum.git
-mv /opt/Kvantum/src/Catppuccin-Mocha-Mauve /home/yori/.themes
-rm -rf Kvantum
+# cd /opt
+# git clone https://github.com/catppuccin/Kvantum.git
+# mv /opt/Kvantum/src/Catppuccin-Mocha-Mauve /home/yori/.themes
+# rm -rf Kvantum
 
 kvantummanager
 sudo kvantummanger
@@ -222,9 +240,6 @@ sudo qt5ct # Altough this won't work unless you set the env var on /etc/profile
 vim .profile
 # Paste the following line:
 export QT_QPA_PLATFORMTHEME=qt5ct
-
-# qBittorrent 
-wget https://github.com/catppuccin/qbittorrent/releases/download/v1.0.0/mocha.qbtheme
 
 # Change the desktop background
 nitrogen
@@ -421,9 +436,6 @@ ALL ALL = (ALL) ALL'
 # Save and 
 reboot
 
-# Commit on github without the need to type the credentials
-git config --global credential.helper store
-
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #- DISABLE QUOTAS
 # Having quotas enabled let you verify the disk usage for the snapshots, however it can impact performance, mostly if you have too many snapshots (like, more than 50 I guess)
@@ -483,16 +495,6 @@ sudo dnf in polkit lxqt-policykit
 lxqt-policykit-agent &
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-#! WINE AND WINE DEPENDENCIES
-# https://wine.htmlvalidator.com/install-wine-on-opensuse-tumbleweed.html#install-from-repo
-
-wget https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Tumbleweed/repodata/repomd.xml.key
-sudo rpm --import repomd.xml.key
-sudo dnf addrepo https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Tumbleweed/Emulators:Wine.repo
-sudo dnf refresh
-sudo dnf in wine
-
-'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! RUN A GAME ON LUTRIS / WINE WITH JAPANESE LOCALE
 
 # WINE:
@@ -545,7 +547,7 @@ MANGOHUD_DLSYM=1
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! FERAL GAMEMODE
 
-sudo dnf in gamemoded libgamemode0 libgamemode0-32bit libgamemodeauto0 libgamemodeauto0-32bit gamemode
+# sudo dnf in gamemoded libgamemode0 libgamemode0-32bit libgamemodeauto0 libgamemodeauto0-32bit gamemode
 
 # On steam
 'gamemoderun %command%'
@@ -562,7 +564,7 @@ gamemoded -s
 #! GAMESCOPE
 # It helps if the mouse cursor goes to other monitors when playing games
 
-sudo dnf in meson ninja vulkan-devel libXxf86vm-devel libXres-devel libdrm-devel wayland-protocols-devel SDL2-devel libudev-devel libinput-devel libseat1 seatd-devel wlroots-devel gslang-devel libcap-devel
+# sudo dnf in meson ninja vulkan-devel libXxf86vm-devel libXres-devel libdrm-devel wayland-protocols-devel SDL2-devel libudev-devel libinput-devel libseat1 seatd-devel wlroots-devel gslang-devel libcap-devel
 
 cd ~/re/git/
 git clone https://github.com/Plagman/gamescope.git
@@ -1278,10 +1280,10 @@ sudo smartctl -a /dev/sda
 sudo smartctl -l devstat /dev/sda | grep "Logical Sectors Written" |awk ' { print "TBW: "($4 * 512) * 1.0e-12, "TB" } '
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-#! HYPRLAND
+#! SWAY
 
-opi hyprland
-sudo dnf in waybar gammastep wofi clipman libappindicator wl-clipboard libpulse-devel
+sudo dnf in sway waybar gammastep wofi clipman libappindicator wl-clipboard 
+#libpulse-devel not found
 opi copyq
 
 # Install eww

@@ -4,7 +4,7 @@ export WINIT_X11_SCALE_FACTOR=1
 export XDG_CONFIG_DIRS=/etc/xdg
 # export QT_QPA_PLATFORMTHEME=qt5ct,xbc
 # To run qt application on wayland, uncomment below
-# export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_QPA_PLATFORMTHEME=qt5ct
 export XDG_DATA_DIRS=$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/
 # Set default editor as neovim
 export EDITOR=nvim
