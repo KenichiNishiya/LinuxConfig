@@ -1,7 +1,7 @@
 # This line is necessary in order to be able to caputre the screen on obs
 exec --no-startup-id dbus-update-activation-environment --all
 # This two is for gtk apps waiting 20+ seconds on startup
-exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+# exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 ### Variables
 
 # Logo key. Use Mod1 for Alt.
@@ -289,11 +289,13 @@ exec kdeconnect-indicator
 exec mpd
 exec waybar
 # exec export QT_QPA_PLATFORMTHEME=qt5ct
+exec wmname LG3D
 exec '/opt/pulsemixer --set-volume 30 --unmute'
 
 exec swaybg -o eDP-1 -m fill -i /home/yori/Pictures/suk.png
 exec swaybg -o DP-1 -m fill -i /home/yori/Pictures/ayy.jpg
-
+# exec gsettings set org.gnome.desktop.interface gtk-theme 'Catppuccin-Mocha-Standard-Mauve-dark'
+# exec gsettings set org.gnome.desktop.interface icon-theme 'dracula-icons'
 
 default_border pixel 3
 default_floating_border pixel 3
@@ -346,5 +348,5 @@ default_floating_border pixel 3
 focus_follows_mouse yes
 
 # exec "systemctl --user import-environment SWAYSOCK WAYLAND_DISPLAY;
- exec systemctl --user import-environment
- exec xdg-desktop-portal -r
+ # exec systemctl --user import-environment
+ # exec xdg-desktop-portal -r

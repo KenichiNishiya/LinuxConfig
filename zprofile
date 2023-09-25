@@ -9,6 +9,7 @@ export XDG_DATA_DIRS=$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/e
 # Set default editor as neovim
 export EDITOR=nvim
 # Set fcitx
+# export GTK_THEME=Catppuccin-Mocha-Standard-Mauve-dark
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
@@ -50,5 +51,4 @@ export CLASSPATH=$HOME/study/java/mysql-connector-j-8.1.0.jar
 
 # Blue light filter
 # redshift -P -O 3000
-
 

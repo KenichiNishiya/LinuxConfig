@@ -24,6 +24,7 @@
   margin: 0;
   padding: 0;
   border-radius: 0;
+  color: @fg;
   /* font-family: "SF Pro", "JetBrainsMono Nerd Font"; */
   font-family: "JetBrainsMono Nerd Font";
   font-size: 11.5pt;

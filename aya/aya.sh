@@ -7,12 +7,16 @@ sudo dnf install --setopt=install-weak-deps=False nomacs
 
 pip3 install jedi trash-cli 
 #sudo dnf in meson vulkan-devel libXxf86vm-devel libXres-devel libdrm-devel wayland-protocols-devel SDL2-devel libudev-devel libinput-devel libseat1 seatd-devel wlroots-devel gslang-devel libcap-devel
-sudo flatpak install vscodium librewolf brave 
+sudo flatpak install vscodium librewolf brave flatseal
 
-sudo dnf rm elisa vlc kmouth inkscape khelpcenter
+sudo dnf rm elisa-player vlc kmouth inkscape khelpcenter gwenview
+
+sudo dnf groupinstall "C Development Tools and Libraries"
+sudo dnf groupinstall "Development Tools"
 
 # Commit on github without the need to type the credentials
 git config --global credential.helper store
+
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! DNF CONFIGURATION
 
@@ -179,14 +183,13 @@ sudo cp -r ~/re/git/dotfiles/config/sddm/sddm-sugar-candy /usr/share/sddm/themes
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! CONFIGURE THEME GTK AND QT
 
-# Download Catppuccin GTK theme here: https://github.com/catppuccin/gtk/releases/
 sudo dnf in lxappearance qt5ct kvantum-manager kvantum-qt5 kvantum-qt6 nitrogen
 
 mkdir ~/.themes
 cd ~/.themes
-wget https://github.com/catppuccin/gtk/releases/download/v0.6.1/Catppuccin-Mocha-Standard-Mauve-dark.zip
-unzip Catppuccin-Mocha-Standard-Mauve-dark.zip
-rm -rf Catppuccin-Mocha-Standard-Mauve-dark.zip
+wget https://github.com/dracula/gtk/archive/master.zip
+unzip master.zip
+rm -rf master.zip
 
 mkdir ~/.icons
 cd ~/.icons
@@ -201,7 +204,7 @@ tar -cvzf Dracula-cursors.tar.gz Dracula-cursors
 
 lxappearance
 
-sudo cp -r ~/.themes/Catppuccin-Mocha-Standard-Mauve-dark /usr/share/themes/
+sudo cp -r ~/.themes/gtk-master /usr/share/themes
 sudo cp -r ~/.icons/dracula-icons /usr/share/icons/
 sudo mkdir /usr/share/themes/dracula
 sudo cp -r ~/.themes/Dracula-cursors.tar.gz /usr/share/themes/dracula/
@@ -317,7 +320,7 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 sudo flatpak override --filesystem=$HOME/.themes
 sudo flatpak override --filesystem=$HOME/.icons
 # May not work with themes outside the home directory
-sudo flatpak override --env=GTK_THEME=Catppuccin-Mocha-Standard-Mauve-dark
+sudo flatpak override --env=GTK_THEME=gtk-master
 sudo flatpak override --env=GTK_THEME=dracula-icons
 # Might need to reboot
 reboot
@@ -1421,7 +1424,6 @@ sudo dnf in mysql-workbench
 # When first connecting to the localhost, you need the temp password
 sudo grep 'temporary password' /var/log/mysqld.log
 
-
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 # Make a GTK app use a different theme
 
@@ -1461,3 +1463,12 @@ clang -MJ file.o.json `pkg-config --cflags gtk+-3.0` -o file file.c `pkg-config 
 clang -MJ test.o.json `pkg-config --cflags gtk4` -o test test.c `pkg-config --libs gtk4`
 
 sed -e '1s/^/[\n/' -e '$s/,$/\n]/' *.o.json > compile_commands.json
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! OSU INSTALLER LUTRIS ERROR 256
+# https://forums.lutris.net/t/osu-install-error-256/13851
+# The above may help, but the way I solved it was with
+winetricks dotnet40
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
