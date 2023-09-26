@@ -348,5 +348,5 @@ default_floating_border pixel 3
 focus_follows_mouse yes
 
 # exec "systemctl --user import-environment SWAYSOCK WAYLAND_DISPLAY;
- # exec systemctl --user import-environment
- # exec xdg-desktop-portal -r
+#  exec systemctl --user import-environment
+ exec xdg-desktop-portal -r

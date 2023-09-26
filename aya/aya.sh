@@ -48,6 +48,7 @@ yarn build
 pip3 install jedi
 
 :CocInstall coc-python coc-html coc-css coc-tsserver coc-clangd coc-java
+:CocInstall @yaegassy/coc-intelephense
 # Open a C/C++ file and use this command
 :CocCommand clangd.install
 
@@ -1140,11 +1141,12 @@ nndownload.py -u user@mail.com -p password --add-metadata -o '~/Music/NND/{title
 # Check if virtualization is enabled, must return a value higher than 0
 egrep -c '(vmx|svm)' /proc/cpuinfo
 
-sudo dnf in qemu libvirt virt-manager virt-viewer dnsmasq vde2 bridge-utils ebtables iptables dmidecode ethtool
+# sudo dnf in qemu libvirt virt-manager virt-viewer dnsmasq bridge-utils ebtables iptables dmidecode ethtool
+sudo dnf in @virtualization
 sudo systemctl enable libvirtd.service
 sudo systemctl start libvirtd.service
-sudo virsh net-start default
-sudo virsh net-autostart default
+# sudo virsh net-start default
+# sudo virsh net-autostart default
 #sudo virsh net-autostart --disable default
 sudo vim /etc/libvirt/libvirtd.conf
 # Uncomment those lines:
