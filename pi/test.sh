@@ -13,8 +13,7 @@ do
     4- Setup power saving
     5- Optimize performance (SSD trim, adjust swappiness)
     6- Setup mouse/trackpad X11
-    "
-    $N
+    "$N
     read NUM 
 
     case $NUM in
@@ -56,6 +55,7 @@ do
         5)
             sudo systemctl enable fstrim.timer
             echo "vm.swappiness=10" | sudo tee /etc/sysctl.d/99-swappiness.conf
+            echo -e $Y"Ajusted performance"$N
             ;;
         6)
             echo 'Section "InputClass"
@@ -83,6 +83,7 @@ do
                         Option      "HorizScrollDelta"         "-111"
                 EndSection
                 ' | sudo tee /etc/X11/xorg.conf.d/70-touchpad.conf
+            echo -e $Y"Fixed trackpad"$N
                 ;;
 
                         *)
