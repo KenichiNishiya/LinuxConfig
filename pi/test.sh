@@ -19,9 +19,15 @@ do
     case $NUM in
 
         1)
-            echo "fastestmirror=True
-            max_parallel_downloads=10
-            defaultyes=Yes" | sudo tee /etc/dnf/dnf.conf
+echo "[main]
+gpgcheck=True
+installonly_limit=3
+clearn_requirements_on_remove=True
+best=False
+skip_if_unavailable=True
+fastestmirror=True
+max_parallel_downloads=10
+defaultyes=Yes" | sudo tee /etc/dnf/dnf.conf
             echo -e $Y"Changed dnf configuration"$N
             ;;
 
@@ -58,32 +64,39 @@ do
             echo -e $Y"Ajusted performance"$N
             ;;
         6)
-            echo 'Section "InputClass"
-                    Identifier "touchpad"
-                    Driver "libinput"
-                    MatchIsTouchpad "on"
-                        Option "TapButton1" "1"
-                        Option "TapButton2" "3"
-                        Option "TapButton3" "2"
-                        Option "NaturalScrolling" "on"
-                        Option "Tapping" "on"
-                        Option "VertEdgeScroll" "on"
-                        Option "VertTwoFingerScroll" "on"
-                        Option "HorizEdgeScroll" "on"
-                        Option "HorizTwoFingerScroll" "on"
-                        Option "CircularScrolling" "on"
-                        Option "CircScrollTrigger" "2"
-                        Option "EmulateTwoFingerMinZ" "40"
-                        Option "EmulateTwoFingerMinW" "8"
-                        Option "CoastingSpeed" "0"
-                        Option "FingerLow" "20"
-                        Option "FingerHigh" "40"
-                        Option "MaxTapTime" "125"
-                        Option      "VertScrollDelta"          "-111"
-                        Option      "HorizScrollDelta"         "-111"
-                EndSection
-                ' | sudo tee /etc/X11/xorg.conf.d/70-touchpad.conf
+echo 'Section "InputClass"
+    Identifier "touchpad"
+    Driver "libinput"
+    MatchIsTouchpad "on"
+        Option "TapButton1" "1"
+        Option "TapButton2" "3"
+        Option "TapButton3" "2"
+        Option "NaturalScrolling" "on"
+        Option "Tapping" "on"
+        Option "VertEdgeScroll" "on"
+        Option "VertTwoFingerScroll" "on"
+        Option "HorizEdgeScroll" "on"
+        Option "HorizTwoFingerScroll" "on"
+        Option "CircularScrolling" "on"
+        Option "CircScrollTrigger" "2"
+        Option "EmulateTwoFingerMinZ" "40"
+        Option "EmulateTwoFingerMinW" "8"
+        Option "CoastingSpeed" "0"
+        Option "FingerLow" "20"
+        Option "FingerHigh" "40"
+        Option "MaxTapTime" "125"
+        Option      "VertScrollDelta"          "-111"
+        Option      "HorizScrollDelta"         "-111"
+EndSection' | sudo tee /etc/X11/xorg.conf.d/70-touchpad.conf
             echo -e $Y"Fixed trackpad"$N
+echo 'Section "InputClass"
+	Identifier "My Mouse"
+	Driver "libinput"
+	MatchIsPointer "yes"
+	Option "AccelProfile" "flat"
+	Option "AccelSpeed" "0"
+EndSection' | sudo tee /etc/X11/xorg.conf.d/50-mouse-acceleration.conf
+            echo -e $Y"Fixed mouse"$N
                 ;;
 
                         *)
