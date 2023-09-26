@@ -1471,6 +1471,14 @@ sed -e '1s/^/[\n/' -e '$s/,$/\n]/' *.o.json > compile_commands.json
 # The above may help, but the way I solved it was with
 winetricks dotnet40
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! POWER MANAGEMENT WITH SYSTEMD
+# https://wiki.archlinux.org/title/Power_management#Power_management_with_systemd
+
+# Uncomment and edit the desired configs
+sudo vim /etc/systemd/logind.conf
+
+# Reload systemd
+sudo systemctl kill -s HUP systemd-logind
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
