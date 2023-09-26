@@ -41,20 +41,20 @@ defaultyes=Yes" | sudo tee /etc/dnf/dnf.conf
             echo -e $Y"Enabled RPM"$N
             ;;
         3)
-            sudo dnf in flatpak
+            sudo dnf in -y flatpak
             flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
             sudo flatpak override --filesystem=$HOME/.themes
             sudo flatpak override --filesystem=$HOME/.icons
             echo -e $Y"Installed flatpak"$N
-            sudo dnf in snapd
+            sudo dnf in -y snapd
             sudo systemctl enable --now snapd
             sudo systemctl enable --now snapd.apparmor
             echo -e $Y"Installed snap"$N
             ;;
         4)
-            sudo snap install auto-cpufreq
+            sudo snap install -y auto-cpufreq
             sudo snap run auto-cpufreq --install
-            sudo dnf in thermald powertop
+            sudo dnf in -y thermald powertop
             sudo systemctl enable --now thermald
             echo -e $Y"Installed and set up"$N
             ;;
