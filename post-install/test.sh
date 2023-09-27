@@ -240,6 +240,7 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"' | tee ~/.oh-my-zsh/themes/robbyruss
 
         17)
         sudo dnf in -y gtk3-devel gcc gcc-c++ kernel-devel pkg-config make hostapd qrencode-devel libpng-devel
+        sudo chmod 777 /opt
         cd /opt
 
         git clone https://github.com/lakinduakash/linux-wifi-hotspot
