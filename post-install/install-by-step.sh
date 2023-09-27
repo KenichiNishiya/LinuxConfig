@@ -3,8 +3,9 @@
 # lxappearance and kvantummanager
 # TreeSitter and Coc
 
-# TESTED ON FEDORA 38 KDE
-# 4.4G to 7.3G
+# TESTED ON FEDORA 38 KDE on 27/09/23
+# 4.4G to 11G
+# Took 18m30s on a kvm
 
 # need to see scrcpy
 

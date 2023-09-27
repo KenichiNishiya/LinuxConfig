@@ -4,8 +4,8 @@
 # TreeSitter and Coc
 
 # TESTED ON FEDORA 38 KDE on 27/09/23
-# 4.4G to 7.3G
-# 
+# 4.4G to 11G
+# Took 18m30s on a kvm
 
 N='\033[0m'
 Y='\033[1;33m'
