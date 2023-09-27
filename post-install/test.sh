@@ -1,4 +1,6 @@
 #!/bin/bash
+## MANUAL ACTION NEEDED:
+# lxappearance and kvantummanager
 
 N='\033[0m'
 Y='\033[1;33m'
@@ -215,6 +217,7 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"' | tee ~/.oh-my-zsh/themes/robbyruss
         13)
             sudo dnf in -y sway waybar gammastep wofi clipman libappindicator wl-clipboard
             sudo dnf in -y bspwm rofi nitrogen sxhkd polybar dunst sddm lxqt-policykit picom
+            echo -e $Y"Installed both wm"$N
             ;;
         14)
             mkdir ~/.local/share/mpd
@@ -222,18 +225,21 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"' | tee ~/.oh-my-zsh/themes/robbyruss
             touch ~/.local/share/mpd/database
             touch ~/.local/share/mpd/state
             touch ~/.local/share/mpd/sticker.sql
+            echo -e $Y"Created mpd files"$N
             ;;
 
         15)
             curl https://raw.githubusercontent.com/GeorgeFilipkin/pulsemixer/master/pulsemixer > pulsemixer && chmod +x ./pulsemixer
             sudo mv pulsemixer /opt
+            echo -e $Y"Downloaded pulsemixer"$N
             ;;
         16)
             sudo dnf in -y steam lutris goverlay mangohud gamemode gamescope wine winetricks
+            echo -e $Y"Installed game related packages"$N
             ;;
 
         17)
-        sudo dnf in gtk3-devel gcc gcc-c++ kernel-devel pkg-config make hostapd qrencode-devel libpng-devel
+        sudo dnf in -y gtk3-devel gcc gcc-c++ kernel-devel pkg-config make hostapd qrencode-devel libpng-devel
         cd /opt
 
         git clone https://github.com/lakinduakash/linux-wifi-hotspot
@@ -241,6 +247,7 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"' | tee ~/.oh-my-zsh/themes/robbyruss
         sudo make
         sudo make install
         cd $CURRENTDIR
+        echo -e $Y"Installed wihotspot"$N
         ;;
 
         *)
