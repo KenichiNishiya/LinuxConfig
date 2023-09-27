@@ -186,13 +186,13 @@ sudo cp -r ~/re/git/dotfiles/config/sddm/sddm-sugar-candy /usr/share/sddm/themes
 
 sudo dnf in lxappearance qt5ct kvantum-manager kvantum-qt5 kvantum-qt6 nitrogen
 
-mkdir ~/.themes
+mkdir -p ~/.themes
 cd ~/.themes
 wget https://github.com/dracula/gtk/archive/master.zip
 unzip master.zip
 rm -rf master.zip
 
-mkdir ~/.icons
+mkdir -p ~/.icons
 cd ~/.icons
 git clone https://github.com/m4thewz/dracula-icons
 
@@ -218,10 +218,11 @@ sudo vim /usr/share/gtk-2.0/gtkrc
 
 # Now for the QT stuff
 
-mkdir /home/yori/.themes/Dracula
-cd /opt
+mkdir -p ~/.themes/Dracula
+# cd /opt
+cd ~/.themes/
 git clone https://github.com/dracula/gtk.git
-mv /opt/gtk/kde/kvantum/* /home/yori/.themes/Dracula
+mv ~/.themes/Dracula/gtk/kde/kvantum/* ~/.themes/Dracula
 rm -rf gtk
 
 wget https://github.com/catppuccin/qbittorrent/blob/main/mocha.qbtheme

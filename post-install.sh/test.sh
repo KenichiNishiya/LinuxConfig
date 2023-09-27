@@ -19,7 +19,10 @@ do
     8- Setup neovim
     9- Setup zsh (requires reboot)
     10- Setup dotfiles
+    11- Install fonts
+    12- Setup theme
     "$N
+    # 12 will install dracula, is missing cursors
     read NUM 
 
     case $NUM in
@@ -106,15 +109,16 @@ EndSection' | sudo tee /etc/X11/xorg.conf.d/50-mouse-acceleration.conf
             ;;
 
         7)
-            sudo dnf in -y sddm florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git bspwm rofi nitrogen sxhkd polybar dunst libnotify lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings alacritty zsh lxappearance qt5ct fcitx5 fcitx5-mozc fcitx5-configtool snapd thermald powertop cpu-x flatpak polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 exa antimicrox leafpad tmux bat fzf gamemode xhost neovim python3-pip nodejs tmux gammastep picom kernel-tools blueman network-manager-applet pulseaudio-utils wdisplays slurp grim libva-utils
+            sudo dnf in -y sddm florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git bspwm rofi nitrogen sxhkd polybar dunst libnotify lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings alacritty zsh lxappearance qt5ct fcitx5 fcitx5-mozc fcitx5-configtool snapd thermald powertop cpu-x flatpak polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 exa antimicrox leafpad tmux bat fzf gamemode xhost neovim python3-pip nodejs tmux gammastep picom kernel-tools blueman network-manager-applet pulseaudio-utils wdisplays slurp grim libva-utils neovim kitty alacritty
             sudo dnf install -y --setopt=install-weak-deps=False nomacs
             sudo dnf groupinstall -y "C Development Tools and Libraries"
             sudo dnf groupinstall -y "Development Tools"
-            sudo flatpak install vscodium librewolf brave flatseal obsproject
+            sudo flatpak install -y vscodium librewolf brave flatseal obsproject
             echo -e $Y"Installed everything"$N
             ;;
 
         8)
+            sudo dnf in -y neovim
             sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
             sudo dnf in -y python3-pip nodejs
             sudo npm install -g yarn
@@ -150,6 +154,53 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"' | tee ~/.oh-my-zsh/themes/robbyruss
             cp ../zshrc ~/.zshrc
             echo -e $Y"Copied files"$N
             ;;
+        11)
+            sudo dnf in -y google-noto-sans-jp-fonts
+
+            sudo mkdir /usr/share/fonts/jetbrains-mono-fonts
+            cd /usr/share/fonts/jetbrains-mono-fonts
+            sudo wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip
+            sudo unzip JetBrainsMono.zip
+            sudo rm -rf JetBrainsMono.zip
+
+            sudo mkdir /usr/share/fonts/noto-nerd-font
+            cd /usr/share/fonts/noto-nerd-font
+            sudo wget https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Noto/Sans/NotoSansNerdFont-Regular.ttf
+
+            cd $CURRENTDIR
+            ;;
+
+        12)
+            sudo dnf in -y lxappearance qt5ct kvantum-manager kvantum-qt5 kvantum-qt6 nitrogen
+            mkdir -p ~/.themes
+            cd ~/.themes
+            wget https://github.com/dracula/gtk/archive/master.zip
+            unzip master.zip
+            rm -rf master.zip
+
+            mkdir -p ~/.icons
+            cd ~/.icons
+            git clone https://github.com/m4thewz/dracula-icons
+
+            sudo cp -r ~/.themes/gtk-master /usr/share/themes
+            sudo cp -r ~/.icons/dracula-icons /usr/share/icons/
+            sudo mkdir /usr/share/themes/dracula
+            sudo cp -r ~/.themes/Dracula-cursors.tar.gz /usr/share/themes/dracula/
+            echo -e $Y"Themed GTK"$N
+
+            ### QT ###
+            mkdir -p ~/.themes/Dracula
+            cd ~/.themes/
+            git clone https://github.com/dracula/gtk.git
+            mv ~/.themes/Dracula/gtk/kde/kvantum/* ~/.themes/Dracula
+            rm -rf gtk
+
+            echo -e $Y"Themed QT"$N
+
+            wget https://github.com/catppuccin/qbittorrent/blob/main/mocha.qbtheme
+            mv mocha.qbtheme ~/.themes
+            ;;
+
         *)
             echo -e $R"Invalid Option"$N
             ;;
