@@ -25,6 +25,7 @@ cp $IN'picom/picom.conf' $OUT'picom/picom.conf'
 cp $IN'tmux/tmux.conf' $OUT'tmux/tmux.conf'
 cp $IN'sway/config' $OUT'sway/config'
 cp -r $IN'ytdl' $OUT'ytdl'
+cp -r $IN'antimicrox' $OUT'antimicrox'
 
 # cp ~/Documents/suse.sh $REPO 
 # cp ~/.vimrc $REPO'vimrc'
