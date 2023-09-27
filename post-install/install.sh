@@ -3,10 +3,9 @@
 # lxappearance and kvantummanager
 # TreeSitter and Coc
 
-# TESTED ON FEDORA 38 KDE
+# TESTED ON FEDORA 38 KDE on 27/09/23
 # 4.4G to 7.3G
-
-# need to see scrcpy
+# 
 
 N='\033[0m'
 Y='\033[1;33m'
@@ -109,7 +108,7 @@ EndSection' | sudo tee /etc/X11/xorg.conf.d/50-mouse-acceleration.conf
 
             sudo dnf in -y zsh
             sudo chsh -s $(which zsh)
-            sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+            yes n | sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
             git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
             git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 echo 'PROMPT="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ ) %{$fg[cyan]%}%~%{$reset_color%}"
@@ -204,4 +203,3 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"' | tee ~/.oh-my-zsh/themes/robbyruss
         sudo make install
         cd $CURRENTDIR
         echo -e $Y"Installed wihotspot"$N
-
