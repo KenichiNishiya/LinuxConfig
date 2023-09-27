@@ -18,7 +18,7 @@ while [ True ]
 do
     echo -e $Y"Enter a number 
     1- Fix dnf
-    2- Enable RPM
+    2- Enable RPM and update system
     3- Install flatpak and snap
     4- Setup power saving
     5- Optimize performance (SSD trim, adjust swappiness)
@@ -55,6 +55,7 @@ defaultyes=Yes" | sudo tee /etc/dnf/dnf.conf
 
         2)
             echo -e $Y"This will enable RPM fusion repositories"$N
+            sudo dnf up -y
             sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
             sudo dnf upgrade -y --refresh
             sudo dnf groupupdate -y core
@@ -146,7 +147,7 @@ EndSection' | sudo tee /etc/X11/xorg.conf.d/50-mouse-acceleration.conf
 
         9)
             sudo dnf in -y zsh
-            chsh -s $(which zsh)
+            sudo chsh -s $(which zsh)
             sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
             git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
             git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
