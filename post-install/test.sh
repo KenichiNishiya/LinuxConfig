@@ -21,6 +21,11 @@ do
     10- Setup dotfiles
     11- Install fonts
     12- Setup theme
+    13- Install window managers (bspwm and sway)
+    14- Setup mpd
+    15- Install pulsemixer
+    16- Setup games
+    17- Setup wihotspot
     "$N
     # 12 will install dracula, is missing cursors
     read NUM 
@@ -109,7 +114,7 @@ EndSection' | sudo tee /etc/X11/xorg.conf.d/50-mouse-acceleration.conf
             ;;
 
         7)
-            sudo dnf in -y sddm florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git bspwm rofi nitrogen sxhkd polybar dunst libnotify lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings alacritty zsh lxappearance qt5ct fcitx5 fcitx5-mozc fcitx5-configtool snapd thermald powertop cpu-x flatpak polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 exa antimicrox leafpad tmux bat fzf gamemode xhost neovim python3-pip nodejs tmux gammastep picom kernel-tools blueman network-manager-applet pulseaudio-utils wdisplays slurp grim libva-utils neovim kitty alacritty
+            sudo dnf in -y sddm florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git bspwm rofi nitrogen sxhkd polybar dunst libnotify lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings alacritty zsh lxappearance qt5ct fcitx5 fcitx5-mozc fcitx5-configtool snapd thermald powertop cpu-x flatpak polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 exa antimicrox leafpad tmux bat fzf gamemode xhost neovim python3-pip nodejs tmux gammastep picom kernel-tools blueman network-manager-applet pulseaudio-utils wdisplays slurp grim libva-utils neovim kitty alacritty intel-gpu-tools lxqt-policykit scrcpy wmname
             sudo dnf install -y --setopt=install-weak-deps=False nomacs
             sudo dnf groupinstall -y "C Development Tools and Libraries"
             sudo dnf groupinstall -y "Development Tools"
@@ -201,8 +206,42 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"' | tee ~/.oh-my-zsh/themes/robbyruss
 
             wget https://github.com/catppuccin/qbittorrent/blob/main/mocha.qbtheme
 
+            ### SDDM ###
             cd $CURRENTDIR
+            sudo cp ../config/sddm/sddm.conf /etc/sddm.conf.d/
+            sudo cp -r ../config/sddm/sddm-sugar-candy /usr/share/sddm/themes/
             ;;
+
+        13)
+            sudo dnf in -y sway waybar gammastep wofi clipman libappindicator wl-clipboard
+            sudo dnf in -y bspwm rofi nitrogen sxhkd polybar dunst sddm lxqt-policykit picom
+            ;;
+        14)
+            mkdir ~/.local/share/mpd
+            mkdir ~/.local/share/mpd/playlists
+            touch ~/.local/share/mpd/database
+            touch ~/.local/share/mpd/state
+            touch ~/.local/share/mpd/sticker.sql
+            ;;
+
+        15)
+            curl https://raw.githubusercontent.com/GeorgeFilipkin/pulsemixer/master/pulsemixer > pulsemixer && chmod +x ./pulsemixer
+            sudo mv pulsemixer /opt
+            ;;
+        16)
+            sudo dnf in -y steam lutris goverlay mangohud gamemode gamescope wine winetricks
+            ;;
+
+        17)
+        sudo dnf in gtk3-devel gcc gcc-c++ kernel-devel pkg-config make hostapd qrencode-devel libpng-devel
+        cd /opt
+
+        git clone https://github.com/lakinduakash/linux-wifi-hotspot
+        cd linux-wifi-hotspot
+        sudo make
+        sudo make install
+        cd $CURRENTDIR
+        ;;
 
         *)
             echo -e $R"Invalid Option"$N
