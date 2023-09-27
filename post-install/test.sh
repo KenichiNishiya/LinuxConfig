@@ -1,6 +1,12 @@
 #!/bin/bash
 ## MANUAL ACTION NEEDED:
 # lxappearance and kvantummanager
+# TreeSitter and Coc
+
+# TESTED ON FEDORA 38 KDE
+# 4.4G to 7.3G
+
+# need to see scrcpy
 
 N='\033[0m'
 Y='\033[1;33m'
@@ -50,7 +56,7 @@ defaultyes=Yes" | sudo tee /etc/dnf/dnf.conf
         2)
             echo -e $Y"This will enable RPM fusion repositories"$N
             sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-            sudo dnf upgrade --refresh
+            sudo dnf upgrade -y --refresh
             sudo dnf groupupdate -y core
             sudo dnf install -y rpmfusion-free-release-tainted
             sudo dnf install -y dnf-plugins-core
@@ -58,7 +64,7 @@ defaultyes=Yes" | sudo tee /etc/dnf/dnf.conf
             ;;
         3)
             sudo dnf in -y flatpak
-            flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+            sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
             sudo flatpak override --filesystem=$HOME/.themes
             sudo flatpak override --filesystem=$HOME/.icons
             echo -e $Y"Installed flatpak"$N
@@ -116,11 +122,12 @@ EndSection' | sudo tee /etc/X11/xorg.conf.d/50-mouse-acceleration.conf
             ;;
 
         7)
-            sudo dnf in -y sddm florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git bspwm rofi nitrogen sxhkd polybar dunst libnotify lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings alacritty zsh lxappearance qt5ct fcitx5 fcitx5-mozc fcitx5-configtool snapd thermald powertop cpu-x flatpak polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 exa antimicrox leafpad tmux bat fzf gamemode xhost neovim python3-pip nodejs tmux gammastep picom kernel-tools blueman network-manager-applet pulseaudio-utils wdisplays slurp grim libva-utils neovim kitty alacritty intel-gpu-tools lxqt-policykit scrcpy wmname
+            sudo dnf in -y sddm florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git bspwm rofi nitrogen sxhkd polybar dunst libnotify lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings alacritty zsh lxappearance qt5ct fcitx5 fcitx5-mozc fcitx5-configtool snapd thermald powertop cpu-x flatpak polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 exa antimicrox leafpad tmux bat fzf gamemode xhost neovim python3-pip nodejs tmux gammastep picom kernel-tools blueman network-manager-applet pulseaudio-utils wdisplays slurp grim libva-utils neovim kitty alacritty intel-gpu-tools lxqt-policykit wmname
             sudo dnf install -y --setopt=install-weak-deps=False nomacs
             sudo dnf groupinstall -y "C Development Tools and Libraries"
             sudo dnf groupinstall -y "Development Tools"
-            sudo flatpak install -y vscodium librewolf brave flatseal obsproject
+            sudo flatpak install -y vscodium librewolf brave flatseal 
+            sudo flatpak install -y app/com.obsproject.Studio/x86_64/stable
             echo -e $Y"Installed everything"$N
             ;;
 
