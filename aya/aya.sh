@@ -184,7 +184,7 @@ sudo cp -r ~/re/git/dotfiles/config/sddm/sddm-sugar-candy /usr/share/sddm/themes
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! CONFIGURE THEME GTK AND QT
 
-sudo dnf in lxappearance qt5ct kvantum-manager kvantum-qt5 kvantum-qt6 nitrogen
+sudo dnf in lxappearance qt5ct kvantummanager nitrogen
 
 mkdir -p ~/.themes
 cd ~/.themes
@@ -222,11 +222,11 @@ mkdir -p ~/.themes/Dracula
 # cd /opt
 cd ~/.themes/
 git clone https://github.com/dracula/gtk.git
-mv ~/.themes/Dracula/gtk/kde/kvantum/* ~/.themes/Dracula
-rm -rf gtk
+mv ~/.themes/gtk-master/kde/kvantum/* ~/.themes/Dracula
+rm -rf gtk-master
 
 wget https://github.com/catppuccin/qbittorrent/blob/main/mocha.qbtheme
-mv mocha.qbtheme /home/yori/.themes
+mv mocha.qbtheme ~/.themes
 
 # cd /opt
 # git clone https://github.com/catppuccin/Kvantum.git

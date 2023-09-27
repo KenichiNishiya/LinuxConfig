@@ -1,7 +1,7 @@
 #!/bin/bash
 
 N='\033[0m'
-Y='\033[0;33m'
+Y='\033[1;33m'
 R='\033[0;31m'
 G='\033[0;32m'
 CURRENTDIR=$(pwd)
@@ -168,10 +168,11 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"' | tee ~/.oh-my-zsh/themes/robbyruss
             sudo wget https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Noto/Sans/NotoSansNerdFont-Regular.ttf
 
             cd $CURRENTDIR
+            echo -e $Y"Installed fonts"$N
             ;;
 
         12)
-            sudo dnf in -y lxappearance qt5ct kvantum-manager kvantum-qt5 kvantum-qt6 nitrogen
+            sudo dnf in -y lxappearance qt5ct kvantummanager nitrogen
             mkdir -p ~/.themes
             cd ~/.themes
             wget https://github.com/dracula/gtk/archive/master.zip
@@ -192,13 +193,15 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"' | tee ~/.oh-my-zsh/themes/robbyruss
             mkdir -p ~/.themes/Dracula
             cd ~/.themes/
             git clone https://github.com/dracula/gtk.git
-            mv ~/.themes/Dracula/gtk/kde/kvantum/* ~/.themes/Dracula
-            rm -rf gtk
+            mv ~/.themes/gtk-master/kde/kvantum/* ~/.themes/Dracula
+            rm -rf gtk-master
 
             echo -e $Y"Themed QT"$N
+            echo -e $Y"But manual set is necessary (lxappearance, kvantummanager and qt5ct)"$N
 
             wget https://github.com/catppuccin/qbittorrent/blob/main/mocha.qbtheme
-            mv mocha.qbtheme ~/.themes
+
+            cd $CURRENTDIR
             ;;
 
         *)
