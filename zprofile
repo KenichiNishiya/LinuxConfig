@@ -50,5 +50,4 @@ export CLASSPATH=$HOME/study/java/mysql-connector-j-8.1.0.jar
 # export _JAVA_AWT_WM_NONREPARENTING=1
 
 # Blue light filter
-# redshift -P -O 3000
 

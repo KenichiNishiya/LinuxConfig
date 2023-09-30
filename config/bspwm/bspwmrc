@@ -37,7 +37,6 @@ $HOME/.config/polybar/launch.sh
 
 # Start programs
 #picom --experimental-backend -b &
-# redshift -P -O 3000
 gammastep -O 4000
 nm-applet &
 fcitx5 &

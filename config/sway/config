@@ -345,6 +345,11 @@ default_floating_border pixel 3
     resize set height 200
     }
 
+    for_window [title="org.kde.kdeconnect.daemon"] {
+    floating enable
+    resize set height 200
+    }
+
 focus_follows_mouse yes
 
 # exec "systemctl --user import-environment SWAYSOCK WAYLAND_DISPLAY;
