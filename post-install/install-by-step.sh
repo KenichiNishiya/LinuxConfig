@@ -261,6 +261,9 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"' | tee ~/.oh-my-zsh/themes/robbyruss
         echo -e $Y"Installed wihotspot"$N
         ;;
 
+    18)
+        
+        ;;
         *)
             echo -e $R"Invalid Option"$N
             ;;

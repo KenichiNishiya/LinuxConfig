@@ -33,8 +33,7 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 
 # :PlugInstall
 # :PlugUpdate
-# :TSInstall all
-:TSInstall c cpp awk bash html php json rust sxhkdrc yaml toml javascript css java 
+:TSInstall c cpp awk bash html php json rust sxhkdrc yaml toml javascript css java markdown markdown_inline lua sql
 
 vim ~/.local/share/nvim/plugged/dracula.nvim/lua/dracula/palette.lua
 # Change the bg to #0f0f17
@@ -1482,5 +1481,24 @@ sudo vim /etc/systemd/logind.conf
 # Reload systemd
 sudo systemctl kill -s HUP systemd-logind
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! WAYDROID
+# https://docs.waydro.id/usage/install-on-desktops
+sudo dnf in waydroid
+
+# Setup with these:
+'System OTA: https://ota.waydro.id/system'
+'Vendor OTA: https://ota.waydro.id/vendor'
+
+# Install arm support, gapps and id
+cd /opt
+git clone https://github.com/casualsnek/waydroid_script
+cd waydroid_script
+python3 -m pip install -r requirements.txt
+python3 main.py
+
+# To access system files
+su
+cd ~/.local/share/waydroid/data/media/0/
+
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
