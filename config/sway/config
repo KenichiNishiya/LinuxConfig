@@ -55,8 +55,8 @@ gaps inner 5
 # Example configuration:
 #
  exec swayidle -w \
-          timeout 999999999 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-          timeout 999999999 'swaylock -f -c 000000' \
+          timeout 120 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+          timeout 120 'swaylock -f -c 000000' \
           before-sleep 'swaylock -f -c 000000'
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
@@ -257,7 +257,8 @@ bindsym $mod+r mode "resize"
     bindsym $mod+comma exec mpc prev
     bindsym $mod+Shift+period exec mpc toggle
 
-    bindsym $mod+Shift+S exec grim -g "$(slurp)" $HOME/Pictures/screenshot-$(date +"%Y-%m-%dT%H-%M-%S").png 
+    # bindsym $mod+Shift+S exec grim -g "$(slurp)" $HOME/Pictures/screenshot-$(date +"%Y-%m-%dT%H-%M-%S").png
+    bindsym $mod+Shift+S exec IMG=~/Pictures/sc-$(date +"%Y-%m-%dT%H-%M-%S").png && grim -g "$(slurp)" $IMG && wl-copy < $IMG
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.

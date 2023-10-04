@@ -91,7 +91,7 @@ EndSection' | sudo tee /etc/X11/xorg.conf.d/50-mouse-acceleration.conf
             sudo dnf install -y --setopt=install-weak-deps=False nomacs
             sudo dnf groupinstall -y "C Development Tools and Libraries"
             sudo dnf groupinstall -y "Development Tools"
-            sudo flatpak install -y vscodium librewolf brave flatseal 
+            sudo flatpak install -y vscodium librewolf brave flatseal obsidian
             sudo flatpak install -y app/com.obsproject.Studio/x86_64/stable
             echo -e $Y"Installed everything"$N
 
