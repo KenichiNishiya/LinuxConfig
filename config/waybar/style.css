@@ -134,7 +134,21 @@ window#waybar.solo #workspaces button {
 }
 
 #custom-dunst-history{
+    padding-right: 15px;
     color: @yellow;
+}
+
+#custom-audio_idle_inhibitor{
+    padding-right: 15px;
+    padding-left: 10px;
+    color: @green;
+    margin: 5px;
+    border-radius: 7px;
+    background-color: @bg;
+}
+
+#workspaces button {
+    background-color: @bg;
 }
 
 #memory{
@@ -182,6 +196,15 @@ window#waybar.solo #workspaces button {
   margin: 5px;
   padding-left: 10px;
   padding-right: 10px;
+  border-radius: 7px;
+  color: @lavender;
+  background-color: @bg;
+}
+
+#idle_inhibitor{
+  margin: 5px;
+  padding-left: 10px;
+  padding-right: 15px;
   border-radius: 7px;
   color: @lavender;
   background-color: @bg;

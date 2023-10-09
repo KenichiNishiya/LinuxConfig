@@ -87,7 +87,7 @@ echo 'Section "InputClass"
 EndSection' | sudo tee /etc/X11/xorg.conf.d/50-mouse-acceleration.conf
             echo -e $Y"Fixed mouse"$N
 
-            sudo dnf in -y --skip-broken sddm florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git bspwm rofi nitrogen sxhkd polybar dunst libnotify lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings alacritty zsh lxappearance qt5ct fcitx5 fcitx5-mozc fcitx5-configtool snapd thermald powertop cpu-x flatpak polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 exa antimicrox leafpad tmux bat fzf gamemode xhost neovim python3-pip nodejs tmux gammastep picom kernel-tools blueman network-manager-applet pulseaudio-utils wdisplays slurp grim libva-utils neovim kitty alacritty intel-gpu-tools lxqt-policykit wmname
+            sudo dnf in -y --skip-broken sddm florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git bspwm rofi nitrogen sxhkd polybar dunst libnotify lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings alacritty zsh lxappearance qt5ct fcitx5 fcitx5-mozc fcitx5-configtool snapd thermald powertop cpu-x flatpak polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 exa antimicrox leafpad tmux bat fzf gamemode xhost neovim python3-pip nodejs tmux gammastep picom kernel-tools blueman network-manager-applet pulseaudio-utils wdisplays slurp grim libva-utils neovim kitty alacritty intel-gpu-tools lxqt-policykit wmname mpc meson ninja-build wayland-protocols-devel
             sudo dnf install -y --setopt=install-weak-deps=False nomacs
             sudo dnf groupinstall -y "C Development Tools and Libraries"
             sudo dnf groupinstall -y "Development Tools"
@@ -201,5 +201,15 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"' | tee ~/.oh-my-zsh/themes/robbyruss
         cd linux-wifi-hotspot
         sudo make
         sudo make install
+
         cd $CURRENTDIR
         echo -e $Y"Installed wihotspot"$N
+
+        cd /opt
+        git clone https://github.com/ErikReider/SwayAudioIdleInhibit.git
+        cd SwayAudioIdleInhibit
+        meson build
+        ninja -C build
+        meson install -C build
+        cd $CURRENTDIR
+        echo -e $Y"Installed SwayIdle inhibitor"$N

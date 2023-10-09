@@ -278,6 +278,7 @@ bindsym $mod+r mode "resize"
 
 # include @sysconfdir@/sway/config.d/*
 
+# Autostart apps
 exec gammastep -O 4000
 exec dunst
 exec blueman-applet
@@ -292,6 +293,7 @@ exec waybar
 # exec export QT_QPA_PLATFORMTHEME=qt5ct
 exec wmname LG3D
 exec '/opt/pulsemixer --set-volume 30 --unmute'
+exec sway-audio-idle-inhibit
 
 exec swaybg -o eDP-1 -m fill -i /home/yori/Pictures/suk.png
 exec swaybg -o DP-1 -m fill -i /home/yori/Pictures/ayy.jpg
