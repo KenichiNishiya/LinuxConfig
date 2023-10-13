@@ -1511,3 +1511,9 @@ meson build
 ninja -C build
 meson install -C build
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! CHANGE MPV KEYBINDS
+mpv --input-test --force-window --idle
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+sudo dnf in scrot tesseract
+pip install numpy pytesseract
