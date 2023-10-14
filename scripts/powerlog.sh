@@ -9,6 +9,7 @@ LAST_TOTAL_TIME=0
 LAST_SEC=0
 DID_HEADER=0
 IS_DISCHARGING=0
+DATE=$(date +%Y-%m-%d)
 
 while true; do
     STATUS=$(acpi | awk '{print $3}' | cut -d ',' -f 1)
@@ -16,6 +17,9 @@ while true; do
 
         if [[ $DID_HEADER == 0 ]]; then
             SESSION_COUNT=$(($(cat "$LOG_FILE" | grep -i Total | wc -l)+1))
+            if [[ -n $(cat "$LOG_FILE" | grep -i $DATE) ]]; then
+                echo $DATE >> "$LOG_FILE"
+            fi
             echo "-------------------------------------------------------" >> "$LOG_FILE"
             echo "$SESSION_COUNT- Total time: $TOTAL_TIME" >> "$LOG_FILE"
             DID_HEADER=1;

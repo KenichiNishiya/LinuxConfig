@@ -2,6 +2,7 @@
 export WINIT_X11_SCALE_FACTOR=1
 #export LIBVA_DRIVER_NAME=iHD
 export XDG_CONFIG_DIRS=/etc/xdg
+export XDG_DATA_HOME=/var/lib/flatpak/exports/share
 # export QT_QPA_PLATFORMTHEME=qt5ct,xbc
 # To run qt application on wayland, uncomment below
 export QT_QPA_PLATFORMTHEME=qt5ct
