@@ -46,7 +46,7 @@ yarn install
 yarn build
 pip3 install jedi
 
-:CocInstall coc-python coc-html coc-css coc-tsserver coc-clangd coc-java
+:CocInstall coc-python coc-html coc-css coc-tsserver coc-clangd coc-java coc-sh
 :CocInstall @yaegassy/coc-intelephense
 # Open a C/C++ file and use this command
 :CocCommand clangd.install
@@ -1399,7 +1399,7 @@ xhost +si:localuser:root
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-# GAMEPAD INPUT DON'T STOP SWAYIDLE COUNTDOWN
+#! GAMEPAD INPUT DON'T STOP SWAYIDLE COUNTDOWN
 
 sudo dnf in libwayland-client
 cd /opt
@@ -1408,12 +1408,12 @@ meson setup --prefix /usr build
 ninja -C build && ninja -C build install
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-# Install MySQL Workbench on Fedora
+#! Install MySQL Workbench on Fedora
 # https://docs.fedoraproject.org/en-US/quick-docs/installing-mysql-mariadb/
 
 # Download the yum package corresponding to your system version
 # https://dev.mysql.com/downloads/repo/yum/
-sudo dnf install <path to downloaded rpm>
+sudo rpm -i <path to downloaded rpm>
 sudo dnf install mysql-community-server
 sudo systemctl start mysqld
 sudo systemctl enable mysqld
@@ -1500,12 +1500,12 @@ meson install -C build
 mpv --input-test --force-window --idle
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-# PYTHON DEVELOPMENT
+#! PYTHON DEVELOPMENT
 sudo dnf in scrot tesseract
-pip install numpy pytesseract
+pip install numpy pytesseract selenium plotly pyautogui
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-# GTK FOR C DEVELOPMENT
+#! GTK FOR C DEVELOPMENT
 
 sudo dnf in gtk4 gtk4-devel glib pango gdk-pixbuf2-devel atk gobject-introspection-devel libepoxy-devel gtk+-devel clang
 
@@ -1520,14 +1520,25 @@ clang -MJ test.o.json `pkg-config --cflags gtk4` -o test test.c `pkg-config --li
 
 sed -e '1s/^/[\n/' -e '$s/,$/\n]/' *.o.json > compile_commands.json
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-# MYSQL FOR C DEVELOPMENT
+#! MYSQL FOR C DEVELOPMENT
+# https://www.cyberciti.biz/tips/linux-unix-connect-mysql-c-api-program.html
 
+# Either one of these
 sudo dnf in mariadb-connector-c-devel
-# OR
 sudo dnf in mysql-community-devel
 
-# Include with
+# Include inside the file with
 '</usr/include/mysql/mysql.h>'
 # Compile with
 gcc file.c -o file -I/usr/include/mysql -lmysqlclient
+# Or
+gcc file.c -o file -I/usr/include/mysql -L/usr/lib64/mysql -lmysqlclient 
 
+# If it's not working:
+# Check if -lmysqlclient is there
+mysql_config --libs
+# Include the path as a flag
+mysql_config --cflags
+
+# Alternatively, just compile with everything 
+gcc -o output-file $(mysql_config --cflags) mysql-c-api.c $(mysql_config --libs)

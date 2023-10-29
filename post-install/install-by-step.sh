@@ -7,6 +7,9 @@
 # 4.4G to 11G
 # Took 18m30s on a kvm
 
+# TESTED ON FEDORA 38 XFCE ON 29/10/23
+# ?? to 13G
+
 # need to see scrcpy
 
 N='\033[0m'
@@ -36,6 +39,7 @@ do
     16- Setup games
     17- Setup wihotspot
     18- Setup SwayAudioIdleInhibit
+    19- Disable lightDM and enable SDDM
     "$N
     # 12 will install dracula, is missing cursors
     read NUM 
@@ -129,7 +133,8 @@ EndSection' | sudo tee /etc/X11/xorg.conf.d/50-mouse-acceleration.conf
             sudo dnf install -y --setopt=install-weak-deps=False nomacs 
             sudo dnf groupinstall -y "C Development Tools and Libraries"
             sudo dnf groupinstall -y "Development Tools"
-            sudo flatpak install -y vscodium librewolf brave flatseal obsidian
+            sudo flatpak install -y vscodium librewolf brave flatseal
+            sudo flatpak install -y app/md.obsidian.Obsidian/x86_64/stable
             sudo flatpak install -y app/com.obsproject.Studio/x86_64/stable
             echo -e $Y"Installed everything"$N
             ;;
@@ -149,7 +154,7 @@ EndSection' | sudo tee /etc/X11/xorg.conf.d/50-mouse-acceleration.conf
 
         9)
             sudo dnf in -y zsh
-            sudo chsh -s $(which zsh)
+            sudo chsh -s $(which zsh) ${USER}
             yes n | sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 
             git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -190,7 +195,7 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"' | tee ~/.oh-my-zsh/themes/robbyruss
             ;;
 
         12)
-            sudo dnf in -y lxappearance qt5ct kvantummanager nitrogen
+            sudo dnf in -y lxappearance qt5ct kvantum nitrogen
             mkdir -p ~/.themes
             cd ~/.themes
             wget https://github.com/dracula/gtk/archive/master.zip
@@ -276,5 +281,8 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"' | tee ~/.oh-my-zsh/themes/robbyruss
         *)
             echo -e $R"Invalid Option"$N
             ;;
+    19)
+        sudo systemctl disable lightdm
+        sudo systemctl enable sddm
     esac
 done
