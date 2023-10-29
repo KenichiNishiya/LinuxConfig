@@ -1451,21 +1451,6 @@ java file.java
 java -cp /path/to/.jar file.java
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-# GTK for C development
-
-sudo dnf in gtk4 gtk4-devel glib pango gdk-pixbuf2-devel atk gobject-introspection-devel libepoxy-devel gtk+-devel clang
-
-# If using an LSP on vim, it won't know where the gtk file header is
-# To solve this, go to your project directory
-# Create a .c file with #include <gtk/gkt.h>
-
-# For gtk3
-clang -MJ file.o.json `pkg-config --cflags gtk+-3.0` -o file file.c `pkg-config --libs gtk+-3.0` 
-# For gtk4
-clang -MJ test.o.json `pkg-config --cflags gtk4` -o test test.c `pkg-config --libs gtk4`
-
-sed -e '1s/^/[\n/' -e '$s/,$/\n]/' *.o.json > compile_commands.json
-'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! OSU INSTALLER LUTRIS ERROR 256
 # https://forums.lutris.net/t/osu-install-error-256/13851
 # The above may help, but the way I solved it was with
@@ -1515,5 +1500,34 @@ meson install -C build
 mpv --input-test --force-window --idle
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+# PYTHON DEVELOPMENT
 sudo dnf in scrot tesseract
 pip install numpy pytesseract
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+# GTK FOR C DEVELOPMENT
+
+sudo dnf in gtk4 gtk4-devel glib pango gdk-pixbuf2-devel atk gobject-introspection-devel libepoxy-devel gtk+-devel clang
+
+# If using an LSP on vim, it won't know where the gtk file header is
+# To solve this, go to your project directory
+# Create a .c file with #include <gtk/gkt.h>
+
+# For gtk3
+clang -MJ file.o.json `pkg-config --cflags gtk+-3.0` -o file file.c `pkg-config --libs gtk+-3.0` 
+# For gtk4
+clang -MJ test.o.json `pkg-config --cflags gtk4` -o test test.c `pkg-config --libs gtk4`
+
+sed -e '1s/^/[\n/' -e '$s/,$/\n]/' *.o.json > compile_commands.json
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+# MYSQL FOR C DEVELOPMENT
+
+sudo dnf in mariadb-connector-c-devel
+# OR
+sudo dnf in mysql-community-devel
+
+# Include with
+'</usr/include/mysql/mysql.h>'
+# Compile with
+gcc file.c -o file -I/usr/include/mysql -lmysqlclient
+
