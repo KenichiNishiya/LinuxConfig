@@ -222,7 +222,6 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"' | tee ~/.oh-my-zsh/themes/robbyruss
             echo -e $Y"Themed QT"$N
             echo -e $Y"But manual set is necessary (lxappearance, kvantummanager and qt5ct)"$N
 
-            # wget https://github.com/catppuccin/qbittorrent/blob/main/mocha.qbtheme
             wget https://github.com/dracula/qbittorrent/raw/master/dracula.qbtheme
 
             ### SDDM ###
