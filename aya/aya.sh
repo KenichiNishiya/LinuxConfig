@@ -1537,8 +1537,8 @@ gcc file.c -o file -I/usr/include/mysql -L/usr/lib64/mysql -lmysqlclient
 # If it's not working:
 # Check if -lmysqlclient is there
 mysql_config --libs
-# Include the path as a flag
+# Include the path from the output here as flag
 mysql_config --cflags
 
 # Alternatively, just compile with everything 
-gcc -o output-file $(mysql_config --cflags) mysql-c-api.c $(mysql_config --libs)
+gcc -o file $(mysql_config --cflags) file.c $(mysql_config --libs)
