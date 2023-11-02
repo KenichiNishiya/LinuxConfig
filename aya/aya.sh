@@ -33,7 +33,7 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 
 # :PlugInstall
 # :PlugUpdate
-:TSInstall c cpp awk bash html php json rust sxhkdrc yaml toml javascript css java markdown markdown_inline lua sql
+:TSInstall c cpp awk bash html php json rust sxhkdrc yaml toml javascript css java markdown markdown_inline lua sql python
 
 vim ~/.local/share/nvim/plugged/dracula.nvim/lua/dracula/palette.lua
 # Change the bg to #0f0f17
@@ -506,6 +506,7 @@ env LANG=ja_JP.UTF-8 wine Touhou.exe
 # LUTRIS: Paste the command above on the arguments part of the app launch
 
 # You may need to install the Meiryo font inside /usr/share/fonts/ as it's the default japanese font for Windows 7+
+fc-cache -f -v
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! CREATE A 32-BIT WINE PREFIX
@@ -1498,6 +1499,18 @@ meson install -C build
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! CHANGE MPV KEYBINDS
 mpv --input-test --force-window --idle
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! EXPORT QT_QPA_PLATFORMTHEME ON GDM
+# https://unix.stackexchange.com/questions/680483/how-to-add-qt-qpa-platformtheme-qt5ct-environment-variable-in-arch-linux
+# For some reason, when using GDM you can't export this env var on zshrc or zprofile
+sudo vim /etc/environment
+# Paste this inside
+QT_QPA_PLATFORMTHEME=qt5ct
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+# LEAFTPAD SLOW STARTUP
+# https://discussion.fedoraproject.org/t/leafpad-slow-startup/74770
+/usr/bin/dbus-launch --exit-with-session leafpad
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! PYTHON DEVELOPMENT

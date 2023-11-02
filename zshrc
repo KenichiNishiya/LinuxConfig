@@ -173,3 +173,4 @@ export LS_COLORS
 # eval "$(starship init zsh)"
 
 PROMPT='%{$fg[magenta]%}[%D{%H:%M:%S}] '$PROMPT
+# export QT_QPA_PLATFORMTHEME=qt5ct

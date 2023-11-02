@@ -9,6 +9,8 @@ CT=1
 #rm /home/yori/Music/on/*
 #fi
 
+mkdir -p /home/yori/Music/on
+
 echo -e "\033[1;33mUpdating database..."
 
 while [ $CT -le 4 ]
