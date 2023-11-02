@@ -1414,15 +1414,17 @@ ninja -C build && ninja -C build install
 
 # Download the yum package corresponding to your system version
 # https://dev.mysql.com/downloads/repo/yum/
-sudo rpm -i <path to downloaded rpm>
-sudo dnf install mysql-community-server
+cd /home/yori/Downloads 
+sudo rpm -i mysql*
+sudo dnf install -y mysql-community-server
 sudo systemctl start mysqld
 sudo systemctl enable mysqld
 
 # Now install the Workbench
 # https://dev.mysql.com/downloads/workbench/?os=src
-sudo rpm -Uvh <path to downloaded rpm>
-sudo dnf in mysql-workbench
+cd /home/yori/Downloads
+sudo rpm -Uvh mysql-workbench-community*
+sudo dnf in -y mysql-workbench
 
 # When first connecting to the localhost, you need the temp password
 sudo grep 'temporary password' /var/log/mysqld.log
