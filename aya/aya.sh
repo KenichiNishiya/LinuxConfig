@@ -1069,7 +1069,7 @@ sudo /opt/lampp/lampp start
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! BLUETOOTH
 
-sudo pacman -S bluez bluez-utils blueman pulseaudio-bluetooth
+sudo dnf in bluez bluez-tools blueman 
 lsmod | grep btsub
 # If returns nothing, then:
 modprobe btusb
@@ -1503,12 +1503,14 @@ meson install -C build
 mpv --input-test --force-window --idle
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-#! EXPORT QT_QPA_PLATFORMTHEME ON GDM
+#! EXPORT QT_QPA_PLATFORMTHEME ON GDM // IMPORT OTHER ENV 
 # https://unix.stackexchange.com/questions/680483/how-to-add-qt-qpa-platformtheme-qt5ct-environment-variable-in-arch-linux
 # For some reason, when using GDM you can't export this env var on zshrc or zprofile
 sudo vim /etc/environment
 # Paste this inside
 QT_QPA_PLATFORMTHEME=qt5ct
+# This also helps if you can't find xdg-desktop-portal command
+
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 # LEAFTPAD SLOW STARTUP
 # https://discussion.fedoraproject.org/t/leafpad-slow-startup/74770

@@ -17,7 +17,6 @@ if [ $DESKTOP_SESSION == "sway"]; then
     export XMODIFIERS=@im=fcitx
 
     export PATH=$GOPATH/bin:$HOME/.local/bin:/usr/local/sbin:/usr/lib:/usr/share:$HOME/.cargo/bin:/sbin:/usr/libexec:$PATH
-    # export XDG_CURRENT_DESKTOP=Unity
     export XDG_CURRENT_DESKTOP=sway
     # This may help with gtk apps slow at startup
     export GTK_USE_PORTAL=1
@@ -32,7 +31,6 @@ if [ $DESKTOP_SESSION == "sway"]; then
     # export QT_QPA_PLATFORMTHEME=qt5ct
     # export QT_QPA_PLATFORM=wayland
     export MOZ_ENABLE_WAYLAND=1
-    export vblank_mode=0
 
     export CLASSPATH=$HOME/study/java/mysql-connector-j-8.1.0.jar
 
@@ -44,8 +42,7 @@ if [ $DESKTOP_SESSION == "sway"]; then
 
     # if [ "$DESKTOP_SESSION" == "/usr/share/wayland-sessions/plasmawayland" ]; then
     #     export QT_QPA_PLATFORMTHEME=
-    # else
-        # export QT_QPA_PLATFORMTHEME=qt5ct
+    # else export QT_QPA_PLATFORMTHEME=qt5ct
     # fi
 
     #export PULSE_LATENCY_MSEC=80
