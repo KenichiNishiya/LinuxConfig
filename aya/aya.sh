@@ -28,6 +28,17 @@ max_parallel_downloads=20
 defaultyes=Yes
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! UPGRADE FEDORA VERSION
+https://docs.fedoraproject.org/en-US/quick-docs/upgrading-fedora-offline/
+
+sudo dnf upgrade --refresh
+reboot
+sudo dnf install dnf-plugin-system-upgrade
+sudo dnf system-upgrade download --releasever=39 # Change for the release number
+# There may be some packages with unsatisfied dependencies, so be sure to check if everything is ok
+sudo dnf system-upgrade reboot
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! CONFIGURE NEOVIM 
 
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -137,7 +148,7 @@ fc-match FontName
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! INSTALLING BSPWM AND OTHER THINGS
 
-sudo dnf in git bspwm rofi nitrogen sxhkd polybar dunst sddm lxqt-policykit picom
+sudo dnf in git bspwm rofi nitrogen sxhkd polybar dunst lxqt-policykit picom
 # I'll be using sddm, but having lightdm as a fallback is nice
 
 sudo systemctl enable sddm

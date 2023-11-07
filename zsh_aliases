@@ -46,6 +46,7 @@ alias tl="trash-list"
 alias tg="cd ~/.local/share/Trash"
 alias tux="/opt/3d-ascii-viewer-c/3d-ascii-viewer /opt/3d-ascii-viewer-c/models/linux-mascot-tux.obj --color"
 alias stu="cd /home/yori/study;git add .; git commit -m 'Upload files';git push origin main"
+alias so="~/re/git/dotfiles/scripts/so.sh"
 # alias f="du -a ~/us/* ~/Documents/* | awk '{print $2}' | grep -vi bakap | fzf --preview='bat --color=always --style=numbers {}' --bind K:preview-page-up,J:preview-page-down | xargs -r $EDITOR"
 f() {du -a ~/study ~/react ~/Documents/* | awk '{print $2}' | grep -vi bakap | fzf --preview='bat --color=always --style=numbers {}' --bind K:preview-page-up,J:preview-page-down | xargs -r $EDITOR; }
 ff() {fzf --preview='bat --color=always --style=numbers {}' --bind K:preview-page-up,J:preview-page-down | xargs -r $EDITOR; }
