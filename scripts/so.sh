@@ -2,8 +2,8 @@
 
 echo "Changing to so"
 cd ~/re/git/so
-cp -r ~/re/games/wine/drive_c/osu/Songs .
-cp -r ~/re/games/wine/drive_c/osu/Skins .
+cp -ru ~/re/games/wine/drive_c/osu/Songs .
+cp -ru ~/re/games/wine/drive_c/osu/Skins .
 echo "Copied everything"
 git add .
 echo "added"
