@@ -31,6 +31,7 @@ if [ $DESKTOP_SESSION == "sway"]; then
     # export QT_QPA_PLATFORMTHEME=qt5ct
     # export QT_QPA_PLATFORM=wayland
     export MOZ_ENABLE_WAYLAND=1
+    export GTK_THEME=gtk
 
     export CLASSPATH=$HOME/study/java/mysql-connector-j-8.1.0.jar
 
