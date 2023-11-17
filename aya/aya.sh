@@ -1537,7 +1537,7 @@ https://discussion.fedoraproject.org/t/leafpad-slow-startup/74770
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! PYTHON DEVELOPMENT
 sudo dnf in scrot tesseract
-pip install numpy pytesseract selenium plotly pyautogui pandas
+pip install numpy pytesseract selenium plotly pyautogui pandas openpyxl
 
 #! UPDATE ALL PIP PACKAGES
 pip3 list -o | cut -f1 -d' ' | tr " " "\n" | awk '{if(NR>=3)print}' | cut -d' ' -f1 | xargs -n1 pip3 install -U 
