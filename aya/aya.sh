@@ -1535,6 +1535,15 @@ https://discussion.fedoraproject.org/t/leafpad-slow-startup/74770
 /usr/bin/dbus-launch --exit-with-session leafpad
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! SCREEN SHARING OR SCREEN RECORDING
+https://www.reddit.com/r/swaywm/comments/l4e55v/guide_how_to_screenshare_from_chromiumfirefox/
+# Probably an issue with xdg-desktop-portal-wlr not being used
+# XDG_CURRENT_DESKTOP does not need to be set to sway
+
+# Manually run the command below to replace the portal, or put your sway config to auto start
+/usr/libexec/xdg-desktop-portal r & /usr/libexec/xdg-desktop-portal-wlr
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! PYTHON DEVELOPMENT
 sudo dnf in scrot tesseract
 pip install numpy pytesseract selenium plotly pyautogui pandas openpyxl

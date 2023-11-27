@@ -295,6 +295,7 @@ exec waybar
 exec wmname LG3D
 exec '/opt/pulsemixer --set-volume 30 --unmute'
 exec sway-audio-idle-inhibit
+exec /usr/libexec/xdg-desktop-portal r & /usr/libexec/xdg-desktop-portal-wlr
 
 exec swaybg -o eDP-1 -m fill -i /home/yori/Pictures/suk.png
 exec swaybg -o DP-1 -m fill -i /home/yori/Pictures/ayy.jpg
