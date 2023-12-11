@@ -496,10 +496,14 @@ vm.swappiness=10
 #! CUSTOMIZE FIREFOX CSS
 
 # Find the firefox profile you are using and cd to it
-mkdir .mozilla/firefox/paufwehashu.default-release/chrome
-cp ~/re/git/Fedora/userChrome.css .mozilla/firefox/paufwehashu.default-release/chrome/
+mkdir .mozilla/firefox/*.default-release/chrome
+cp ~/re/git/dotfiles/userChrome.css .mozilla/firefox/*.default-release/chrome/
 # Inside firefox, go to about:config and turn true the following:
-# toolkit.legacyUserProfileCustomizations.stylesheets
+'
+toolkit.legacyUserProfileCustomizations.stylesheets
+layers.acceleration.force-enabled
+gfx.webrender.all
+'
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! RUN GUI PROGRAMS WHICH REQUIRES SUDO/ROOT
@@ -1544,9 +1548,28 @@ https://www.reddit.com/r/swaywm/comments/l4e55v/guide_how_to_screenshare_from_ch
 /usr/libexec/xdg-desktop-portal r & /usr/libexec/xdg-desktop-portal-wlr
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! CREATE SYSTEMD SERVICE
+sudo vim /etc/systemd/system/name.service
+
+[Unit]
+Description=something
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=on-failure
+RestartSec=10
+User=yori
+ExecStart=/path/to/file.sh
+
+[Install]
+WantedBy=multi-user.target
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! PYTHON DEVELOPMENT
 sudo dnf in scrot tesseract
-pip install numpy pytesseract selenium plotly pyautogui pandas openpyxl
+pip install numpy pytesseract selenium plotly pyautogui pandas openpyxl beautifulsoup4
 
 #! UPDATE ALL PIP PACKAGES
 pip3 list -o | cut -f1 -d' ' | tr " " "\n" | awk '{if(NR>=3)print}' | cut -d' ' -f1 | xargs -n1 pip3 install -U 

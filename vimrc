@@ -80,15 +80,15 @@ nnoremap <Up> <Up>zz
 nnoremap <Down> <Down>zz
 
 " esc in insert & visual mode
-inoremap lk <esc>
-vnoremap lk <esc>
+inoremap df <esc>
+vnoremap df <esc>
 
 " Copy and Paste to system clipboard
 vnoremap <C-y> "+y
 map <C-p> "+p
 
 " esc in command mode
-cnoremap kj <C-C>
+cnoremap df <C-C>
 
 " Spell check
 map <F6> :setlocal spell! spelllang=en_us<CR>
