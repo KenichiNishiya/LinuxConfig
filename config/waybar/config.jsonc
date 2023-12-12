@@ -74,10 +74,11 @@
 	"on-click": "mpc toggle",
 },
   "clock": {
-    "format": "<span foreground='#cba6f7'> </span><span>{:%H:%M %d/%m}</span>",
+    "format": "<span foreground='#cba6f7'> </span><span>{:%H:%M:%S %d/%m}</span>",
     "on-click": "alacritty -e cal 2023",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "format-alt": "<span foreground='#89dceb'> </span><span>{:%H:%M}</span>",
+    "interval": 1
   },
   "cpu": {
     "format": "<span foreground='#f5e0dc'></span> {usage}%",

@@ -1,9 +1,15 @@
 #!/bin/bash
+### SSH with kitty ###
+kitty +kitten ssh user@hostname.local
+
 ### CONFIGURE RASPBERRY PI ZERO 2 W ###
 
 sudo apt update && sudo apt upgrade
 sudo apt install git pip -y
 pip3 install beautifulsoup4 lxml pandas
+
+### Optional packages ###
+sudo apt install vim kitty
 
 ###########################################################
 ### Lowering power consumption ###
@@ -144,4 +150,24 @@ dig google.com @127.0.0.1 -p 5335
 'Side bar -> Settings -> DNS ->[clear upstream dns servers -> add Custom 1(IPv4) as [127.0.0.1#5335] -> save'
 
 ### Pihole log file ###
+# https://www.reddit.com/r/pihole/comments/sjl444/piholelog_is_10gb/
 vim /var/log/pihole.log
+
+### Unbound optimization ### 
+# https://www.reddit.com/r/pihole/comments/d9j1z6/unbound_as_recursive_dns_server_slow_performance/
+
+sudo vi /etc/dnsmasq.d/01-pihole.conf
+# Disable cache, since unbound already takes care of it
+cache-size=0
+
+sudo vi /etc/unbound/unbound.conf.d/pi-hole.conf
+# Paste the following to the end of the file
+
+cache-min-ttl: 0
+serve-expired: yes
+# the rrset-cache needs to be double the msg-cache. 8/16m for both would probably be enough
+msg-cache-size: 32m
+rrset-cache-size: 64m
+
+sudo service unbound restart
+sudo service unbound status
