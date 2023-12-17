@@ -17,6 +17,9 @@ sudo dnf groupinstall "Development Tools"
 
 # Commit on github without the need to type the credentials
 git config --global credential.helper store
+git config --global user.email "email"
+git config --global user.name "name"
+
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! DNF CONFIGURATION
