@@ -1551,9 +1551,9 @@ https://www.reddit.com/r/swaywm/comments/l4e55v/guide_how_to_screenshare_from_ch
 /usr/libexec/xdg-desktop-portal r & /usr/libexec/xdg-desktop-portal-wlr
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-#! CREATE SYSTEMD SERVICE
+#! CREATE SYSTEMD SERVICE WITH TIMER
 sudo vim /etc/systemd/system/name.service
-
+'
 [Unit]
 Description=something
 After=network.target
@@ -1568,6 +1568,25 @@ ExecStart=/path/to/file.sh
 
 [Install]
 WantedBy=multi-user.target
+'
+
+sudo vim /etc/systemd/system/name.timer
+# This one is set to run every day at 6am, within 1 minute of the time, and persistent as it will auto run asap in case the system was off that time
+'
+[Unit]
+Description=something
+
+[Timer]
+OnCalendar=*-*-* 06:00:00
+AccuracySec=1m
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+'
+
+sudo systemctl enable --now name.timer
+sudo systemctl daemon-reload
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! PYTHON DEVELOPMENT
