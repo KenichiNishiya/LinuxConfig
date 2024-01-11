@@ -8,7 +8,7 @@ sudo dnf install --setopt=install-weak-deps=False nomacs
 
 pip3 install jedi trash-cli 
 #sudo dnf in meson vulkan-devel libXxf86vm-devel libXres-devel libdrm-devel wayland-protocols-devel SDL2-devel libudev-devel libinput-devel libseat1 seatd-devel wlroots-devel gslang-devel libcap-devel
-sudo flatpak install vscodium librewolf brave flatseal obsidian
+sudo flatpak install vscodium librewolf brave flatseal obsidian mGBA melonDS
 
 sudo dnf rm elisa-player vlc kmouth inkscape khelpcenter gwenview
 
