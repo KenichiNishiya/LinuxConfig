@@ -6,7 +6,7 @@ while true; do
         COUNTER=1
         TEMP=0
     fi
-    NEWTEMP=$(sensors | grep Tctl | awk '{print $2}' | cut -d '+' -f 2 | cut -d "." -f 1)
+    NEWTEMP=$(sensors | grep "Package id" | awk '{print $4}' | cut -d '.' -f 1 | cut -d '+' -f 2)
     TEMP=$(( $TEMP+$NEWTEMP ))
     AVERAGE=$(( $TEMP/$COUNTER ))
     echo "Average CPU temperature: "$AVERAGE 
