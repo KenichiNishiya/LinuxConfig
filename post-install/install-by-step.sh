@@ -23,7 +23,7 @@ do
     echo -e $Y"Enter a number 
     1- Fix dnf
     2- Enable RPM and update system
-    3- Install flatpak and snap
+    3- Install flatpak, snap and multimedia codecs
     4- Setup power saving
     5- Optimize performance (SSD trim, adjust swappiness)
     6- Setup mouse/trackpad X11
@@ -75,10 +75,16 @@ defaultyes=Yes" | sudo tee /etc/dnf/dnf.conf
             sudo flatpak override --filesystem=$HOME/.themes
             sudo flatpak override --filesystem=$HOME/.icons
             echo -e $Y"Installed flatpak"$N
+
             sudo dnf in -y snapd
             sudo systemctl enable --now snapd
-            # sudo systemctl enable --now snapd.apparmor
             echo -e $Y"Installed snap"$N
+            # sudo systemctl enable --now snapd.apparmor
+
+            sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-plugin-libav --exclude=gstreamer1-plugins-bad-free-devel
+            sudo dnf install lame\* --exclude=lame-devel
+            sudo dnf group upgrade --with-optional Multimedia   
+            echo -e $Y"Installed multimedia codecs"$N
             ;;
         4)
             sudo snap install auto-cpufreq
@@ -129,7 +135,7 @@ EndSection' | sudo tee /etc/X11/xorg.conf.d/50-mouse-acceleration.conf
             ;;
 
         7)
-            sudo dnf in -y --skip-broken florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git rofi dunst libnotify lxappearance qt5ct fcitx5 fcitx5-mozc fcitx5-configtool cpu-x polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 exa antimicrox leafpad bat fzf gamemode xhost neovim python3-pip nodejs tmux gammastep picom kernel-tools blueman network-manager-applet pulseaudio-utils wdisplays slurp grim libva-utils neovim kitty intel-gpu-tools lxqt-policykit wmname mpc meson ninja-build wayland-protocols-devel pulseaudio-libs-devel dbus-x11 dav1d
+            sudo dnf in -y --skip-broken florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git rofi dunst libnotify lxappearance qt5ct fcitx5 fcitx5-mozc fcitx5-configtool cpu-x polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 eza antimicrox leafpad bat fzf gamemode xhost neovim python3-pip nodejs tmux gammastep picom kernel-tools blueman network-manager-applet pulseaudio-utils wdisplays slurp grim libva-utils neovim kitty intel-gpu-tools lxqt-policykit wmname mpc meson ninja-build wayland-protocols-devel pulseaudio-libs-devel dbus-x11 dav1d
             sudo dnf install -y --setopt=install-weak-deps=False nomacs 
             sudo dnf groupinstall -y "C Development Tools and Libraries"
             sudo dnf groupinstall -y "Development Tools"
