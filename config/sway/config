@@ -26,9 +26,9 @@ set $menu wofi --show drun -W 500
 #
 
 # output DP-1 mode 1920x1080@120Hz position 1920,0 adaptive_sync on
-# Always set your main monitor first
-output eDP-1 mode 1366x768@60Hz pos 0,0
-output DP-1 mode 1680x1050 pos 1366,0
+# Always set your main monitor first 
+output eDP-1 mode 1920x1080@60Hz pos 0,0
+output DP-1 mode 1680x1050 pos 1920,0
 output * adaptive_sync off
 # output DP-1 mode 1024x768@75Hz pos 1366,0
 
@@ -56,8 +56,8 @@ gaps inner 5
 # Example configuration:
 #
  exec swayidle -w \
-          timeout 120 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-          timeout 120 'swaylock -f -c 000000' \
+          timeout 240 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+          timeout 240 'swaylock -f -c 000000' \
           before-sleep 'swaylock -f -c 000000'
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
@@ -362,4 +362,4 @@ focus_follows_mouse yes
 #  exec systemctl --user import-environment
  # exec xdg-desktop-portal -r
 
- exec sudo cpupower frequency-set --min 2.5GHz
+ # exec sudo cpupower frequency-set --min 2.5GHz
