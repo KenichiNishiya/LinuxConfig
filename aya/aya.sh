@@ -393,7 +393,7 @@ cpupower frequency-info
 sudo cpupower frequency-set --governor powersave
 # This is the default governor and probably the best one.
 # But may need to change the max frequency with
-sudo cpupower frequency-set --max 3.5GHz
+sudo cpupower frequency-set --max 3500mhz
 
 # If you use Intel cpu with TurboBoost, check if it's enabled with 
 cat /sys/devices/system/cpu/intel_pstate/no_turbo
@@ -561,6 +561,7 @@ WINEPREFIX="$HOME/re/games/wine32" winetricks corefonts
 # There are many possible causees for that
 # Firstly, you can test with
 mangohud glxgears
+vblank_mode=0 mangohud glxgears
 mangohud vkcube
 
 # On older games, try
@@ -1647,3 +1648,5 @@ sudo dnf in glade SDL2-devel libpcap-devel
 sudo systemctl mask power-profiles-daemon.service
 sudo systemctl unmask power-profiles-daemon.service
 systemctl restart power-profiles-daemon.service
+
+sudo dnf rm rhythmbox totem
