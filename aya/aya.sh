@@ -772,8 +772,10 @@ vim .config/ranger/rifle.conf
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! SCRCPY TO CONTROL YOUR SMARTPHONE FROM PC
 
-opi scrcpy
+sudo dnf copr enable zeno/scrcpy && sudo dnf install scrcpy
 # Select 1 and 1 again
+
+sudo dnf in android-tools
 
 # Plug the device through USB
 # Search the IP on the phone configurations
