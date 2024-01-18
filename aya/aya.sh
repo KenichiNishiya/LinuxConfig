@@ -1643,17 +1643,13 @@ mysql_config --cflags
 gcc -o file $(mysql_config --cflags) file.c $(mysql_config --libs)
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-#! DESMUME
-sudo dnf in glade SDL2-devel libpcap-devel
-
-'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! LAPTOP POOR PERFORMANCE PLUGGED OUT
 sudo systemctl mask power-profiles-daemon.service
 sudo systemctl unmask power-profiles-daemon.service
 systemctl restart power-profiles-daemon.service
 
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! REMOVE GNOME BLOAT
 sudo dnf rm rhythmbox totem
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-#! VAPOURSYNTH
-sudo dnf in zimg-devel python3-devel libavutil-free-devel

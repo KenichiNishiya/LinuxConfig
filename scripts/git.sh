@@ -24,7 +24,6 @@ cp -r $IN'sway' $OUT
 cp -r $IN'mpv' $OUT
 cp -r $IN'antimicrox' $OUT
 
-# cp ~/Documents/suse.sh $REPO 
 # cp ~/.vimrc $REPO'vimrc'
 cp ~/.zsh_aliases $REPO'zsh_aliases'
 cp ~/.zprofile $REPO'zprofile'
