@@ -24,7 +24,7 @@ cp $IN'picom/picom.conf' $OUT'picom/picom.conf'
 # cp $IN'nvim/lua/custom/plugins.lua' $OUT'nvim/plugins/plugins.lua'
 cp $IN'tmux/tmux.conf' $OUT'tmux/tmux.conf'
 cp $IN'sway/config' $OUT'sway/config'
-cp -r $IN'mpv/*' $OUT'mpv/'
+cp -r $IN'mpv' $OUT
 cp -r $IN'antimicrox' $OUT'antimicrox'
 
 # cp ~/Documents/suse.sh $REPO 
