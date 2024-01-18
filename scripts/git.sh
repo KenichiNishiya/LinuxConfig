@@ -4,28 +4,25 @@ REPO=~/re/git/dotfiles/
 IN=~/.config/
 OUT=~/re/git/dotfiles/config/
 
-cp $IN'alacritty/alacritty.yml' $OUT'alacritty/alacritty.yml'
-cp $IN'bspwm/bspwmrc' $OUT'bspwm/bspwmrc'
-cp $IN'dunst/dunstrc' $OUT'dunst/dunstrc'
-cp $IN'picom/picom.conf' $OUT'picom/picom.conf'
-cp $IN'polybar/config.ini' $OUT'polybar/config.ini'
-cp $IN'polybar/launch.sh' $OUT'polybar/launch.sh'
-cp $IN'rofi/config.rasi' $OUT'rofi/config.rasi'
-cp $IN'sxhkd/sxhkdrc' $OUT'sxhkd/sxhkdrc'
-cp $IN'waybar/config.jsonc' $OUT'waybar/config.jsonc'
-cp $IN'waybar/style.css' $OUT'waybar/style.css'
-cp $IN'hypr/hyprland.conf' $OUT'hypr/hyprland.conf'
-cp $IN'wofi/config' $OUT'wofi/config'
-cp $IN'wofi/style.css' $OUT'wofi/style.css'
-cp $IN'kitty/kitty.conf' $OUT'kitty/kitty.conf'
-cp $IN'picom/picom.conf' $OUT'picom/picom.conf'
+cp -r $IN'alacritty' $OUT
+cp -r $IN'bspwm' $OUT
+cp -r $IN'dunst' $OUT
+cp -r $IN'picom' $OUT
+cp -r $IN'polybar' $OUT
+cp -r $IN'rofi' $OUT
+cp -r $IN'sxhkd' $OUT
+cp -r $IN'waybar' $OUT
+cp -r $IN'hypr' $OUT
+cp -r $IN'wofi' $OUT
+cp -r $IN'kitty' $OUT
+cp -r $IN'picom' $OUT
 # cp $IN'nvim/lua/custom/init.lua' $OUT'nvim/init/init.lua'
 # cp $IN'nvim/lua/custom/chadrc.lua' $OUT'nvim/chadrc/chadrc.lua'
 # cp $IN'nvim/lua/custom/plugins.lua' $OUT'nvim/plugins/plugins.lua'
-cp $IN'tmux/tmux.conf' $OUT'tmux/tmux.conf'
-cp $IN'sway/config' $OUT'sway/config'
+cp -r $IN'tmux' $OUT
+cp -r $IN'sway' $OUT
 cp -r $IN'mpv' $OUT
-cp -r $IN'antimicrox' $OUT'antimicrox'
+cp -r $IN'antimicrox' $OUT
 
 # cp ~/Documents/suse.sh $REPO 
 # cp ~/.vimrc $REPO'vimrc'
@@ -38,7 +35,7 @@ cp -r $IN'lutris/games/' $REPO'/bakap/lutris/'
 cp -r ~/'.config/bakap/' $REPO
 # cp -r /home/yori/Documents/scripts/* $REPO'scripts/'
 # cp $IN'nvim/init.vim' $OUT'nvim/init.vim' sudo cp /etc/sddm.conf.d/sddm.conf $OUT'sddm/sddm.conf' 
-cp -r /usr/share/sddm/themes/sddm-sugar-candy $OUT'sddm/'
+# cp -r /usr/share/sddm/themes/sddm-sugar-candy $OUT'sddm/'
 
 cd $REPO
 echo "Changed directory to $(pwd)"
