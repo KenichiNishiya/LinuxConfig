@@ -2,7 +2,8 @@
 DATE=$(date +%Y-%m-%d)
 
 UPDATE_INTERVAL=1
-LOG_FILE=~/Documents/battery/$DATE.txt
+LOG_FILE=~/Documents/$DATE.txt
+touch $LOG_FILE
 
 START_TIME=""
 LAST_BATTERY=""
