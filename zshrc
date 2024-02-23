@@ -174,3 +174,7 @@ export LS_COLORS
 
 PROMPT='%{$fg[magenta]%}[%D{%H:%M:%S}] '$PROMPT
 # export QT_QPA_PLATFORMTHEME=qt5ct
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

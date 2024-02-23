@@ -1545,7 +1545,7 @@ QT_QPA_PLATFORMTHEME=qt5ct
 # NOTE: IF USING FEDORA MAY MESS WITH GPG KEYS STUFF, JUST UPDATE/INSTALL WITH THE --nogpgcheck FLAG
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-# LEAFTPAD SLOW STARTUP
+# LEAFPAD SLOW STARTUP
 https://discussion.fedoraproject.org/t/leafpad-slow-startup/74770
 /usr/bin/dbus-launch --exit-with-session leafpad
 
@@ -1651,5 +1651,26 @@ systemctl restart power-profiles-daemon.service
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! REMOVE GNOME BLOAT
 sudo dnf rm rhythmbox totem
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! SETUP KOTLIN
+https://idroot.us/install-kotlin-fedora-38/
+
+sudo dnf install java-1.8.0-openjdk
+curl -s "https://get.sdkman.io" | bash
+source "$HOME/.sdkman/bin/sdkman-init.sh"
+sdk version
+sdk list kotlin
+sdk install kotlin <version>
+# Test
+kotlin -version
+vim a.kt
+'
+fun main(){
+    println("Hello")
+}
+'
+kotlinc a.kt -include-runtime -d a.jar
+java -jar a.jar
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
