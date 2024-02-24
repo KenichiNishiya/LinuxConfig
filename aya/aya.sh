@@ -20,7 +20,6 @@ git config --global credential.helper store
 git config --global user.email "email"
 git config --global user.name "name"
 
-
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! DNF CONFIGURATION
 
@@ -48,7 +47,7 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 
 # :PlugInstall
 # :PlugUpdate
-:TSInstall c cpp awk bash html php json rust sxhkdrc yaml toml javascript css java markdown markdown_inline lua sql python
+:TSInstall c cpp awk bash html php json rust sxhkdrc yaml toml javascript css java markdown markdown_inline lua sql python kotlin
 
 vim ~/.local/share/nvim/plugged/dracula.nvim/lua/dracula/palette.lua
 # Change the bg to #0f0f17
@@ -61,7 +60,7 @@ yarn install
 yarn build
 pip3 install jedi
 
-:CocInstall coc-python coc-html coc-css coc-tsserver coc-clangd coc-java coc-sh
+:CocInstall coc-python coc-html coc-css coc-tsserver coc-clangd coc-java coc-sh coc-kotlin
 :CocInstall @yaegassy/coc-intelephense
 # Open a C/C++ file and use this command
 :CocCommand clangd.install

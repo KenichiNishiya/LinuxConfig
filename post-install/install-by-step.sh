@@ -145,6 +145,9 @@ EndSection' | sudo tee /etc/X11/xorg.conf.d/50-mouse-acceleration.conf
             sudo flatpak install -y com.github.tchx84.Flatseal
             sudo flatpak install -y app/md.obsidian.Obsidian/x86_64/stable
             sudo flatpak install -y app/com.obsproject.Studio/x86_64/stable
+            sudo flatpak install -y app/net.kuribo64.melonDS/x86_64/stable
+            sudo flatpak install -y app/org.citra_emu.citra/x86_64/stable 
+            sudo flatpak install -y app/io.mgba.mGBA/x86_64/stable
             pip install selenium pandas plotly pyautogui
             echo -e $Y"Installed everything"$N
             ;;
