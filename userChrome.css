@@ -259,3 +259,5 @@ menupopup{ -moz-appearance: none !important; overflow: -moz-hidden-unscrollable 
 toolbar toolbarbutton:not(#back-button):not(.bookmark-item):not(.titlebar-button) > .toolbarbutton-icon{  border-radius: 0px !important; clip-path: circle() }
 
 menugroup:hover > menuitem{ clip-path: circle() }
+
+#TabsToolbar-customization-target { visibility: collapse !important; }

@@ -23,6 +23,7 @@ cp -r $IN'tmux' $OUT
 cp -r $IN'sway' $OUT
 cp -r $IN'mpv' $OUT
 cp -r $IN'antimicrox' $OUT
+cp -r $IN'ytdl' $OUT
 
 # cp ~/.vimrc $REPO'vimrc'
 cp ~/.zsh_aliases $REPO'zsh_aliases'
