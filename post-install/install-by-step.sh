@@ -66,10 +66,9 @@ print_menu() {
 while true; do
     print_menu
     # 12 will install dracula, is missing cursors
-    read -p "Enter your choice" NUM 
+    read -p "Enter your choice: " NUM 
 
     case $NUM in
-
         1)
 echo "[main]
 gpgcheck=True
