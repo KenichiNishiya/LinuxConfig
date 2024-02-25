@@ -2,6 +2,8 @@
 ## MANUAL ACTION NEEDED:
 # lxappearance and kvantummanager
 # TreeSitter and Coc
+# Firefox css and addons
+
 
 N='\033[0m'
 Y='\033[33m'
@@ -35,7 +37,6 @@ print_menu() {
                 16) echo -e "$G$i- Setup games$N" ;;
                 17) echo -e "$G$i- Setup wihotspot$N" ;;
                 18) echo -e "$G$i- Setup SwayAudioIdleInhibit$N" ;;
-                *) echo -e "$G$i- Unknown option$N" ;;
             esac
         else
             case $i in
@@ -57,7 +58,6 @@ print_menu() {
                 16) echo -e "$Y$i- Setup games$N" ;;
                 17) echo -e "$Y$i- Setup wihotspot$N" ;;
                 18) echo -e "$Y$i- Setup SwayAudioIdleInhibit$N" ;;
-                *) echo -e "$Y$i- Unknown option$N" ;;
             esac
         fi
     done
