@@ -495,13 +495,14 @@ vm.swappiness=10
 }
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-#! CUSTOMIZE FIREFOX CSS
+#! CUSTOMIZE AND SETUP FIREFOX CSS 
 
 # Find the firefox profile you are using and cd to it
 mkdir .mozilla/firefox/*.default-release/chrome
 cp ~/re/git/dotfiles/userChrome.css .mozilla/firefox/*.default-release/chrome/
 # Inside firefox, go to about:config and turn true the following:
 '
+media.ffmpeg.vaapi.enabled
 toolkit.legacyUserProfileCustomizations.stylesheets
 layers.acceleration.force-enabled
 gfx.webrender.all
