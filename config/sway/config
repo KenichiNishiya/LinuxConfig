@@ -259,8 +259,8 @@ bindsym $mod+r mode "resize"
     bindsym $mod+comma exec mpc prev
     bindsym $mod+Shift+period exec mpc toggle
 
-    # bindsym $mod+Shift+S exec grim -g "$(slurp)" $HOME/Pictures/screenshot-$(date +"%Y-%m-%dT%H-%M-%S").png
     bindsym $mod+Shift+S exec IMG=~/Pictures/sc-$(date +"%Y-%m-%dT%H-%M-%S").png && grim -g "$(slurp)" $IMG && wl-copy < $IMG
+
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
@@ -329,7 +329,8 @@ default_floating_border pixel 3
     # resize set width 768
     # move position 25 ppt 10 ppt
     # move position center
-}
+    }
+
     for_window [app_id="nomacs"] {
     floating enable
     resize set height 600
@@ -364,6 +365,9 @@ default_floating_border pixel 3
     resize set width 230
     }
 
+    for_window [class="^.*"] inhibit_idle fullscreen
+    for_window [app_id="^.*"] inhibit_idle fullscreen
+
 focus_follows_mouse yes
 
 # exec "systemctl --user import-environment SWAYSOCK WAYLAND_DISPLAY;
@@ -371,3 +375,4 @@ focus_follows_mouse yes
  # exec xdg-desktop-portal -r
 
  # exec sudo cpupower frequency-set --min 2.5GHz
+

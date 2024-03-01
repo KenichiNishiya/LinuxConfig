@@ -503,6 +503,7 @@ cp ~/re/git/dotfiles/userChrome.css .mozilla/firefox/*.default-release/chrome/
 # Inside firefox, go to about:config and turn true the following:
 '
 media.ffmpeg.vaapi.enabled
+media.hardware-video-decoding.force-enabled
 toolkit.legacyUserProfileCustomizations.stylesheets
 layers.acceleration.force-enabled
 gfx.webrender.all
@@ -1553,7 +1554,11 @@ https://discussion.fedoraproject.org/t/leafpad-slow-startup/74770
 #! SCREEN SHARING OR SCREEN RECORDING
 https://www.reddit.com/r/swaywm/comments/l4e55v/guide_how_to_screenshare_from_chromiumfirefox/
 # Probably an issue with xdg-desktop-portal-wlr not being used
-# XDG_CURRENT_DESKTOP does not need to be set to sway
+# Export both these env
+'
+XDG_CURRENT_DESKTOP=sway
+XDG_SESSION_TYPE=wayland
+'
 
 # Manually run the command below to replace the portal, or put your sway config to auto start
 /usr/libexec/xdg-desktop-portal r & /usr/libexec/xdg-desktop-portal-wlr

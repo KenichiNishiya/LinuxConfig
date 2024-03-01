@@ -2,8 +2,7 @@
 ## MANUAL ACTION NEEDED:
 # lxappearance and kvantummanager
 # TreeSitter and Coc
-# Firefox css and addons
-
+# Firefox css, about:config and addons
 
 N='\033[0m'
 Y='\033[33m'
@@ -12,7 +11,6 @@ G='\033[32m'
 CURRENTDIR=$(pwd)
 OPTION_NUM=18
 
-# Function to print menu options
 print_menu() {
     clear
     echo -e "Enter a number:"
@@ -63,6 +61,7 @@ print_menu() {
     done
 }
 
+# declare -a selected_options # Don't really need to declare it explicitly
 while true; do
     print_menu
     # 12 will install dracula, is missing cursors
