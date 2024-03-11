@@ -54,10 +54,10 @@ gaps inner 5
 #
 # Example configuration:
 #
- # exec swayidle -w \
- #          timeout 240 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
- #          timeout 240 'swaylock -f -c 000000' \
- #          before-sleep 'swaylock -f -c 000000'
+ exec swayidle -w \
+          timeout 240 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+          timeout 240 'swaylock -f -c 000000' \
+          before-sleep 'swaylock -f -c 000000'
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -121,6 +121,9 @@ input type:touchpad {
     # Exit sway (logs you out of your Wayland session)
      # bindsym $mod+Control+m exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
      bindsym $mod+Control+m exec swaymsg exit 
+
+    # Kills focused window
+     bindsym $mod+Shift+w exec swaymsg -t get_tree | jq '.. | select(.type?) | select(.focused==true).pid' | xargs -L 1 kill -9
 #
 # Moving around:
 #
@@ -295,7 +298,7 @@ exec waybar
 # exec export QT_QPA_PLATFORMTHEME=qt5ct
 exec wmname LG3D
 exec '/opt/pulsemixer --set-volume 30 --unmute'
-exec sway-audio-idle-inhibit
+# exec sway-audio-idle-inhibit
 exec /usr/libexec/lxqt-policykit-agent
 exec /usr/libexec/xdg-desktop-portal r & /usr/libexec/xdg-desktop-portal-wlr
 
@@ -334,7 +337,7 @@ default_floating_border pixel 3
     for_window [app_id="nomacs"] {
     floating enable
     resize set height 600
-    # resize set width 1000
+    resize set width 1000
     }
 
     for_window [app_id="org.qbittorrent.qBittorrent"] {
