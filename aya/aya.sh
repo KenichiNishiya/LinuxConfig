@@ -8,7 +8,7 @@ sudo dnf install --setopt=install-weak-deps=False nomacs
 
 pip3 install jedi trash-cli 
 #sudo dnf in meson vulkan-devel libXxf86vm-devel libXres-devel libdrm-devel wayland-protocols-devel SDL2-devel libudev-devel libinput-devel libseat1 seatd-devel wlroots-devel gslang-devel libcap-devel
-sudo flatpak install vscodium librewolf brave flatseal obsidian mGBA melonDS
+flatpak install vscodium librewolf brave flatseal obsidian mGBA melonDS
 
 sudo dnf rm elisa-player vlc kmouth inkscape khelpcenter gwenview
 
@@ -332,11 +332,11 @@ sudo dnf in flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 # GTK theme
-sudo flatpak override --filesystem=$HOME/.themes
-sudo flatpak override --filesystem=$HOME/.icons
+flatpak override --filesystem=$HOME/.themes
+flatpak override --filesystem=$HOME/.icons
 # May not work with themes outside the home directory
-sudo flatpak override --env=GTK_THEME=gtk-master
-sudo flatpak override --env=GTK_THEME=dracula-icons
+flatpak override --env=GTK_THEME=gtk-master
+flatpak override --env=GTK_THEME=dracula-icons
 # Might need to reboot
 reboot
 
@@ -433,7 +433,7 @@ sudo dnf in libva-utils
 # May need a reboot
 
 # Edit: still don't know what is happening, but installing via flatpak may be the solution
-sudo flatpak install obsproject
+flatpak install obsproject
 
 # Optionally some tweaked hardware encoders
 https://plus.diolinux.com.br/t/vaapi-mais-rapido-para-intel-amd-no-linux/46961/8
@@ -1677,5 +1677,23 @@ fun main(){
 '
 kotlinc a.kt -include-runtime -d a.jar
 java -jar a.jar
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! SETUP MONGODB
+# Install on Fedora 38
+sudo tee /etc/yum.repos.d/mongodb.repo << "EOF" > /dev/null
+[mongodb]
+name=MongoDB
+baseurl=https://repo.mongodb.org/yum/redhat/9/mongodb-org/7.0/${basearch}/
+gpgkey=https://www.mongodb.org/static/pgp/server-7.0.asc
+EOF
+sudo rpm --import https://www.mongodb.org/static/pgp/server-7.0.asc
+sudo dnf install mongodb-org
+sudo systemctl enable mongod.service
+sudo systemctl restart mongod.service
+
+# openssl error
+dnf erase -qy mongodb-mongosh
+dnf install -qy mongodb-mongosh-shared-openssl3
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'

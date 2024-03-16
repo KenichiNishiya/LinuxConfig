@@ -70,9 +70,9 @@ defaultyes=Yes" | sudo tee /etc/dnf/dnf.conf
             ;;
         3)
             sudo dnf in -y flatpak
-            sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-            sudo flatpak override --filesystem=$HOME/.themes
-            sudo flatpak override --filesystem=$HOME/.icons
+            flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+            flatpak override --filesystem=$HOME/.themes
+            flatpak override --filesystem=$HOME/.icons
             echo -e $Y"Installed flatpak"$N
 
             sudo dnf in -y snapd
@@ -138,14 +138,14 @@ EndSection' | sudo tee /etc/X11/xorg.conf.d/50-mouse-acceleration.conf
             sudo dnf install -y --setopt=install-weak-deps=False nomacs 
             sudo dnf groupinstall -y "C Development Tools and Libraries"
             sudo dnf groupinstall -y "Development Tools"
-            sudo flatpak install -y app/com.vscodium.codium/x86_64/stable
-            sudo flatpak install -y app/io.gitlab.librewolf-community/x86_64/stable
-            sudo flatpak install -y com.github.tchx84.Flatseal
-            sudo flatpak install -y app/md.obsidian.Obsidian/x86_64/stable
-            sudo flatpak install -y app/com.obsproject.Studio/x86_64/stable
-            sudo flatpak install -y app/net.kuribo64.melonDS/x86_64/stable
-            sudo flatpak install -y app/org.citra_emu.citra/x86_64/stable 
-            sudo flatpak install -y app/io.mgba.mGBA/x86_64/stable
+            flatpak install -y app/com.vscodium.codium/x86_64/stable
+            flatpak install -y app/io.gitlab.librewolf-community/x86_64/stable
+            flatpak install -y com.github.tchx84.Flatseal
+            flatpak install -y app/md.obsidian.Obsidian/x86_64/stable
+            flatpak install -y app/com.obsproject.Studio/x86_64/stable
+            flatpak install -y app/net.kuribo64.melonDS/x86_64/stable
+            flatpak install -y app/org.citra_emu.citra/x86_64/stable 
+            flatpak install -y app/io.mgba.mGBA/x86_64/stable
             pip install selenium pandas plotly pyautogui
             echo -e $Y"Installed everything"$N
             ;;
@@ -241,8 +241,8 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"' | tee ~/.oh-my-zsh/themes/robbyruss
             sudo cp -r ../config/sddm/sddm-sugar-candy /usr/share/sddm/themes/
 
             ### FLATPAK ###
-            sudo flatpak override --env=THEME=gtk
-            sudo flatpak override --env=ICON_THEME=dracula-icons
+            flatpak override --env=THEME=gtk
+            flatpak override --env=ICON_THEME=dracula-icons
             ;;
 
         13)
@@ -265,7 +265,7 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"' | tee ~/.oh-my-zsh/themes/robbyruss
             echo -e $Y"Downloaded pulsemixer"$N
             ;;
         16)
-            sudo dnf in -y steam lutris goverlay mangohud gamemode gamescope wine winetricks
+            sudo dnf in -y steam lutris goverlay mangohud gamemode gamescope wine wine.i686 winetricks
             echo -e $Y"Installed game related packages"$N
             ;;
 
