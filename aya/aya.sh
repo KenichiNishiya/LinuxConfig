@@ -1697,3 +1697,4 @@ dnf erase -qy mongodb-mongosh
 dnf install -qy mongodb-mongosh-shared-openssl3
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+sudo systemctl disable systemd-networkd-wait-online.service
