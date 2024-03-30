@@ -139,13 +139,13 @@ EndSection' | sudo tee /etc/X11/xorg.conf.d/50-mouse-acceleration.conf
             sudo dnf groupinstall -y "C Development Tools and Libraries"
             sudo dnf groupinstall -y "Development Tools"
             flatpak install -y app/com.vscodium.codium/x86_64/stable
-            flatpak install -y app/io.gitlab.librewolf-community/x86_64/stable
+            # flatpak install -y app/io.gitlab.librewolf-community/x86_64/stable
             flatpak install -y com.github.tchx84.Flatseal
             flatpak install -y app/md.obsidian.Obsidian/x86_64/stable
             flatpak install -y app/com.obsproject.Studio/x86_64/stable
-            flatpak install -y app/net.kuribo64.melonDS/x86_64/stable
-            flatpak install -y app/org.citra_emu.citra/x86_64/stable 
-            flatpak install -y app/io.mgba.mGBA/x86_64/stable
+            # flatpak install -y app/net.kuribo64.melonDS/x86_64/stable
+            # flatpak install -y app/org.citra_emu.citra/x86_64/stable 
+            # flatpak install -y app/io.mgba.mGBA/x86_64/stable
             pip install selenium pandas plotly pyautogui
             echo -e $Y"Installed everything"$N
             ;;

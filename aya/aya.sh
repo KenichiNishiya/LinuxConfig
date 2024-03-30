@@ -785,7 +785,7 @@ adb tcpip 5555
 adb connect 192.168.15.52 # Use your IP here
 # Unplug the device to run via Wi-fi
 # To run with less latency:
-scrcpy -m800 -b2M
+scrcpy -m800 -b2M -S
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! CREATE A HOTSPOT INTERNET CONNECTION (BEST WAY)
@@ -1698,3 +1698,9 @@ dnf install -qy mongodb-mongosh-shared-openssl3
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 sudo systemctl disable systemd-networkd-wait-online.service
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! Real-ESRGAN
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+
