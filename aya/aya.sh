@@ -332,11 +332,11 @@ sudo dnf in flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 # GTK theme
-flatpak override --filesystem=$HOME/.themes
-flatpak override --filesystem=$HOME/.icons
+sudo flatpak override --filesystem=$HOME/.themes
+sudo flatpak override --filesystem=$HOME/.icons
 # May not work with themes outside the home directory
-flatpak override --env=GTK_THEME=gtk-master
-flatpak override --env=GTK_THEME=dracula-icons
+sudo flatpak override --env=GTK_THEME=gtk-master
+sudo flatpak override --env=GTK_THEME=dracula-icons
 # Might need to reboot
 reboot
 

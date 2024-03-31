@@ -241,6 +241,9 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"' | tee ~/.oh-my-zsh/themes/robbyruss
             sudo cp -r ../config/sddm/sddm-sugar-candy /usr/share/sddm/themes/
 
             ### FLATPAK ###
+            sudo flatpak override --filesystem=$HOME/.themes
+            sudo flatpak override --filesystem=$HOME/.icons
+
             flatpak override --env=THEME=gtk
             flatpak override --env=ICON_THEME=dracula-icons
             ;;
