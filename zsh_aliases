@@ -13,7 +13,7 @@ alias tw="adb connect 192.168.15.52:5555 ; scrcpy -K -m700 -b2M || killall adb ;
 alias sk="scrcpy --tcpip=192.168.15.4 -K -m700 -b2M"
 alias .zshrc="sh ~/re/git/dotfiles/scripts/zshrcsave.sh"
 alias usrpkg="sudo dnf repoquery --userinstalled"
-alias baka="sh ~/re/git/dotfiles/scripts/baka.sh"
+# alias baka="sh ~/re/git/dotfiles/scripts/baka.sh"
 #alias yayo="setopt localoptions rmstarsilent ; rm -rf /home/yori/.local/share/Steam/steamapps/shadercache/* ; rm -rf /home/yori/.cache/* ; rm -rf /home/yori/.gradle/caches/* ; rm -r /home/yori/.gradle/.gradle/caches/* ; printf 'y\ny\ny\n' | yay -Scc" 
 alias yaya="sudo dnf clean packages; sudo dnf clean dbcache"
 alias gita="/home/yori/re/git/dotfiles/scripts/git.sh"
@@ -50,8 +50,8 @@ alias ura="cd /home/yori/re/git/ura;git add .; git commit -m 'Upload files';git 
 alias so="~/re/git/dotfiles/scripts/so.sh"
 alias cpu="sudo cpupower frequency-set --min 2.6GHz"
 alias minagorosi="killall waybar; killall kdeconnectd; killall blueman-applet; killall kdeconnect-indicator; killall firewalld; killall snapd; killall lxqt-policykit-agent; killall fcitx5; killall nm-applet; killall mpd; killall dunst"
-alias glem="cd /home/yori/re/git/GLEM-android; cp -r /home/yori/AndroidStudioProjects/GLEM2/* .; git add .; git commit -m "Update"; git push origin main
-"
+alias glem="cd /home/yori/re/git/GLEM-android; cp -r /home/yori/AndroidStudioProjects/GLEM2/* .; git add .; git commit -m "Update"; git push origin main"
+alias baka="stu;ura;gita;glem"
 # alias f="du -a ~/us/* ~/Documents/* | awk '{print $2}' | grep -vi bakap | fzf --preview='bat --color=always --style=numbers {}' --bind K:preview-page-up,J:preview-page-down | xargs -r $EDITOR"
 f() {du -a ~/study ~/react ~/Documents/* | awk '{print $2}' | grep -vi bakap | fzf --preview='bat --color=always --style=numbers {}' --bind K:preview-page-up,J:preview-page-down | xargs -r $EDITOR; }
 ff() {fzf --preview='bat --color=always --style=numbers {}' --bind K:preview-page-up,J:preview-page-down | xargs -r $EDITOR; }
