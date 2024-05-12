@@ -6,11 +6,6 @@ alias ytv="yt-dlp -o '~/Music/%(playlist_title)s/%(title)s.%(ext)s' -ciw -f 'bes
 
 alias nnd="nndownload.py -u kaickenithinishiya@gmail.com -p Dai6Kuchikutai! --add-metadata -o '/home/yori/Music/NND/{title}.{ext}' "
 #alias v="yt-dlp -o '~/Videos/Aguia/Modulo1/%(title)s.%(ext)s' --download-archive '~/Documents/Olho.txt'"
-#alias wasus="adb connect 192.168.15.52 ; scrcpy -m800 -b1M "
-#alias scrcpy="scrcpy -K -m1000"
-alias tw="adb connect 192.168.15.52:5555 ; scrcpy -K -m700 -b2M || killall adb ; adb connect 192.168.15.52:5555 ; scrcpy -K -m700 -b2M"
-#alias sk="adb connect 192.168.15.4:5555 ; scrcpy -K -m700 -b2M || killall adb ; adb connect 192.168.15.4:5555 ; scrcpy -K -m700 -b2M"
-alias sk="scrcpy --tcpip=192.168.15.4 -K -m700 -b2M"
 alias .zshrc="sh ~/re/git/dotfiles/scripts/zshrcsave.sh"
 alias usrpkg="sudo dnf repoquery --userinstalled"
 # alias baka="sh ~/re/git/dotfiles/scripts/baka.sh"
