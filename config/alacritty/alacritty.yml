@@ -11,11 +11,11 @@ scrolling:
   history: 100000
   multiplier: 3
 
-cursor:
-  style:
-    blinking: Always
-    blink_interval: 2000
-    shape: Block
+# cursor:
+#   style:
+#     blinking: Always
+#     blink_interval: 2000
+#     shape: Block
 font:
   normal:
     family: JetBrainsMono Nerd Font
