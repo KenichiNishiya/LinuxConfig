@@ -512,7 +512,7 @@ gfx.webrender.all
 about:config
 # Search for
 layout.css.devPixelsPerPx
-# Set something like 1.2
+# Set something like 1.25
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! RUN GUI PROGRAMS WHICH REQUIRES SUDO/ROOT

@@ -70,9 +70,9 @@ defaultyes=Yes" | sudo tee /etc/dnf/dnf.conf
             ;;
         3)
             sudo dnf in -y flatpak
-            flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-            flatpak override --filesystem=$HOME/.themes
-            flatpak override --filesystem=$HOME/.icons
+            sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+            sudo flatpak override --filesystem=$HOME/.themes
+            sudo flatpak override --filesystem=$HOME/.icons
             echo -e $Y"Installed flatpak"$N
 
             sudo dnf in -y snapd
@@ -82,7 +82,7 @@ defaultyes=Yes" | sudo tee /etc/dnf/dnf.conf
 
             sudo dnf install -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-plugin-libav --exclude=gstreamer1-plugins-bad-free-devel
             sudo dnf install -y lame\* --exclude=lame-devel
-            sudo dnf group upgrade --with-optional Multimedia   
+            sudo dnf group upgrade -y --with-optional Multimedia
             echo -e $Y"Installed multimedia codecs"$N
             ;;
         4)
@@ -244,8 +244,8 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"' | tee ~/.oh-my-zsh/themes/robbyruss
             sudo flatpak override --filesystem=$HOME/.themes
             sudo flatpak override --filesystem=$HOME/.icons
 
-            flatpak override --env=THEME=gtk
-            flatpak override --env=ICON_THEME=dracula-icons
+            sudo flatpak override --env=THEME=gtk
+            sudo flatpak override --env=ICON_THEME=dracula-icons
             ;;
 
         13)

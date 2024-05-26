@@ -108,9 +108,9 @@ alias ls='ls --color'
 #export SDL_IM_MODULE='fcitx'
 #export XMODIFIERS='@im=fcitx'
 export XDG_CURRENT_DESKTOP=Unity
-GTK_IM_MODULE=fcitx
-QT_IM_MODULE=fcitx
-XMODIFIERS=@im=fcitx
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
 
 #EXPORT ALIAS FROM A DIFFERENT FILE
 if [ -f ~/.zsh_aliases ]; then

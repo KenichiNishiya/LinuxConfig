@@ -1,4 +1,4 @@
-if [ $DESKTOP_SESSION == "sway"]; then
+#if [ $DESKTOP_SESSION == "sway"]; then
     #lightdm SOURCES THIS FILE
     export WINIT_X11_SCALE_FACTOR=1
     #export LIBVA_DRIVER_NAME=iHD
@@ -6,7 +6,7 @@ if [ $DESKTOP_SESSION == "sway"]; then
     #export XDG_DATA_HOME=/var/lib/flatpak/exports/share
     # export QT_QPA_PLATFORMTHEME=qt5ct,xbc
     # To run qt application on wayland, uncomment below
-    export QT_QPA_PLATFORMTHEME=qt5ct
+    export QT_QPA_PLATFORMTHEME=qt6ct
     export XDG_DATA_DIRS=$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/
     # Set default editor as neovim
     export EDITOR=nvim
@@ -51,4 +51,4 @@ if [ $DESKTOP_SESSION == "sway"]; then
     # export _JAVA_AWT_WM_NONREPARENTING=1
 
     # Blue light filter
-fi
+#fi
