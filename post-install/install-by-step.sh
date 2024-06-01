@@ -134,7 +134,7 @@ EndSection' | sudo tee /etc/X11/xorg.conf.d/50-mouse-acceleration.conf
             ;;
 
         7)
-            sudo dnf in -y --skip-broken florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git rofi dunst libnotify lxappearance qt5ct fcitx5 fcitx5-mozc fcitx5-configtool cpu-x polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 eza antimicrox leafpad bat fzf gamemode xhost neovim python3-pip nodejs tmux gammastep picom kernel-tools blueman network-manager-applet pulseaudio-utils wdisplays slurp grim libva-utils neovim kitty intel-gpu-tools lxqt-policykit wmname mpc meson ninja-build wayland-protocols-devel pulseaudio-libs-devel dbus-x11 dav1d lm_sensors neofetch audacity gimp chromium piper
+            sudo dnf in -y --skip-broken florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git rofi dunst libnotify lxappearance qt6ct fcitx5 fcitx5-mozc fcitx5-configtool cpu-x polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 eza antimicrox leafpad bat fzf gamemode xhost neovim python3-pip nodejs tmux gammastep picom kernel-tools blueman network-manager-applet pulseaudio-utils wdisplays slurp grim libva-utils neovim kitty intel-gpu-tools lxqt-policykit wmname mpc meson ninja-build wayland-protocols-devel pulseaudio-libs-devel dbus-x11 dav1d lm_sensors neofetch audacity gimp chromium piper
             sudo dnf install -y --setopt=install-weak-deps=False nomacs 
             sudo dnf groupinstall -y "C Development Tools and Libraries"
             sudo dnf groupinstall -y "Development Tools"
@@ -206,7 +206,7 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"' | tee ~/.oh-my-zsh/themes/robbyruss
             ;;
 
         12)
-            sudo dnf in -y lxappearance qt5ct kvantum nitrogen
+            sudo dnf in -y lxappearance qt6ct kvantum nitrogen
             mkdir -p ~/.themes
             cd ~/.themes
             wget https://github.com/dracula/gtk/archive/master.zip
@@ -231,7 +231,7 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"' | tee ~/.oh-my-zsh/themes/robbyruss
             rm -rf gtk-master
 
             echo -e $Y"Themed QT"$N
-            echo -e $Y"But manual set is necessary (lxappearance, kvantummanager and qt5ct)"$N
+            echo -e $Y"But manual set is necessary (lxappearance, kvantummanager and qt6ct)"$N
 
             wget https://github.com/dracula/qbittorrent/raw/master/dracula.qbtheme
 

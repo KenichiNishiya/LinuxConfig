@@ -2,7 +2,7 @@
 set -e
 Nobara
 
-sudo dnf in sddm florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git bspwm rofi nitrogen sxhkd polybar dunst libnotify lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings alacritty zsh lxappearance qt5ct fcitx5 fcitx5-mozc fcitx5-configtool snapd thermald powertop cpu-x flatpak polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 eza antimicrox leafpad tmux bat fzf gamemode xhost neovim python3-pip nodejs tmux gammastep picom kernel-tools blueman network-manager-applet pulseaudio-utils wdisplays slurp grim libva-utils mpc meson ninja-build wayland-protocols-devel dav1d lm_sensors neofetch audacity gimp chromium piper
+sudo dnf in sddm florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git bspwm rofi nitrogen sxhkd polybar dunst libnotify lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings alacritty zsh lxappearance qt6ct fcitx5 fcitx5-mozc fcitx5-configtool snapd thermald powertop cpu-x flatpak polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 eza antimicrox leafpad tmux bat fzf gamemode xhost neovim python3-pip nodejs tmux gammastep picom kernel-tools blueman network-manager-applet pulseaudio-utils wdisplays slurp grim libva-utils mpc meson ninja-build wayland-protocols-devel dav1d lm_sensors neofetch audacity gimp chromium piper
 
 sudo dnf install --setopt=install-weak-deps=False nomacs
 
@@ -197,7 +197,7 @@ sudo cp -r ~/re/git/dotfiles/config/sddm/sddm-sugar-candy /usr/share/sddm/themes
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! CONFIGURE THEME GTK AND QT
 
-sudo dnf in lxappearance qt5ct kvantummanager nitrogen
+sudo dnf in lxappearance qt6ct kvantummanager nitrogen
 
 mkdir -p ~/.themes
 cd ~/.themes
@@ -250,14 +250,14 @@ kvantummanager
 sudo kvantummanger
 # Install/Update Theme > Select a Kvantum theme folder > ~/.themes/Catppuccin-Mocha-Mauve > Choose > Install this theme
 # Change/Delete Theme > Select a theme: > Catppuccin-Mocha-Mauve > Use this theme
-qt5ct
-sudo qt5ct # Altough this won't work unless you set the env var on /etc/profile
+qt6ct
+sudo qt6ct # Altough this won't work unless you set the env var on /etc/profile
 # Appearance > Style: > kvantum > Apply
 # Icon Theme > Dracula > Apply
 
 vim .profile
 # Paste the following line:
-export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_QPA_PLATFORMTHEME=qt6ct
 
 # Change the desktop background
 nitrogen
@@ -1541,7 +1541,7 @@ https://unix.stackexchange.com/questions/680483/how-to-add-qt-qpa-platformtheme-
 # For some reason, when using GDM you can't export this env var on zshrc or zprofile
 sudo vim /etc/environment
 # Paste this inside
-QT_QPA_PLATFORMTHEME=qt5ct
+QT_QPA_PLATFORMTHEME=qt6ct
 # This also helps if you can't find xdg-desktop-portal command
 # NOTE: IF USING FEDORA MAY MESS WITH GPG KEYS STUFF, JUST UPDATE/INSTALL WITH THE --nogpgcheck FLAG
 
