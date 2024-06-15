@@ -1129,7 +1129,6 @@ sudo systemctl status bluetooth
 sudo systemctl restart bluetooth
 
 # GAMEPAD CONTROLLER NO INPUT EVEN WHEN CONNECTED
-# https://www.reddit.com/r/linux_gaming/comments/tdh3gq/controller_connected_but_not_detected/
 sudo vim /etc/bluetooth/input.conf
 # Uncomment or add those lines
 '
@@ -1138,7 +1137,6 @@ UserspaceHID=true
 ClassicBondedOnly=true
 LEAutoSecurity=true
 '
-# Restart, connect the gamepad controller via usb, then unplug and try to connect via bluetooth
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! CANT RECOGNIZE HEADPHONE

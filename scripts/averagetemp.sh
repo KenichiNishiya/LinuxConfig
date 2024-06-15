@@ -5,6 +5,7 @@ MAX=0
 MAX15=0
 MIN=0
 MIN15=0
+FAN=0
 SEC=${1:-1}
 
 R='\033[0;31m'
@@ -25,6 +26,18 @@ while true; do
 
     NEWTEMP=$(sensors | grep Tctl | awk '{print $2}' | cut -d '+' -f 2 | cut -d "." -f 1)
     TEMP=$(( $TEMP+$NEWTEMP ))
+
+    if [ $NEWTEMP -ge 90 ]; then
+        sudo sh -c "echo 0 > /sys/devices/platform/asus-nb-wmi/hwmon/hwmon7/pwm1_enable"
+        FAN=1
+    fi
+    if [ $NEWTEMP -lt 60 ];then
+        if [ $FAN == 1 ]; then
+            sudo sh -c "echo 2 > /sys/devices/platform/asus-nb-wmi/hwmon/hwmon7/pwm1_enable"
+            FAN=0
+        fi
+    fi
+
     AVERAGE=$(( $TEMP/$COUNTER ))
 
     if [ $MAX == 0 ] || [ $MAX -lt $NEWTEMP ]; then
