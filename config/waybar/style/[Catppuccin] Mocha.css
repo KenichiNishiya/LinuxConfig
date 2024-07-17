@@ -53,11 +53,15 @@ window#waybar.empty #window {
     animation: gradient_f 20s ease-in infinite;
     transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
-
-#workspaces button.persistent {
+#workspaces button.empty {
 	color: @surface1;
 	border-radius: 10px;
 }
+
+/* #workspaces button.persistent { */
+/* 	color: @surface1; */
+/* 	border-radius: 10px; */
+/* } */
 
 #taskbar button.active,
 #workspaces button.active {
@@ -68,7 +72,6 @@ window#waybar.empty #window {
     animation: gradient_f 20s ease-in infinite;
     transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
-
 #workspaces button.urgent {
 	color: @red;
  	border-radius: 0px;

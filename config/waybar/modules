@@ -5,7 +5,7 @@
 	"active-only": false,
 	"all-outputs": true,
 	"format": "{icon}",
-	"show-special": false,
+	"show-special": true,
 	"on-click": "activate",
 	"on-scroll-up": "hyprctl dispatch workspace e+1",
 	"on-scroll-down": "hyprctl dispatch workspace e-1",
@@ -27,12 +27,19 @@
 	"show-special": false,
 	"all-outputs": true,
 	"format": "{icon}",
+    //"eDP-1": [ 1, 2, 3, 4, 5]  
+    //"HDMI-A-1": [ 6, 7, 8, 9, 10]  
 	"persistent-workspaces": {
 		"1": [],
 		"2": [],
 		"3": [],
 		"4": [],
 		"5": [],
+		"6": [],
+		"7": [],
+		"8": [],
+		"9": [],
+		"10": [],
 	},
 	"format-icons": {
 		"1": "一",
@@ -106,7 +113,7 @@
 	"interval": 2,
 	"align": 0,
 	"rotate": 0,
-	//"format": "{icon} {percent}%",
+	"format": "{icon} {percent}%",
 	"format-icons": [
 		" ",
 		" ",
@@ -116,7 +123,7 @@
 		"󰃟 ",
 		"󰃠 "
 	],
-	"format": "{icon}",
+	//"format": "{icon}",
 	//"format-icons": ["","","","","","","","","","","","","","",""],
 	"tooltip-format": "backlight {percent}%",
 	"icon-size": 10,
@@ -291,7 +298,7 @@
 	"format-alt-click": "click",
 	"tooltip": true,
 	"tooltip-format": "{used:0.1f}GB/{total:0.1f}G",
-	"on-click-right": "kitty --title btop sh -c 'btop'"
+	"on-click-right": "alacritty --title btop sh -c 'btop'"
 },
 "mpris": {
 	"interval": 10,
@@ -336,7 +343,7 @@
 	"format-icons": [
 		"󰤯", "󰤟", "󰤢", "󰤥", "󰤨"
 	],
-	"on-click-right": "kitty nmtui"
+	"on-click-right": "alacritty nmtui"
 },
 "network#speed": {
 	"interval": 1,
@@ -436,7 +443,7 @@
 	"format-icons": [
 		"󰈸"
 	],
-	"on-click-right": "kitty --title nvtop sh -c 'nvtop'"
+	"on-click-right": "alacritty --title nvtop sh -c 'nvtop'"
 },
 "tray": {
 	"icon-size": 18,
@@ -463,7 +470,7 @@
 	"ignore-list": [
 		"wofi",
 		"rofi",
-		"kitty"
+		"alacritty"
 		],
 },
 "custom/keyboard": {
@@ -539,7 +546,7 @@
 	"exec": "checkupdates | wc -l",
 	"exec-if": "[[ $(checkupdates | wc -l) ]]",
 	"interval": 15,
-	"on-click": "kitty -T update paru -Syu || yay -Syu && notify-send 'The system has been updated'",
+	"on-click": "alacrityy -T update paru -Syu || yay -Syu && notify-send 'The system has been updated'",
 	"tooltip": true,
 	"tooltip-format": "Left Click: Update System\nArch Linux Only",
 },
@@ -630,7 +637,7 @@
 	"format-alt-click": "click",
 	"tooltip": true,
 	"tooltip-format": "{used:0.1f}GB/{total:0.1f}G",
-	"on-click-right": "kitty --title btop sh -c 'btop'",
+	"on-click-right": "alacritty --title btop sh -c 'btop'",
 },
 "pulseaudio#vertical": {
 	"format": "{icon}",
@@ -685,7 +692,7 @@
 	"format-icons": [
 		"󰈸"
 	],
-	"on-click-right": "kitty --title nvtop sh -c 'nvtop'"
+	"on-click-right": "alacritty --title nvtop sh -c 'nvtop'"
 },
 "custom/power_vertical": {
 	"format": "⏻",
