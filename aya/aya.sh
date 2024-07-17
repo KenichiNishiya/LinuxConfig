@@ -1,4 +1,3 @@
-
 set -e
 Nobara
 
@@ -309,8 +308,18 @@ sudo dnf in fcitx5 fcitx5-mozc fcitx5-configtool
 sudo vim ~/.profile
 # Paste the following somewhere in the file
 export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
+# export QT_IM_MODULE=fcitx # If using wayland, add the below instead for each file
+# https://fcitx-im.org/wiki/Using_Fcitx_5_on_Wayland
+
+vim ~/.gtkrc-2.0
+gtk-im-module="fcitx"
+
+vim ~/.config/gtk-3.0/settings.ini 
+gtk-im-module=fcitx
+
+vim ~/.config/gtk-4.0/settings.ini 
+gtk-im-module=fcitx
 
 # Make it auto start on a startup file
 fcitx5 &
@@ -1715,4 +1724,8 @@ sudo systemctl disable systemd-networkd-wait-online.service
 #! Real-ESRGAN
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+### wl-gammarelay
+git clone https://github.com/jeremija/wl-gammarelay.git
+make
+sudo make install PREFIX=/usr
 

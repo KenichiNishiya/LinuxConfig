@@ -12,7 +12,7 @@
     export EDITOR=nvim
     # Set fcitx
     # export GTK_THEME=Catppuccin-Mocha-Standard-Mauve-dark
-    export GTK_IM_MODULE=fcitx
+    # export GTK_IM_MODULE=fcitx # Don't need on wayland
     export QT_IM_MODULE=fcitx
     export XMODIFIERS=@im=fcitx
 
