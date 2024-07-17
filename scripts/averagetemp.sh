@@ -27,12 +27,14 @@ while true; do
     NEWTEMP=$(sensors | grep Tctl | awk '{print $2}' | cut -d '+' -f 2 | cut -d "." -f 1)
     TEMP=$(( $TEMP+$NEWTEMP ))
 
-    if [ $NEWTEMP -ge 90 ]; then
+    if [ $NEWTEMP -ge 85 ]; then
+        sudo sh -c "echo 0 > /sys/devices/platform/asus-nb-wmi/hwmon/hwmon6/pwm1_enable"
         sudo sh -c "echo 0 > /sys/devices/platform/asus-nb-wmi/hwmon/hwmon7/pwm1_enable"
         FAN=1
     fi
-    if [ $NEWTEMP -lt 60 ];then
+    if [ $NEWTEMP -lt 45 ];then
         if [ $FAN == 1 ]; then
+            sudo sh -c "echo 2 > /sys/devices/platform/asus-nb-wmi/hwmon/hwmon6/pwm1_enable"
             sudo sh -c "echo 2 > /sys/devices/platform/asus-nb-wmi/hwmon/hwmon7/pwm1_enable"
             FAN=0
         fi
