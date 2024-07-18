@@ -197,7 +197,8 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"' | tee ~/.oh-my-zsh/themes/robbyruss
             echo -e $Y"Copied files"$N
             ;;
         11)
-            sudo dnf in -y google-noto-sans-jp-fonts
+            sudo dnf in -y google-noto-sans-jp-fonts adobe-source-code-pro-fonts fira-code-fonts fontawesome-fonts-all google-droid-sans-fonts google-noto-sans-cjk-fonts google-noto-color-emoji-fonts google-noto-emoji-fonts jetbrains-mono-fonts
+
 
             sudo mkdir /usr/share/fonts/jetbrains-mono-fonts
             cd /usr/share/fonts/jetbrains-mono-fonts
@@ -259,13 +260,13 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"' | tee ~/.oh-my-zsh/themes/robbyruss
         13)
             sudo dnf in -y sway waybar gammastep wofi clipman libappindicator wl-clipboard
 
-            sudo dnf copr enable zeno/scrcpy
-            sudo dnf copr enable solopasha/hyprland
-            sudo dnf copr enable wef/cliphist
-            sudo dnf copr enable lexa/SwayNotificationCenter
-            sudo dnf copr enable zeno/scrcpy
+            sudo dnf copr enable -y zeno/scrcpy
+            sudo dnf copr enable -y solopasha/hyprland
+            sudo dnf copr enable -y wef/cliphist
+            sudo dnf copr enable -y lexa/SwayNotificationCenter
+            sudo dnf copr enable -y zeno/scrcpy
 
-            sudo dnf in curl gawk git grim gvfs gvfs-mtp ImageMagick jq inxi kitty kvantum nano network-manager-applet openssl pamixer pavucontrol pipewire-alsa pipewire-utils playerctl polkit-gnome python3-requests python3-pip python3-pyquery qt5ct qt6ct qt6-qtsvg rofi-wayland slurp swappy SwayNotificationCenter waybar wget2 wl-clipboard wlogout xdg-user-dirs xdg-utils yad brightnessctl btop cava eog fastfetch gnome-system-monitor mousepad mpv mpv-mpris nvtop qalculate-gtk vim-enhanced aylurs-gtk-shell cliphist hypridle hyprlock pamixer pyprland SwayNotificationCenter hyprland hyprcursor	sddm qt6-qt5compat qt6-qtdeclarative qt6-qtsvg xdg-desktop-portal-hyprland xdg-desktop-portal-gtk
+            sudo dnf in -y curl gawk git grim gvfs gvfs-mtp ImageMagick jq inxi kitty kvantum nano network-manager-applet openssl pamixer pavucontrol pipewire-alsa pipewire-utils playerctl polkit-gnome python3-requests python3-pip python3-pyquery qt5ct qt6ct qt6-qtsvg rofi-wayland slurp swappy SwayNotificationCenter waybar wget2 wl-clipboard wlogout xdg-user-dirs xdg-utils yad brightnessctl btop cava eog fastfetch gnome-system-monitor mousepad mpv mpv-mpris nvtop qalculate-gtk vim-enhanced aylurs-gtk-shell cliphist hypridle hyprlock pamixer pyprland SwayNotificationCenter hyprland hyprcursor	sddm qt6-qt5compat qt6-qtdeclarative qt6-qtsvg xdg-desktop-portal-hyprland xdg-desktop-portal-gtk
  
             echo -e $Y"Installed both wm"$N
             ;;

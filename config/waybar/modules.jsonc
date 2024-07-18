@@ -302,8 +302,9 @@
 },
 "mpris": {
 	"interval": 10,
+	// "format": "{player_icon} {dynamic}",
 	"format": "{player_icon} ",
-	"format-paused": "{status_icon} <i>{dynamic}</i>",
+	"format-paused": "{status_icon} ",
 	"on-click-middle": "playerctl play-pause",
 	"on-click": "playerctl previous",
 	"on-click-right": "playerctl next",
@@ -488,7 +489,7 @@
 },
 "custom/menu": {
 	"format": "",
-	"on-click": "killall wofi || wofi",
+	"on-click": "killall rofi -show drun || rofi -show drun",
 	// "on-click-middle": "~/.config/hypr/UserScripts/WallpaperSelect.sh",
 	// "on-click-right": "~/.config/hypr/scripts/WaybarLayout.sh",
 	// "tooltip": true,
@@ -594,7 +595,7 @@
 },
 // Modules below are for vertical layout
 "backlight#vertical": {
-	"interval": 2,
+	"interval": 5,
 	"align": 0.35,
 	"rotate": 1,
 	"format": "{icon}",

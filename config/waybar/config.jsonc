@@ -14,12 +14,12 @@
 
 "modules-left": [
 	"custom/menu",
-	"custom/light_dark",
+	// "custom/light_dark",
 	"custom/separator#dot-line",
 	"power-profiles-daemon",
 	"group/mobo_drawer",
-	"custom/separator#blank",
-	"group/laptop",
+	"custom/separator#dot-line",
+	"network#speed",
 	],
 
 "modules-center": [
@@ -35,14 +35,16 @@
 	], 
 
 "modules-right": [
-	"network#speed",
 	// "group/connections",
-	"custom/separator#line",
 	"tray",
+	"custom/separator#dot-line",
 	"mpris", 
-	"group/audio",
+    "pulseaudio",
 	"custom/separator#line",
-	"custom/lock",
-	"custom/power",
+	"group/laptop",
+	"custom/separator#dot-line",
+	// "custom/lock",
+	"custom/power"
+	// "group/audio",
 	],
 }
