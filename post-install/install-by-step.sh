@@ -2,13 +2,7 @@
 ## MANUAL ACTION NEEDED:
 # lxappearance and kvantummanager
 # TreeSitter and Coc
-
-# TESTED ON FEDORA 38 KDE on 27/09/23
-# 4.4G to 11G
-# Took 18m30s on a kvm
-
-# TESTED ON FEDORA 38 XFCE ON 29/10/23
-# ?? to 13G
+# set fcitx on gtk files
 
 # need to see scrcpy
 
@@ -33,14 +27,12 @@ do
     10- Setup dotfiles
     11- Install fonts
     12- Setup theme
-    13- Install window manager sway
+    13- Install window manager sway and hyprland
     14- Setup mpd
-    15- Install pulsemixer
-    16- Setup games
-    17- Setup wihotspot
-    18- Setup SwayAudioIdleInhibit
+    15- Setup games
+    16- Setup wihotspot
+    17- Setup SwayAudioIdleInhibit
     "$N
-    # 12 will install dracula, is missing cursors
     read NUM 
 
     case $NUM in
@@ -134,10 +126,14 @@ EndSection' | sudo tee /etc/X11/xorg.conf.d/50-mouse-acceleration.conf
             ;;
 
         7)
-            sudo dnf in -y --skip-broken florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git rofi dunst libnotify lxappearance qt6ct fcitx5 fcitx5-mozc fcitx5-configtool cpu-x polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 eza antimicrox leafpad bat fzf gamemode xhost neovim python3-pip nodejs tmux gammastep picom kernel-tools blueman network-manager-applet pulseaudio-utils wdisplays slurp grim libva-utils neovim kitty intel-gpu-tools lxqt-policykit wmname mpc meson ninja-build wayland-protocols-devel pulseaudio-libs-devel dbus-x11 dav1d lm_sensors audacity gimp chromium piper fastfetch
+            sudo dnf in -y --skip-broken florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi-wayland spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git libnotify lxappearance qt6ct fcitx5 fcitx5-mozc fcitx5-configtool cpu-x polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 eza antimicrox leafpad bat fzf gamemode xhost neovim python3-pip nodejs tmux gammastep picom kernel-tools blueman network-manager-applet pulseaudio-utils wdisplays slurp grim libva-utils neovim kitty intel-gpu-tools lxqt-policykit wmname mpc meson ninja-build wayland-protocols-devel pulseaudio-libs-devel dbus-x11 dav1d lm_sensors audacity gimp chromium piper fastfetch hyprpicker radeontop
             sudo dnf install -y --setopt=install-weak-deps=False nomacs 
             sudo dnf groupinstall -y "C Development Tools and Libraries"
             sudo dnf groupinstall -y "Development Tools"
+
+
+            sudo dnf install scrcpy pyprland cliphist aylurs-gtk-shell SwayNotificationCenter
+
             flatpak install -y app/com.vscodium.codium/x86_64/stable
             # flatpak install -y app/io.gitlab.librewolf-community/x86_64/stable
             flatpak install -y com.github.tchx84.Flatseal
@@ -147,6 +143,18 @@ EndSection' | sudo tee /etc/X11/xorg.conf.d/50-mouse-acceleration.conf
             # flatpak install -y app/org.citra_emu.citra/x86_64/stable 
             # flatpak install -y app/io.mgba.mGBA/x86_64/stable
             pip install selenium pandas plotly pyautogui
+
+            cd ~/Downloads
+            git clone https://github.com/jeremija/wl-gammarelay.git
+            cd ~/Downloads/wl-gammarelay
+            make
+            sudo make install PREFIX=/usr
+            cd ~/Downloads
+            rm -rf wl-gammarelay
+
+            curl https://raw.githubusercontent.com/GeorgeFilipkin/pulsemixer/master/pulsemixer > pulsemixer && chmod +x ./pulsemixer
+            sudo mv pulsemixer /opt
+
             echo -e $Y"Installed everything"$N
             ;;
 
@@ -250,7 +258,15 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"' | tee ~/.oh-my-zsh/themes/robbyruss
 
         13)
             sudo dnf in -y sway waybar gammastep wofi clipman libappindicator wl-clipboard
-            #sudo dnf in -y bspwm rofi nitrogen sxhkd polybar dunst sddm lxqt-policykit picom
+
+            sudo dnf copr enable zeno/scrcpy
+            sudo dnf copr enable solopasha/hyprland
+            sudo dnf copr enable wef/cliphist
+            sudo dnf copr enable lexa/SwayNotificationCenter
+            sudo dnf copr enable zeno/scrcpy
+
+            sudo dnf in curl gawk git grim gvfs gvfs-mtp ImageMagick jq inxi kitty kvantum nano network-manager-applet openssl pamixer pavucontrol pipewire-alsa pipewire-utils playerctl polkit-gnome python3-requests python3-pip python3-pyquery qt5ct qt6ct qt6-qtsvg rofi-wayland slurp swappy SwayNotificationCenter waybar wget2 wl-clipboard wlogout xdg-user-dirs xdg-utils yad brightnessctl btop cava eog fastfetch gnome-system-monitor mousepad mpv mpv-mpris nvtop qalculate-gtk vim-enhanced aylurs-gtk-shell cliphist hypridle hyprlock pamixer pyprland SwayNotificationCenter hyprland hyprcursor	sddm qt6-qt5compat qt6-qtdeclarative qt6-qtsvg xdg-desktop-portal-hyprland xdg-desktop-portal-gtk
+ 
             echo -e $Y"Installed both wm"$N
             ;;
         14)
@@ -263,16 +279,11 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"' | tee ~/.oh-my-zsh/themes/robbyruss
             ;;
 
         15)
-            curl https://raw.githubusercontent.com/GeorgeFilipkin/pulsemixer/master/pulsemixer > pulsemixer && chmod +x ./pulsemixer
-            sudo mv pulsemixer /opt
-            echo -e $Y"Downloaded pulsemixer"$N
-            ;;
-        16)
             sudo dnf in -y steam lutris goverlay mangohud gamemode gamescope wine wine.i686 winetricks
             echo -e $Y"Installed game related packages"$N
             ;;
 
-        17)
+        16)
         sudo dnf in -y gtk3-devel gcc gcc-c++ kernel-devel pkg-config make hostapd qrencode-devel libpng-devel
         sudo chmod 777 /opt
         cd /opt
@@ -285,7 +296,7 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"' | tee ~/.oh-my-zsh/themes/robbyruss
         echo -e $Y"Installed wihotspot"$N
         ;;
 
-    18)
+        17)
         sudo dnf in -y wayland-protocols-devel pulseaudio-libs-devel
         cd /opt
         git clone https://github.com/ErikReider/SwayAudioIdleInhibit.git

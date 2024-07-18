@@ -4,12 +4,8 @@
 /* ---- Configuration ---- */
 
 configuration {
-	modi:                       "drun,run,filebrowser";
+	modi:                       "drun";
     show-icons:                 true;
-    display-drun:               "Apps";
-    display-run:                "Run";
-    display-filebrowser:        "Files";
-    display-window:             "Windows";
 	drun-display-format:        "{name}";
 	hover-select:               true;
 	me-select-entry:            "MouseSecondary";
@@ -23,9 +19,8 @@ configuration {
 
 /* ---- Global Properties ---- */
 * {
-
     background-alt:              @selected-active-background; // Buttons background
-    selected:                    @selected-urgent-background; // Button selected
+    selected:                    #70CCDB; // Button selected
     active:                      @selected-normal-background; // Window activated
     urgent:                      @selected; // When hovering the activated window (maybe more?)
 
@@ -65,13 +60,12 @@ mainbox {
 /* ---- Inputbar ---- */
 inputbar {
     enabled:                     true;
-    padding:                     10px 10px 100px 10px;
+    padding:                     10px 10px 10px 10px;
     margin:                      10px;
     background-color:            transparent;
     border-radius:               25px;
     orientation:                 horizontal;
     children:                    ["entry", "dummy", "mode-switcher" ];
-    background-image:            url("~/.config/rofi/.current_wallpaper", width);
 }
 
 /* ---- Entry input ---- */
@@ -84,7 +78,7 @@ entry {
     background-color:            @selected;
     text-color:                  @text-selected;
     cursor:                      text;
-    placeholder:                 "🖥️ Search "; // << Search symbol
+    placeholder:                 "何を探しているの？";
     placeholder-color:           inherit;
 }
 
@@ -101,7 +95,7 @@ listbox {
 listview {
     enabled:                     true;
     columns:                     2;
-    lines:                       6;
+    lines:                       8;
     cycle:                       true;
     dynamic:                     true;
     scrollbar:                   true;
