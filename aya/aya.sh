@@ -374,7 +374,7 @@ sudo dnf in lxqt-powermanagement
 sudo snap install auto-cpufreq
 sudo snap run auto-cpufreq --install
 
-#- thermald
+#- thermald (only for Intel CPUs)
 sudo dnf in thermald
 sudo systemctl enable --now thermald
 
@@ -1739,3 +1739,8 @@ sudo make install PREFIX=/usr
 
 ### wl-present
 curl https://raw.githubusercontent.com/Ferdi265/wl-mirror/main/scripts/wl-present > wl-present.sh && chmod +x wl-present.sh
+
+git clone --depth=1 https://github.com/JaKooLit/Fedora-Hyprland.git ~/Fedora-Hyprland
+cd ~/Fedora-Hyprland
+chmod +x install.sh
+./install.sh
