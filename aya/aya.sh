@@ -1739,8 +1739,14 @@ sudo make install PREFIX=/usr
 
 ### wl-present
 curl https://raw.githubusercontent.com/Ferdi265/wl-mirror/main/scripts/wl-present > wl-present.sh && chmod +x wl-present.sh
+sudo dnf in wl-mirror
 
 git clone --depth=1 https://github.com/JaKooLit/Fedora-Hyprland.git ~/Fedora-Hyprland
 cd ~/Fedora-Hyprland
 chmod +x install.sh
 ./install.sh
+
+### hyprshot
+git clone https://github.com/Gustash/hyprshot.git Hyprshot
+ln -s $(pwd)/Hyprshot/hyprshot $HOME/.local/bin
+chmod +x Hyprshot/hyprshot
