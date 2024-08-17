@@ -268,7 +268,20 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"' | tee ~/.oh-my-zsh/themes/robbyruss
 
             sudo dnf in -y curl gawk git grim gvfs gvfs-mtp ImageMagick jq inxi kitty kvantum nano network-manager-applet openssl pamixer pavucontrol pipewire-alsa pipewire-utils playerctl polkit-gnome python3-requests python3-pip python3-pyquery qt5ct qt6ct qt6-qtsvg rofi-wayland slurp swappy SwayNotificationCenter waybar wget2 wl-clipboard wlogout xdg-user-dirs xdg-utils yad brightnessctl btop cava eog fastfetch gnome-system-monitor mousepad mpv mpv-mpris nvtop qalculate-gtk vim-enhanced aylurs-gtk-shell cliphist hypridle hyprlock pamixer pyprland SwayNotificationCenter hyprland hyprcursor sddm qt6-qt5compat qt6-qtdeclarative qt6-qtsvg xdg-desktop-portal-hyprland xdg-desktop-portal-gtk
  
-            echo -e $Y"Installed both wm"$N
+            ### Gammarelay
+            cd /opt
+            git clone https://github.com/jeremija/wl-gammarelay.git
+            cd wl-gammarelay
+            sudo make install PREFIX=/usr
+            ### wl-present
+            curl https://raw.githubusercontent.com/Ferdi265/wl-mirror/main/scripts/wl-present > wl-present.sh && chmod +x wl-present.sh
+            sudo dnf in wl-mirror
+            ### hyprshot
+            git clone https://github.com/Gustash/hyprshot.git Hyprshot
+            ln -s $(pwd)/Hyprshot/hyprshot $HOME/.local/bin
+            chmod +x Hyprshot/hyprshot
+
+                echo -e $Y"Installed both wm"$N
             ;;
         14)
             mkdir ~/.local/share/mpd
