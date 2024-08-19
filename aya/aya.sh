@@ -1750,3 +1750,8 @@ chmod +x install.sh
 git clone https://github.com/Gustash/hyprshot.git Hyprshot
 ln -s $(pwd)/Hyprshot/hyprshot $HOME/.local/bin
 chmod +x Hyprshot/hyprshot
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+
+'sddm.conf.d directory needs to be on /etc'
+
+
