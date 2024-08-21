@@ -1,5 +1,8 @@
+/* ---- 💫 https://github.com/JaKooLit 💫 ---- */
+
+// ### DEFAULT v2 (Laptop)  - Top ### //
 {
-"include": "~/.config/waybar/modules.jsonc",
+"include": "~/.config/waybar/modules",
 "layer": "top",
 //"mode": "dock",
 "exclusive": true,
@@ -14,19 +17,18 @@
 
 "modules-left": [
 	"custom/menu",
-	// "custom/light_dark",
+	"custom/light_dark",
 	"custom/separator#dot-line",
 	"power-profiles-daemon",
-	// "group/mobo_drawer",
-	"custom/separator#dot-line",
-	"group/laptop"
-
-	// "network#speed",
+	"group/mobo_drawer",
+	"custom/separator#blank",
+	"group/laptop",
+	"custom/separator#line",
 	],
 
 "modules-center": [
 	"custom/swaync",
-	// "custom/cava_mviz",
+	"custom/cava_mviz",
 	"custom/separator#dot-line",
 	"clock",
 	"custom/separator#line",
@@ -37,16 +39,16 @@
 	], 
 
 "modules-right": [
-	// "group/connections",
+	"network#speed",
+	"group/connections",
+	"custom/separator#line",
 	"tray",
-	"custom/separator#dot-line",
-	// "mpris", 
-    "pulseaudio",
-	// "custom/separator#line",
-	// "group/laptop",
-	// "custom/separator#dot-line",
-	// "custom/lock",
-	"custom/power"
-	// "group/audio",
+	"mpris", 
+	"group/audio",
+	"custom/separator#line",
+	"keyboard-state",
+	"custom/keyboard",
+	"custom/lock",
+	"custom/power",
 	],
 }
