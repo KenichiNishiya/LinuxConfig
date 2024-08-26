@@ -31,7 +31,7 @@ cp ~/.zprofile $REPO'zprofile'
 cp ~/.zshrc $REPO'zshrc'
 # cp ~/.tmux.conf $REPO'tmux.conf'
 
-cp -r $IN'lutris/games/' $REPO'/bakap/lutris/'
+# cp -r $IN'lutris/games/' $REPO'/bakap/lutris/'
 cp -r ~/'.config/bakap/' $REPO
 # cp -r /home/yori/Documents/scripts/* $REPO'scripts/'
 # cp $IN'nvim/init.vim' $OUT'nvim/init.vim' sudo cp /etc/sddm.conf.d/sddm.conf $OUT'sddm/sddm.conf' 
