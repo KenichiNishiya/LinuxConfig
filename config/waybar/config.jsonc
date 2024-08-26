@@ -17,14 +17,16 @@
 	// "custom/light_dark",
 	"custom/separator#dot-line",
 	"power-profiles-daemon",
-	"group/mobo_drawer",
+	// "group/mobo_drawer",
 	"custom/separator#dot-line",
-	"network#speed",
+	"group/laptop"
+
+	// "network#speed",
 	],
 
 "modules-center": [
 	"custom/swaync",
-	"custom/cava_mviz",
+	// "custom/cava_mviz",
 	"custom/separator#dot-line",
 	"clock",
 	"custom/separator#line",
@@ -38,11 +40,11 @@
 	// "group/connections",
 	"tray",
 	"custom/separator#dot-line",
-	"mpris", 
+	// "mpris", 
     "pulseaudio",
-	"custom/separator#line",
-	"group/laptop",
-	"custom/separator#dot-line",
+	// "custom/separator#line",
+	// "group/laptop",
+	// "custom/separator#dot-line",
 	// "custom/lock",
 	"custom/power"
 	// "group/audio",

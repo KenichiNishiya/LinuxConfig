@@ -491,6 +491,9 @@ sudo systemctl disable chronyd
 # Seems to be a program to sync the clock
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+# Seems to be a program to sync the clock
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! ENABLE TRIM FOR SSD (BETTER PERFORMANCE AND SSD LIFETIME)
 
 # To verify if the SSD has trim support, run:
@@ -1687,9 +1690,6 @@ systemctl restart power-profiles-daemon.service
 sudo dnf rm rhythmbox totem
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-#! SETUP KOTLIN
-https://idroot.us/install-kotlin-fedora-38/
-
 sudo dnf install java-1.8.0-openjdk
 curl -s "https://get.sdkman.io" | bash
 source "$HOME/.sdkman/bin/sdkman-init.sh"
