@@ -1,9 +1,15 @@
 #!/bin/bash
-# export PATH=/usr/bin:/bin:/usr/local/bin
-# export GIT_SSH_COMMAND="ssh -i /home/yori/.config/tk/tk"
-cd /home/yori/study
-git pull
+
+LOCAL_STU="$HOME/study"
+REMOTE_STU="$HOME/re/git/study"
+
+echo "Sync files"
+rsync -avh --ignore-existing $LOCAL_STU/ $REMOTE_STU --delete
+# $LOCAL_STU/ needs the / since otherwise it will copy the entire local study inside the remote study and not only its contests
+
+cd $REMOTE_STU
 git add .
 git commit -m 'Upload files'
 git push origin main
+cd $HOME
 
