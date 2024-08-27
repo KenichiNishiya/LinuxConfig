@@ -1755,3 +1755,5 @@ chmod +x Hyprshot/hyprshot
 'sddm.conf.d directory needs to be on /etc'
 
 
+mkdir .local/share/fonts 
+cp -r JetBrainsMonoNerd .local/share/fonts

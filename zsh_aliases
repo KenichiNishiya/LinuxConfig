@@ -46,6 +46,8 @@ alias minagorosi="killall waybar; killall kdeconnectd; killall blueman-applet; k
 alias glem="cd /home/yori/re/git/GLEM-android; cp -r /home/yori/AndroidStudioProjects/GLEM2/* .; git add .; git commit -m "Update"; git push origin main;cd"
 alias baka="echo -e '\033[1;33mBackup stu\033[0m'; stu; echo -e '\033[1;33mBackup ura\033[0m'; ura;echo -e '\033[1;33mBackup gita\033[0m';gita"
 alias gm="~/.config/hypr/scripts/GameMode.sh"
+alias an="busctl --user -- set-property rs.wl-gammarelay / rs.wl.gammarelay Temperature q 6500"
+alias am="busctl --user -- set-property rs.wl-gammarelay / rs.wl.gammarelay Temperature q 5000"
 # alias f="du -a ~/us/* ~/Documents/* | awk '{print $2}' | grep -vi bakap | fzf --preview='bat --color=always --style=numbers {}' --bind K:preview-page-up,J:preview-page-down | xargs -r $EDITOR"
 f() {du -a ~/study ~/react ~/Documents/* | awk '{print $2}' | grep -vi bakap | fzf --preview='bat --color=always --style=numbers {}' --bind K:preview-page-up,J:preview-page-down | xargs -r $EDITOR; }
 ff() {fzf --preview='bat --color=always --style=numbers {}' --bind K:preview-page-up,J:preview-page-down | xargs -r $EDITOR; }
