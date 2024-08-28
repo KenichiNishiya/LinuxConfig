@@ -12,7 +12,7 @@ echo $(pwd)
 git pull
 
 echo "Copy to local obsidian folder"
-rsync -avh --ignore-existing $REMOTE_OBS/* $LOCAL_OBS
+rsync -avh $REMOTE_OBS/* $LOCAL_OBS
 
 cd $HOME
 
@@ -27,6 +27,6 @@ echo $(pwd)
 git pull
 
 echo "Copy to local study folder"
-rsync -avh --ignore-existing $REMOTE_STU/* $LOCAL_STU
+rsync -avh $REMOTE_STU/* $LOCAL_STU
 
 cd $HOME
