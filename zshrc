@@ -181,5 +181,4 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 # . "$HOME/.asdf/asdf.sh"
 
-$HOME/re/git/dotfiles/scripts/pull.sh
 
