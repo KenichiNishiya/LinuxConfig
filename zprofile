@@ -52,3 +52,4 @@
 
     # Blue light filter
 #fi
+$HOME/re/git/dotfiles/scripts/pull.sh
