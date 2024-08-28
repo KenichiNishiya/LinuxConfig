@@ -7,10 +7,12 @@ REMOTE_OBS="$HOME/re/git/ura/obsidian"
 
 echo "Fetch any update from ura repo"
 cd $REMOTE_OBS
+cd ..
+echo $(pwd)
 git pull
 
 echo "Copy to local obsidian folder"
-rsync -a --ignore-existing $REMOTE_OBS/* $LOCAL_OBS
+rsync -avh --ignore-existing $REMOTE_OBS/* $LOCAL_OBS
 
 cd $HOME
 
@@ -21,9 +23,10 @@ REMOTE_STU="$HOME/re/git/study"
 
 echo "Fetch any update from study repo"
 cd $REMOTE_STU
+echo $(pwd)
 git pull
 
 echo "Copy to local study folder"
-rsync -a --ignore-existing $REMOTE_STU/* $LOCAL_STU
+rsync -avh --ignore-existing $REMOTE_STU/* $LOCAL_STU
 
 cd $HOME
