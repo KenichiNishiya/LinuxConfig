@@ -1917,3 +1917,10 @@ inactiveBackground=239,240,241
 inactiveBlend=239,240,241
 inactiveForeground=112,125,138
 
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+
+sudo dnf in swtmp
+# https://github.com/virtio-win/virtio-win-pkg-scripts/blob/master/README.md
+# Install the 'latest virtio-win ISO'
+
+https://www.youtube.com/watch?v=WmFpwpW6Xko
