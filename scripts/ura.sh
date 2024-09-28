@@ -4,7 +4,7 @@ LOCAL_OBS="$HOME/Documents/obsidian"
 REMOTE_OBS="$HOME/re/git/ura/obsidian"
 
 echo "Sync files"
-rsync -avh --exclude .obsidian/ $LOCAL_OBS/ $REMOTE_OBS --delete
+rsync -avhc --progress --backup --suffix=.bak --exclude .obsidian/ $LOCAL_OBS/ $REMOTE_OBS --delete
 # rsync -avh $LOCAL_OBS $REMOTE_OBS --delete
 # $LOCAL_OBS/ needs the / since otherwise it will copy the entire local obsidian inside the remote obsidian, and not only its contents
 
