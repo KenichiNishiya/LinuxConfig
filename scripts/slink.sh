@@ -1,15 +1,16 @@
 #!/bin/bash
 
+
 ORIGIN=""
-TARGET="/home/yori/Music/on/"
+TARGET="$HOME/Music/on/"
 NEW=0
 CT=1
 
-#if [ $(ls /home/yori/Music/on | wc -l) != 0 ]; then
-#rm /home/yori/Music/on/*
+#if [ $(ls $HOME/Music/on | wc -l) != 0 ]; then
+#rm $HOME/Music/on/*
 #fi
 
-mkdir -p /home/yori/Music/on
+mkdir -p "$HOME/Music/on"
 
 echo -e "\033[1;33mUpdating database..."
 
@@ -17,19 +18,19 @@ while [ $CT -le 4 ]
 do
     if [ $CT == 1 ];then
         echo -e "\033[1;33mUpdating directory　アニメ"
-    ORIGIN="/home/yori/Music/音楽/アニメ/"
+    ORIGIN="$HOME/Music/音楽/アニメ/"
 
     elif [ $CT == 2 ];then
         echo -e "Updating directory　インストルメンタル"
-    ORIGIN="/home/yori/Music/音楽/インストルメンタル/"
+    ORIGIN="$HOME/Music/音楽/インストルメンタル/"
 
     elif [ $CT == 3 ];then
         echo -e "Updating directory　他"
-    ORIGIN="/home/yori/Music/音楽/他/"
+    ORIGIN="$HOME/Music/音楽/他/"
 
     elif [ $CT == 4 ];then
         echo -e "Updating directory　東方"
-    ORIGIN="/home/yori/Music/音楽/東方/"
+    ORIGIN="$HOME/Music/音楽/東方/"
     fi
 
     COUNTFILES="$( ls $ORIGIN | wc -l )"
