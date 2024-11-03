@@ -68,7 +68,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-autosuggestions colored-man-pages zsh-syntax-highlighting)
+plugins=(zsh-autosuggestions colored-man-pages zsh-syntax-highlighting timer)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -181,4 +181,4 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 # . "$HOME/.asdf/asdf.sh"
 
-
+TIMER_FORMAT='[%d]'; TIMER_PRECISION=2
