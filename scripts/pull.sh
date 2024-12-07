@@ -2,7 +2,7 @@
 set -e
 
 ### ura
-LOCAL_OBS="$HOME/Documents/obsidian"
+LOCAL_OBS="$HOME/obsidian"
 REMOTE_OBS="$HOME/re/git/ura/obsidian"
 
 echo "Fetch any update from ura repo"

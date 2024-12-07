@@ -536,7 +536,11 @@ general.smoothScroll.msdPhysics.slowdownSpringConstant 250
 general.smoothScroll.stopDecelerationWeighting 1.0
 
 mousewheel.default.delta_multiplier_y 200
+
+# if the mouse scroll is too slow
+mousewheel.default.delta_multiplier_y 400
 '
+
 # Change UI size
 about:config
 # Search for
