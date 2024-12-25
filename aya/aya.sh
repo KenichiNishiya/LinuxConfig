@@ -1783,3 +1783,14 @@ sudo dnf in swtmp
 # Install the 'latest virtio-win ISO'
 
 https://www.youtube.com/watch?v=WmFpwpW6Xko
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+### CAP / LIMIT BATTERY CHARGING CAPACITY
+
+sudo dnf in tlp
+sudo systemctl enable tlp --now
+sudo vim /etc/tlp.conf
+'
+STOP_CHARGE_THRESH_BAT0=60
+'
+sudo systemctl restart tlp
