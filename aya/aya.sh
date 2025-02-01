@@ -1794,3 +1794,22 @@ sudo vim /etc/tlp.conf
 STOP_CHARGE_THRESH_BAT0=60
 '
 sudo systemctl restart tlp
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+### TLP NOT WORKING ON BOOT (INACTIVE AND DEAD)
+
+# TLP is not compatible with power-profiles-daemon
+systemctl disable --now power-profiles-daemon
+systemctl mask power-profiles-daemon
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+### OLLAMA (with DEEPSEEK)
+
+curl -fsSL https://ollama.com/install.sh | sh
+sudo systemctl start ollama
+sudo systemctl enable ollama
+ollama run deepseek-r1:7b
+
+# For abliterated version:
+ollama run https://ollama.com/huihui_ai/deepseek-r1-abliterated:7b
+ollama run https://ollama.com/huihui_ai/deepseek-r1-abliterated:8b
