@@ -1803,6 +1803,26 @@ systemctl disable --now power-profiles-daemon
 systemctl mask power-profiles-daemon
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+### SSH WITH SHARED TERMINAL
+
+# Host machine
+sudo dnf in openssh-server
+sudo systemctl enable --now sshd
+
+sudo firewall-cmd --permanent --add-service=ssh
+sudo firewall-cmd --reload
+
+ip a # Local SSH
+
+tmux new-session -s shared
+
+# Client machine
+sudo dnf in openssh
+ssh username@192.168.x.x
+
+tmux attach-session -t shared
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 ### OLLAMA (with DEEPSEEK)
 
 curl -fsSL https://ollama.com/install.sh | sh
@@ -1813,3 +1833,15 @@ ollama run deepseek-r1:7b
 # For abliterated version:
 ollama run https://ollama.com/huihui_ai/deepseek-r1-abliterated:7b
 ollama run https://ollama.com/huihui_ai/deepseek-r1-abliterated:8b
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+### vllm
+sudo dnf in conda
+
+conda create -n vllm-env python=3.10 -y
+# close terminal and reopen
+conda activate vllm-env
+pip install torch==2.3.0
+pip install vllm
+
+
