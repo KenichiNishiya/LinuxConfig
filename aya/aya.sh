@@ -1802,6 +1802,9 @@ sudo systemctl restart tlp
 systemctl disable --now power-profiles-daemon
 systemctl mask power-profiles-daemon
 
+systemctl disable --now upower
+systemctl mask upower
+
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 ### SSH WITH SHARED TERMINAL
 
@@ -1844,4 +1847,25 @@ conda activate vllm-env
 pip install torch==2.3.0
 pip install vllm
 
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+### SET BATTERY CHARGE THRESHOLD FOR LAPTOP
+
+sudo vim /etc/systemd/system/battery-threshold.service
+'
+[Unit]
+Description=Set Battery Charge Threshold
+After=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c 'sleep 10 && echo 60 > /sys/class/power_supply/BAT0/charge_control_end_threshold'
+
+[Install]
+WantedBy=multi-user.target
+'
+sudo systemctl daemon-reload
+sudo systemctl enable battery-threshold.service
+
+# Reboot and check with
+cat /sys/class/power_supply/BAT0/charge_control_end_threshold
 
